@@ -1,0 +1,207 @@
+@import 'tailwindcss';
+
+/* ─── Fuentes Gotham ──────────────────────────────────────────────── */
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/GothamBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/GothamBook.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/GothamLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GothamCondensed';
+    src: url('/fonts/GothamCondensed-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+@source '../views';
+@source '../js/**/*.tsx';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@plugin 'tailwindcss-animate';
+@plugin 'tailwindcss-motion';
+
+@theme {
+    --font-sans:
+        'Gotham', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-gotham: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+    --font-gotham-condensed: 'GothamCondensed', ui-sans-serif, system-ui, sans-serif;
+        
+    --breakpoint-laptop: 1366px;
+
+    --color-primary-100: #02509D;
+    --color-primary-80: #1f3d6d;
+    --color-primary-60: #2756a1;
+    --color-primary-40: #5c8ed4;
+    --color-primary-20: #c7d7f0;
+
+    --color-cb-50: #f3f6fc;
+    --color-cb-100: #e6ecf8;
+    --color-cb-200: #c7d7f0;
+    --color-cb-300: #95b5e4;
+    --color-cb-400: #5c8ed4;
+    --color-cb-500: #376fc0;
+    --color-cb-600: #2756a1;
+    --color-cb-700: #214583;
+    --color-cb-800: #1f3d6d;
+    --color-cb-900: #1f355b;
+    --color-cb-950: #14223d;
+    --color-cb: #02509D;
+    --color-cb-full: #061744;
+
+    --color-cr-50: #fef2f3;
+    --color-cr-100: #ffe1e3;
+    --color-cr-200: #ffc8cb;
+    --color-cr-300: #ffa2a7;
+    --color-cr-400: #fc6d75;
+    --color-cr-500: #f43f49;
+    --color-cr-600: #e32b35;
+    --color-cr-700: #be1720;
+    --color-cr-800: #9d171e;
+    --color-cr-900: #821a20;
+    --color-cr-950: #47080b;
+    --color-cr: #E20613;
+
+    /* Brand Aliases */
+    --color-cb-default: var(--color-cb);
+    --color-cr-default: var(--color-cr);
+
+    /* Dynamic Theme Colors */
+    --color-brand-primary: var(--color-cb);
+    --color-brand-secondary: var(--color-cr);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Clases de fuente Gotham ─────────────────────────────────────── */
+.font-gotham-bold {
+    font-family: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+}
+
+.font-gotham {
+    font-family: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+}
+
+.font-gotham-light {
+    font-family: 'Gotham', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 300;
+}
+
+.font-gotham-condensed {
+    font-family: 'GothamCondensed', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-left: 1px solid #c7d7f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2756a1;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #214583;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2756a1 transparent;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-gotham);
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite;
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes bounce-small {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-bounce-small {
+  animation: bounce-small 1.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+/* Lite YouTube Custom Styles */
+lite-youtube {
+  background-color: #000;
+  position: relative;
+  display: block;
+  contain: content;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+  max-width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  --lite-youtube-aspect-ratio: 16 / 9;
+  aspect-ratio: var(--lite-youtube-aspect-ratio);
+}
+
+lite-youtube::part(playButton) {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+lite-youtube:hover::part(playButton) {
+  background-color: rgba(226, 6, 19, 1);
+}
