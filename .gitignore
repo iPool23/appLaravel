@@ -18,6 +18,9 @@ yarn-error.log*
 /bootstrap/ssr
 /public/hot
 /public/storage
+/public/*
+!/public/index.php
+!/public/robots.txt
 
 # Archivos de Entorno (Environments)
 .env
