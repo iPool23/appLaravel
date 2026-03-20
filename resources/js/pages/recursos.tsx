@@ -169,10 +169,10 @@ export default function RecursosPage({ categories, isAuthenticated: serverAuth }
             <AppLayout
                 title="Recursos - Acceso Protegido"
                 description="Accede a recursos institucionales, archivos descargables y material informativo de Alianza Para el Progreso."
-                image="/imgs/fondo/fondo-prensa.jpg"
+                image="/imgs/fondo/fondo-prensa.webp"
                 keywords={['recursos', 'descargas', 'APP', 'archivos']}
             >
-                <BannerWithBackground src="/imgs/fondo/fondo-prensa.jpg" title="RECURSOS" />
+                <BannerWithBackground src="/imgs/fondo/fondo-prensa.webp" title="RECURSOS" />
                 <ContainerSingle>
                     <ContainerTodo>
                         <PasswordGate onAuthenticated={handleAuthenticated} />
@@ -186,10 +186,10 @@ export default function RecursosPage({ categories, isAuthenticated: serverAuth }
         <AppLayout
             title="Recursos"
             description="Accede a recursos institucionales, archivos descargables y material informativo de Alianza Para el Progreso."
-            image="/imgs/fondo/fondo-prensa.jpg"
+            image="/imgs/fondo/fondo-prensa.webp"
             keywords={['recursos', 'descargas', 'APP', 'archivos']}
         >
-            <BannerWithBackground src="/imgs/fondo/fondo-prensa.jpg" title="RECURSOS" />
+            <BannerWithBackground src="/imgs/fondo/fondo-prensa.webp" title="RECURSOS" />
             
             <ContainerSingle>
                 <ContainerTodo>

@@ -3,7 +3,7 @@ import { Militant } from "@/interfaces/militant.interface";
 export const militanciaData: Militant[] = [
     {
         id: 1,
-        image: "/imgs/militante/AmazonasPeru.png",
+        image: "/imgs/militante/AmazonasPeru.webp",
         region: "Amazonas",
         title: "Información para tu afiliación en Amazonas",
         slug: "amazonas",
@@ -18,7 +18,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 2,
-        image: "/imgs/militante/AncashPeru.png",
+        image: "/imgs/militante/AncashPeru.webp",
         region: "Áncash",
         title: "Información para tu afiliación en Áncash",
         slug: "ancash",
@@ -33,7 +33,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 3,
-        image: "/imgs/militante/ApurimacPeru.png",
+        image: "/imgs/militante/ApurimacPeru.webp",
         region: "Apurímac",
         title: "Información para tu afiliación en Apurímac",
         slug: "apurimac",
@@ -48,7 +48,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 4,
-        image: "/imgs/militante/ArequipaPeru.png",
+        image: "/imgs/militante/ArequipaPeru.webp",
         region: "Arequipa",
         title: "Información para tu afiliación en Arequipa",
         slug: "arequipa",
@@ -63,7 +63,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 5,
-        image: "/imgs/militante/AyacuchoPeru.png",
+        image: "/imgs/militante/AyacuchoPeru.webp",
         region: "Ayacucho",
         title: "Información para tu afiliación en Ayacucho",
         slug: "ayacucho",
@@ -78,7 +78,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 6,
-        image: "/imgs/militante/CajamarcaPeru.png",
+        image: "/imgs/militante/CajamarcaPeru.webp",
         region: "Cajamarca",
         title: "Información para tu afiliación en Cajamarca",
         slug: "cajamarca",
@@ -93,7 +93,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 7,
-        image: "/imgs/militante/CallaoPeru.png",
+        image: "/imgs/militante/CallaoPeru.webp",
         region: "Callao",
         title: "Información para tu afiliación en Callao",
         slug: "callao",
@@ -108,7 +108,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 8,
-        image: "/imgs/militante/CuscoPeru.png",
+        image: "/imgs/militante/CuscoPeru.webp",
         region: "Cusco",
         title: "Información para tu afiliación en Cusco",
         slug: "cusco",
@@ -123,7 +123,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 9,
-        image: "/imgs/militante/HuancavelicaPeru.png",
+        image: "/imgs/militante/HuancavelicaPeru.webp",
         region: "Huancavelica",
         title: "Información para tu afiliación en Huancavelica",
         slug: "huancavelica",
@@ -138,7 +138,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 10,
-        image: "/imgs/militante/HuanucoPeru.png",
+        image: "/imgs/militante/HuanucoPeru.webp",
         region: "Huánuco",
         title: "Información para tu afiliación en Huánuco",
         slug: "huanuco",
@@ -153,7 +153,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 11,
-        image: "/imgs/militante/IcaPeru.png",
+        image: "/imgs/militante/IcaPeru.webp",
         region: "Ica",
         title: "Información para tu afiliación en Ica",
         slug: "ica",
@@ -168,7 +168,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 12,
-        image: "/imgs/militante/JuninPeru.png",
+        image: "/imgs/militante/JuninPeru.webp",
         region: "Junín",
         title: "Información para tu afiliación en Junín",
         slug: "junin",
@@ -183,7 +183,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 13,
-        image: "/imgs/militante/LaLibertadPeru.png",
+        image: "/imgs/militante/LaLibertadPeru.webp",
         region: "La Libertad",
         title: "Información para tu afiliación en La Libertad",
         slug: "la-libertad",
@@ -198,7 +198,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 14,
-        image: "/imgs/militante/LambayequePeru.png",
+        image: "/imgs/militante/LambayequePeru.webp",
         region: "Lambayeque",
         title: "Información para tu afiliación en Lambayeque",
         slug: "lambayeque",
@@ -213,8 +213,8 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 15,
-        image: "/imgs/militante/LimaPeru.png",
-        srcImage: "/imgs/militante/lima.png",
+        image: "/imgs/militante/LimaPeru.webp",
+        srcImage: "/imgs/militante/lima.webp",
         region: "Lima",
         title: "Información para tu",
         titleSegment: "afiliación en Lima",
@@ -231,7 +231,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 16,
-        image: "/imgs/militante/LoretoPeru.png",
+        image: "/imgs/militante/LoretoPeru.webp",
         region: "Loreto",
         title: "Información para tu",
         titleSegment: "afiliación en Loreto",
@@ -247,7 +247,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 17,
-        image: "/imgs/militante/MadreDeDiosPeru.png",
+        image: "/imgs/militante/MadreDeDiosPeru.webp",
         region: "Madre de Dios",
         title: "Información para tu afiliación",
         titleSegment: "en Madre de Dios",
@@ -263,7 +263,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 18,
-        image: "/imgs/militante/MoqueguaPeru.png",
+        image: "/imgs/militante/MoqueguaPeru.webp",
         region: "Moquegua",
         title: "Información para tu",
         titleSegment: "afiliación en Moquegua",
@@ -279,7 +279,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 19,
-        image: "/imgs/militante/PascoPeru.png",
+        image: "/imgs/militante/PascoPeru.webp",
         region: "Pasco",
         title: "Información para tu",
         titleSegment: "afiliación en Pasco",
@@ -295,7 +295,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 20,
-        image: "/imgs/militante/PiuraPeru.png", 
+        image: "/imgs/militante/PiuraPeru.webp", 
         region: "Piura",
         title: "Información para tu",
         titleSegment: "afiliación en Piura",
@@ -311,7 +311,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 21,
-        image: "/imgs/militante/PunoPeru.png",
+        image: "/imgs/militante/PunoPeru.webp",
         region: "Puno",
         title: "Información para tu",
         titleSegment: "afiliación en Puno",
@@ -327,7 +327,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 22,
-        image: "/imgs/militante/SanMartinPeru.png",
+        image: "/imgs/militante/SanMartinPeru.webp",
         region: "San Martín",
         title: "Información para tu afiliación",
         titleSegment: "afiliación en San Martín",
@@ -343,7 +343,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 23,
-        image: "/imgs/militante/TacnaPeru.png",
+        image: "/imgs/militante/TacnaPeru.webp",
         region: "Tacna",
         title: "Información para tu",
         titleSegment: "afiliación en Tacna",
@@ -359,7 +359,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 24,
-        image: "/imgs/militante/TumbesPeru.png",
+        image: "/imgs/militante/TumbesPeru.webp",
         region: "Tumbes",
         title: "Información para tu",
         titleSegment: "afiliación en Tumbes",
@@ -375,7 +375,7 @@ export const militanciaData: Militant[] = [
     },
     {
         id: 25,
-        image: "/imgs/militante/UcayaliPeru.png",
+        image: "/imgs/militante/UcayaliPeru.webp",
         region: "Ucayali",
         title: "Información para tu",
         titleSegment: "afiliación en Ucayali",

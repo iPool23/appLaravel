@@ -2,7 +2,7 @@ import { DirectiveMember } from "@/interfaces/member.interface";
 
 const directiveMembersQu: DirectiveMember[] = [
   {
-    src: "/imgs/directive/cesar-acuna.png",
+    src: "/imgs/directive/cesar-acuna.webp",
     centerText: "César Acuña Peralta",
     bottomText: "Presidente kamachiq",
     socialLinks: [
@@ -17,7 +17,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/luis-valdez-para-web-scaled.png",
+    src: "/imgs/directive/luis-valdez-para-web-scaled.webp",
     centerText: "Luis Valdez Farias",
     bottomText: "Suyuq Kamachiq Qillqaq",
     socialLinks: [
@@ -29,7 +29,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/richard-acuna.png",
+    src: "/imgs/directive/richard-acuna.webp",
     centerText: "Richard Acuña Núñez",
     bottomText: "Suyuq Kamachiq Pusaq",
     socialLinks: [
@@ -46,7 +46,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/humberto-acuna.png",
+    src: "/imgs/directive/humberto-acuna.webp",
     centerText: "Humberto Acuña Peralta",
     bottomText: "Secretario Nacional de Organización Partidaria",
     socialLinks: [
@@ -67,7 +67,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/jorge-gonzales.png",
+    src: "/imgs/directive/jorge-gonzales.webp",
     centerText: "Jorge Gonzáles Oré",
     bottomText: "Suyuq Qillqana Allpaq Coordinacion",
     socialLinks: [
@@ -84,7 +84,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/marisol-espinoza.png",
+    src: "/imgs/directive/marisol-espinoza.webp",
     centerText: "Marisol Espinoza Cruz",
     bottomText: "Hatun Kamachiq",
     socialLinks: [
@@ -99,7 +99,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/yessenia-lozano.png",
+    src: "/imgs/directive/yessenia-lozano.webp",
     centerText: "Yessenia Lozano Millones",
     bottomText: "Suyuq Qillqana Waynakuna",
     socialLinks: [
@@ -117,7 +117,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/alejandra-loyola.png",
+    src: "/imgs/directive/alejandra-loyola.webp",
     centerText: "Alejandra Loyola Vera",
     bottomText: "EFOP Pusaq",
     socialLinks: [
@@ -128,7 +128,7 @@ const directiveMembersQu: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/fernando-velasco.png",
+    src: "/imgs/directive/fernando-velasco.webp",
     centerText: "Fernando Velasco",
     bottomText: "Secretario Nacional de Personeros",
     slug: "fernando-velasco",

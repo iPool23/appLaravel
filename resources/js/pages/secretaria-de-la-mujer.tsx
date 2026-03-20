@@ -27,20 +27,20 @@ export default function SecretariaPage() {
     const t = useTranslations('secretaria');
 
     const images = [
-        { src: "/imgs/secretaria/3.jpg", alt: "Mitin Político San Juan de Lurigancho" },
-        { src: "/imgs/secretaria/4.jpg", alt: "César Acuña en evento político" },
-        { src: "/imgs/secretaria/5.jpg", alt: "César Acuña en evento político" },
+        { src: "/imgs/secretaria/3.webp", alt: "Mitin Político San Juan de Lurigancho" },
+        { src: "/imgs/secretaria/4.webp", alt: "César Acuña en evento político" },
+        { src: "/imgs/secretaria/5.webp", alt: "César Acuña en evento político" },
     ];
 
     const content: SectionContent[] = [
         {
-            src: "/imgs/secretaria/1.jpg",
+            src: "/imgs/secretaria/1.webp",
             imageAlt: "César Acuña en la inauguración de Alianza Para el Progreso",
             description: `${t('content1')}\n\n${t('content1Extra')}`,
             imagePosition: "left"
         },
         {
-            src: "/imgs/secretaria/2.jpg",
+            src: "/imgs/secretaria/2.webp",
             imageAlt: "César Acuña en la inauguración de Alianza Para el Progreso",
             description: `${t('content2')}\n\n${t('content2Extra')}`,
             imagePosition: "right"
@@ -50,8 +50,8 @@ export default function SecretariaPage() {
     return (
         <AppLayout title={t('pageTitle')}>
             <BannerWithBackground
-                src="/imgs/fondo/fondo-secretaria.png"
-                srcDark="/imgs/fondo/fondo-secretaria.png"
+                src="/imgs/fondo/fondo-secretaria.webp"
+                srcDark="/imgs/fondo/fondo-secretaria.webp"
                 title={t('bannerTitle')}
             />
             <ContainerSingle className="bg-gray-100 dark:bg-cb-950">

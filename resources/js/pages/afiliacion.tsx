@@ -3,7 +3,7 @@ import BannerWithBackground from "@/components/ui/banner/BannerWithBackground";
 import ContainerSingle from "@/components/ui/container/ContainerSingle";
 import ContainerTodo from "@/components/ui/container/ContainerTodo";
 import { useTranslations } from "@/lib/i18n";
-import { CheckCircle2, Download, MapPin, Info, RefreshCw, Users, HelpCircle, AlertTriangle } from "lucide-react";
+import { Download, MapPin, Info, RefreshCw, Users, HelpCircle, AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function AfiliacionPage() {
@@ -15,11 +15,11 @@ export default function AfiliacionPage() {
         <AppLayout
             title={t('title') || "Afiliación"}
             description="Únete a Alianza Para el Progreso. Conoce los pasos y modalidades para afiliarte formalmente al partido."
-            image="/imgs/fondo/fondo-contacto.jpg"
+            image="/imgs/fondo/fondo-contacto.webp"
             keywords={['afiliación', 'partido político', 'APP', 'inscripción', 'militante']}
         >
             <BannerWithBackground
-                src="/imgs/fondo/fondo-contacto.jpg"
+                src="/imgs/fondo/fondo-contacto.webp"
                 title={t('bannerTitle')}
             />
 

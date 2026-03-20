@@ -3,7 +3,7 @@ import { CongressMan } from "@/interfaces/congressMan.interface";
 // Optimized congressman data with preload hints and efficient structure
 const congressManData: CongressMan[] = [
     {
-        src: "/imgs/congressman/mary.jpg",
+        src: "/imgs/congressman/mary.webp",
         centerText: "MARÍA GRIMANEZA ACUÑA PERALTA",
         bottomText: "Congresista de Lambayeque",
         socialLinks: [
@@ -14,7 +14,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/lady.jpg",
+        src: "/imgs/congressman/lady.webp",
         centerText: "LADY MERCEDES CAMONES SORIANO",
         bottomText: "Congresista de Áncash",
         socialLinks: [
@@ -26,7 +26,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     // {
-    //     src: "/imgs/congressman/chiabra.jpg",
+    //     src: "/imgs/congressman/chiabra.webp",
     //     centerText: "ROBERTO ENRIQUE CHIABRA LEÓN",
     //     bottomText: "Congresista de Lima",
     //     socialLinks: [
@@ -39,7 +39,7 @@ const congressManData: CongressMan[] = [
     //     ],
     // },
     {
-        src: "/imgs/congressman/CORDERO.jpg",
+        src: "/imgs/congressman/CORDERO.webp",
         centerText: "LUIS GUSTAVO CORDERO JON TAY",
         bottomText: "Congresista de Lima Provincias",
         socialLinks: [
@@ -49,7 +49,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/joseelias.jpg",
+        src: "/imgs/congressman/joseelias.webp",
         centerText: "JOSÉ LUIS ELÍAS ÁVALOS",
         bottomText: "Congresista de Ica",
         socialLinks: [
@@ -61,7 +61,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/flores.jpg",
+        src: "/imgs/congressman/flores.webp",
         centerText: "JORGE LUIS FLORES ANCACHI",
         bottomText: "Congresista de Puno",
         socialLinks: [
@@ -73,7 +73,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/manuelgarcia.jpg",
+        src: "/imgs/congressman/manuelgarcia.webp",
         centerText: "IDELSO MANUEL GARCÍA CORREA",
         bottomText: "Congresista de Piura",
         socialLinks: [
@@ -85,7 +85,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/heidinger.jpg",
+        src: "/imgs/congressman/heidinger.webp",
         centerText: "NELCY LIDIA HEIDINGER BALLESTEROS",
         bottomText: "Congresista de Pasco",
         socialLinks: [
@@ -97,7 +97,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/edhitjulon.jpg",
+        src: "/imgs/congressman/edhitjulon.webp",
         centerText: "ELVA EDHIT JULÓN IRIGOIN",
         bottomText: "Congresista de Cajamarca",
         socialLinks: [
@@ -108,7 +108,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/kamiche.jpg",
+        src: "/imgs/congressman/kamiche.webp",
         centerText: "LUIS ROBERTO KAMICHE MORANTE",
         bottomText: "Congresista de La Libertad",
         socialLinks: [
@@ -120,7 +120,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/lizarsaburu.jpg",
+        src: "/imgs/congressman/lizarsaburu.webp",
         centerText: "JUAN CARLOS MARTÍN LIZARZABURU",
         bottomText: "Congresista de Peruanos en el Extranjero",
         socialLinks: [
@@ -131,7 +131,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/marticorena.jpg",
+        src: "/imgs/congressman/marticorena.webp",
         centerText: "JORGE ALFONSO MARTICORENA MENDOZA",
         bottomText: "Congresista de Ica",
         socialLinks: [
@@ -143,7 +143,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/QUIROZ.jpg",
+        src: "/imgs/congressman/QUIROZ.webp",
         centerText: "SEGUNDO TEODOMIRO QUIROZ BARBOZA",
         bottomText: "Congresista de Cajamarca",
         socialLinks: [
@@ -154,7 +154,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/Magaly1.jpg",
+        src: "/imgs/congressman/Magaly1.webp",
         centerText: "MAGALY ROSMERY RUIZ RODRÍGUEZ",
         bottomText: "Congresista de La Libertad",
         socialLinks: [
@@ -165,7 +165,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/salhuana.jpg",
+        src: "/imgs/congressman/salhuana.webp",
         centerText: "EDUARDO SALHUANA CAVIDES",
         bottomText: "Congresista de Madre de Dios",
         socialLinks: [
@@ -176,7 +176,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/soto.jpg",
+        src: "/imgs/congressman/soto.webp",
         centerText: "ALEJANDRO SOTO REYES",
         bottomText: "Congresista de Cusco",
         socialLinks: [
@@ -187,7 +187,7 @@ const congressManData: CongressMan[] = [
         ],
     },
     {
-        src: "/imgs/congressman/rosiotorres.jpg",
+        src: "/imgs/congressman/rosiotorres.webp",
         centerText: "ROSIO TORRES SALINAS",
         bottomText: "Congresista de Loreto",
         socialLinks: [

@@ -73,6 +73,7 @@ export default function ImageGallery({
                                         <img
                                             src={image.src}
                                             alt={image.alt}
+                                            loading="lazy"
                                             className={`w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 ${imageClassName}`}
                                         />
                                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
@@ -86,7 +87,7 @@ export default function ImageGallery({
                                         </div>
                                     </div>
                                     {showTitles && image.title && (
-                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                        <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-4">
                                             <h3 className="text-white text-sm md:text-base font-medium">
                                                 {image.title}
                                             </h3>

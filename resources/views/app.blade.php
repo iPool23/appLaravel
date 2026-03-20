@@ -9,6 +9,13 @@
         <link rel="icon" href="/favicon.ico?v=2" sizes="any">
         <link rel="apple-touch-icon" href="/favicon.ico?v=2">
 
+        <!-- Preload Critical Fonts -->
+        <link rel="preload" href="/fonts/GothamBold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="/fonts/GothamBook.ttf" as="font" type="font/ttf" crossorigin>
+
+        <!-- Preload Hero Image -->
+        <link rel="preload" href="/imgs/carousel/1.webp" as="image" fetchpriority="high">
+
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 

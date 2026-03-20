@@ -12,7 +12,7 @@ export default function TerminosPage() {
 
     return (
         <AppLayout title="Términos de Uso">
-            <BannerWithBackground src="/imgs/fondo/fondo-prensa.jpg" title="TÉRMINOS DE USO" />
+            <BannerWithBackground src="/imgs/fondo/fondo-prensa.webp" title="TÉRMINOS DE USO" />
             <ContainerSingle>
                 <ContainerTodo>
                     <div className="mx-auto max-w-4xl py-10">

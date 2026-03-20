@@ -20,36 +20,36 @@ export default function HistoriaPage() {
     }, []);
 
     const images = [
-        { src: "/imgs/gallery/mitin-politico-san-juan-de-lurigancho.jpg", alt: "Mitin Político San Juan de Lurigancho", title: "Mitin Político San Juan de Lurigancho" },
-        { src: "/imgs/carousel/3.jpeg", alt: "César Acuña en evento político", title: "César Acuña en evento político" },
-        { src: "/imgs/gallery/mitin-politico-2.jpg", alt: "Evento político APP", title: "Evento político APP" },
-        { src: "/imgs/gallery/mitin-politico-3.jpg", alt: "Evento político APP", title: "Evento político APP" },
-        { src: "/imgs/gallery/caminata.jpg", alt: "Caminata APP", title: "Caminata APP" },
-        { src: "/imgs/gallery/mitin-politico-4.jpg", alt: "Evento político APP", title: "Evento político APP" },
-        { src: "/imgs/gallery/mitin-politico-5.jpg", alt: "Evento político APP", title: "Evento político APP" },
+        { src: "/imgs/gallery/mitin-politico-san-juan-de-lurigancho.webp", alt: "Mitin Político San Juan de Lurigancho", title: "Mitin Político San Juan de Lurigancho" },
+        { src: "/imgs/carousel/3.webp", alt: "César Acuña en evento político", title: "César Acuña en evento político" },
+        { src: "/imgs/gallery/mitin-politico-2.webp", alt: "Evento político APP", title: "Evento político APP" },
+        { src: "/imgs/gallery/mitin-politico-3.webp", alt: "Evento político APP", title: "Evento político APP" },
+        { src: "/imgs/gallery/caminata.webp", alt: "Caminata APP", title: "Caminata APP" },
+        { src: "/imgs/gallery/mitin-politico-4.webp", alt: "Evento político APP", title: "Evento político APP" },
+        { src: "/imgs/gallery/mitin-politico-5.webp", alt: "Evento político APP", title: "Evento político APP" },
     ];
 
     const content = [
         {
-            src: "/imgs/carousel/2.png",
+            src: "/imgs/carousel/2.webp",
             imageAlt: "César Acuña en la inauguración de Alianza Para el Progreso",
             imagePosition: "left" as const,
             imgAreaPosition: "right" as const
         },
         {
-            src: "/imgs/history/cesar-acuna-liderando-en-chiclayo-la-gran-caminata-de-la-amistad.jpg",
+            src: "/imgs/history/cesar-acuna-liderando-en-chiclayo-la-gran-caminata-de-la-amistad.webp",
             imageAlt: "César Acuña liderando en Chiclayo la Gran Caminata de la Amistad",
             imagePosition: "right" as const,
             imgAreaPosition: "left" as const
         },
         {
-            src: "/imgs/history/cesar-acuna-recorre-region-loreto-para-apoyar-a-sus-candidatos.jpg",
+            src: "/imgs/history/cesar-acuna-recorre-region-loreto-para-apoyar-a-sus-candidatos.webp",
             imageAlt: "César Acuña recorre la región Loreto para apoyar a sus candidatos",
             imagePosition: "left" as const,
             imgAreaPosition: "right" as const
         },
         {
-            src: "/imgs/history/gran-caravana-en-loreto.jpg",
+            src: "/imgs/history/gran-caravana-en-loreto.webp",
             imageAlt: "Gran Caravana en Loreto",
             imagePosition: "right" as const,
             imgAreaPosition: "left" as const
@@ -67,12 +67,12 @@ export default function HistoriaPage() {
         <AppLayout
             title={t('title') || "Historia"}
             description="Conoce la historia de Alianza Para el Progreso."
-            image="/imgs/fondo/fondo-historia.jpg"
+            image="/imgs/fondo/fondo-historia.webp"
             keywords={['historia', 'Alianza Para el Progreso', 'APP', 'fundación']}
         >
             <BannerWithBackground
-                src="/imgs/fondo/fondo-historia.jpg"
-                srcDark="/imgs/fondo/fondo-historia.jpg"
+                src="/imgs/fondo/fondo-historia.webp"
+                srcDark="/imgs/fondo/fondo-historia.webp"
                 title={t('title')}
             />
             <ContainerSingle className="bg-gray-50 dark:bg-cb-full">

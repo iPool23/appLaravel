@@ -13,15 +13,15 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\MilitanteController;
 use App\Http\Controllers\ConsultaController;
 
-// Redirect root to default locale
-Route::get('/', fn () => redirect('/es'))->name('home');
+// Home / maps to default es
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('{locale}')
 	->where(['locale' => 'es|qu'])
 	->middleware('locale')
 	->group(function () {
 
-		// Home
+		// Home locale
 		Route::get('/', [HomeController::class, 'index'])->name('home.locale');
 
 		// Press

@@ -82,7 +82,7 @@ export default function BoletinPage() {
                                 <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-cb-default via-cb-400 to-cb-default" />
 
                                 <div className="p-8 md:p-16 flex flex-col items-center">
-                                    <InteractiveLogo src="/imgs/logo/logo.png" alt="Logo APP" width={160} height={160} href={`/${locale}`} />
+                                    <InteractiveLogo src="/imgs/logo/logo.webp" alt="Logo APP" width={160} height={160} href={`/${locale}`} />
 
                                     <div className="text-center mb-12">
                                         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-gray-900 dark:text-white  leading-none">
@@ -173,7 +173,7 @@ export default function BoletinPage() {
                                 <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-cb-default via-cb-400 to-cb-default" />
 
                                 <div className="p-8 md:p-16 flex flex-col items-center">
-                                    <InteractiveLogo src="/imgs/logo/logo.png" alt="Logo APP" width={160} height={160} href={`/${locale}`} />
+                                    <InteractiveLogo src="/imgs/logo/logo.webp" alt="Logo APP" width={160} height={160} href={`/${locale}`} />
 
                                     <h3 className="text-4xl md:text-6xl font-black uppercase text-cb-default dark:text-cb-400 tracking-tighter mb-8 px-4">
                                         {t('success')}

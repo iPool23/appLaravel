@@ -16,7 +16,7 @@ interface Slide {
 const slides: Slide[] = [
     {
         id: 1,
-        image: "/imgs/carousel/1.jpeg",
+        image: "/imgs/carousel/1.webp",
         alt: "César Acuña junto a militantes de Alianza para el Progreso en un encuentro político",
         title: "COMPROMETIDOS CON EL PERÚ",
         description: "COMPROMETIDOS CON EL PERÚ",
@@ -24,7 +24,7 @@ const slides: Slide[] = [
     },
     {
         id: 2,
-        image: "/imgs/carousel/2.jpeg",
+        image: "/imgs/carousel/2.webp",
         alt: "Fotografía grupal de César Acuña y simpatizantes de APP",
         title: "COMPROMETIDOS CON EL PERÚ",
         description: "TRABAJANDO POR UN PERÚ MEJOR",
@@ -32,7 +32,7 @@ const slides: Slide[] = [
     },
     {
         id: 3,
-        image: "/imgs/carousel/3.jpeg",
+        image: "/imgs/carousel/3.webp",
         alt: "César Acuña y su equipo de campaña en Alianza para el Progreso",
         title: "COMPROMETIDOS CON EL PERÚ",
         description: "UNIDOS SOMOS MEJORES",
@@ -40,7 +40,7 @@ const slides: Slide[] = [
     },
     {
         id: 4,
-        image: "/imgs/carousel/4.jpeg",
+        image: "/imgs/carousel/4.webp",
         alt: "Militantes de APP junto al líder del partido, César Acuña",
         title: "COMPROMETIDOS CON EL PERÚ",
         description: "TU ACTITUD DEFINE TU CAMINO",
@@ -48,7 +48,7 @@ const slides: Slide[] = [
     },
     {
         id: 5,
-        image: "/imgs/carousel/5.jpeg",
+        image: "/imgs/carousel/5.webp",
         alt: "Encuentro de César Acuña con jóvenes militantes de Alianza para el Progreso",
         title: "COMPROMETIDOS CON EL PERÚ",
         description: "UNIDOS HACIA EL FUTURO",
@@ -128,9 +128,11 @@ export default function Carousel() {
                                 transition={{ duration: 0.6, ease: easeOut }}
                             >
                                 <img
-                                    src={slide.image || "/imgs/placeholder.jpg"}
+                                    src={slide.image || "/imgs/placeholder.webp"}
                                     alt={slide.alt || `Cesar Acuña ${index + 1}`}
                                     onLoad={() => handleImageLoad(index)}
+                                    // @ts-ignore
+                                    fetchPriority={index === 0 ? "high" : "auto"}
                                     className="w-full h-full object-cover"
                                     style={{ display: "block" }}
                                 />
@@ -141,7 +143,7 @@ export default function Carousel() {
             </AnimatePresence>
 
             <div className="absolute inset-0 z-10 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-b from-cb-950/50 via-cb-full/30 to-cb-950/20" />
+                <div className="absolute inset-0 bg-linear-to-b from-cb-950/50 via-cb-full/30 to-cb-950/20" />
                 <div
                     className="absolute inset-0"
                     style={{

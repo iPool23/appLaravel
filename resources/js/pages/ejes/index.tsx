@@ -26,7 +26,7 @@ export default function EjesPage() {
         <AppLayout
             title="Ejes de Gobierno - Propuestas para el Perú"
             description="Conoce los 6 ejes de gobierno de Alianza Para el Progreso: Erradicar la pobreza, Educación para el empleo, Seguridad ciudadana, Salud para todos, Desarrollo económico y Reforma del Estado."
-            image="/imgs/ejes/ejes-gobierno.jpg"
+            image="/imgs/ejes/ejes-gobierno.webp"
             keywords={['ejes de gobierno', 'APP', 'Alianza Para el Progreso', 'propuestas políticas', 'Perú']}
             canonicalPath={`/${locale}/ejes`}
         >

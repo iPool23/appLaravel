@@ -42,19 +42,19 @@ export default function JuventudesPage() {
     const t = useTranslations('juventudes');
 
     const images = [
-        { src: "/imgs/juventudes/juventudes3.jpg", alt: "Mitin Político San Juan de Lurigancho" },
-        { src: "/imgs/juventudes/juventudes2.jpg", alt: "César Acuña en evento político" },
+        { src: "/imgs/juventudes/juventudes3.webp", alt: "Mitin Político San Juan de Lurigancho" },
+        { src: "/imgs/juventudes/juventudes2.webp", alt: "César Acuña en evento político" },
     ];
 
     const content: SectionContent[] = [
         {
-            src: "/imgs/juventudes/juventudes-1.jpg",
+            src: "/imgs/juventudes/juventudes-1.webp",
             imageAlt: "César Acuña en la inauguración de Alianza Para el Progreso",
             description: `${t('content1')}\n\n${t('content1Extra')}`,
             imagePosition: "left"
         },
         {
-            src: "/imgs/juventudes/juventudes1.jpg",
+            src: "/imgs/juventudes/juventudes1.webp",
             imageAlt: "César Acuña en la inauguración de Alianza Para el Progreso",
             description: t('content2'),
             imagePosition: "right"
@@ -64,8 +64,8 @@ export default function JuventudesPage() {
     return (
         <AppLayout title={t('pageTitle')}>
             <BannerWithBackground
-                src="/imgs/fondo/cabecera-juventudes.jpg"
-                srcDark="/imgs/fondo/cabecera-juventudes.jpg"
+                src="/imgs/fondo/cabecera-juventudes.webp"
+                srcDark="/imgs/fondo/cabecera-juventudes.webp"
                 title={t('bannerTitle')}
             />
             <ContainerSingle className="bg-gray-100 dark:bg-cb-950">

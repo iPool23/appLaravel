@@ -3,19 +3,19 @@ import { DirectiveMember } from "@/interfaces/member.interface";
 // Data for Voceros Grid based on provided list
 const vocerosData: DirectiveMember[] = [
   {
-    src: "/imgs/placeholder.jpg", // Placeholder for Martín Salas
+    src: "/imgs/placeholder.webp", // Placeholder for Martín Salas
     centerText: "MARTÍN SALAS",
     bottomText: "Vocero",
     socialLinks: [],
   },
   {
-    src: "/imgs/placeholder.jpg", // Placeholder for Luis Vivanco
+    src: "/imgs/placeholder.webp", // Placeholder for Luis Vivanco
     centerText: "LUIS VIVANCO",
     bottomText: "Vocero",
     socialLinks: [],
   },
   {
-    src: "/imgs/directive/luis-valdez-para-web-scaled.png", // From directiveMembers
+    src: "/imgs/directive/luis-valdez-para-web-scaled.webp", // From directiveMembers
     centerText: "LUIS VALDEZ FARIÁS",
     bottomText: "Secretario Ejecutivo Nacional",
     socialLinks: [
@@ -27,7 +27,7 @@ const vocerosData: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/congressman/salhuana.jpg", // From congressMan
+    src: "/imgs/congressman/salhuana.webp", // From congressMan
     centerText: "EDUARDO SALHUANA CAVIDES",
     bottomText: "Congresista de Madre de Dios",
     socialLinks: [
@@ -41,7 +41,7 @@ const vocerosData: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/congressman/lady.jpg", // From congressMan
+    src: "/imgs/congressman/lady.webp", // From congressMan
     centerText: "LADY MERCEDES CAMONES SORIANO",
     bottomText: "Congresista de Áncash",
     socialLinks: [
@@ -56,13 +56,13 @@ const vocerosData: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/placeholder.jpg", // Placeholder for Elio Riera
+    src: "/imgs/placeholder.webp", // Placeholder for Elio Riera
     centerText: "ELIO RIERA",
     bottomText: "Vocero",
     socialLinks: [],
   },
   {
-    src: "/imgs/directive/yessenia-lozano.png", // From directiveMembers
+    src: "/imgs/directive/yessenia-lozano.webp", // From directiveMembers
     centerText: "YESSENIA LOZANO MILLONES",
     bottomText: "Secretaria Nacional de Juventudes",
     socialLinks: [
@@ -79,7 +79,7 @@ const vocerosData: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/marisol-espinoza.png", // From directiveMembers
+    src: "/imgs/directive/marisol-espinoza.webp", // From directiveMembers
     centerText: "MARISOL ESPINOZA CRUZ",
     bottomText: "Gerencia General y Secretaria Nacional de la Mujer",
     socialLinks: [
@@ -96,7 +96,7 @@ const vocerosData: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/placeholder.jpg", // Placeholder for Yessica Tumi
+    src: "/imgs/placeholder.webp", // Placeholder for Yessica Tumi
     centerText: "YESSICA TUMI",
     bottomText: "Vocero",
     socialLinks: [],

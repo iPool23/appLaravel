@@ -25,7 +25,7 @@ const truncateText = (text: string, maxLength: number) => {
 };
 
 export default function CustomCardImage({
-  src = "/imgs/placeholder.jpg",
+  src = "/imgs/placeholder.webp",
   centerText = "",
   bottomText = "",
   date = "",
@@ -67,6 +67,7 @@ export default function CustomCardImage({
             <img
               src={src}
               alt={centerText}
+              loading="lazy"
               className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>

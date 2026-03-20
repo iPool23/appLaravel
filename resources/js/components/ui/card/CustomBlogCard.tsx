@@ -14,7 +14,7 @@ export default function CustomBlogCard({
     titleTop = "",
     titleCenter = "",
     description = "",
-    imageUrl = "/imgs/placeholder.jpg",
+    imageUrl = "/imgs/placeholder.webp",
     isImage = true,
     className = "",
     textAlignment = "left",

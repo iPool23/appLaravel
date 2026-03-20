@@ -16,8 +16,8 @@ interface BannerWithBackgroundProps {
 
 export default function BannerWithBackground({
     title = "",
-    src = "/imgs/backgroundacuna.jpg",
-    srcDark = "/imgs/backgroundacuna.jpg",
+    src = "/imgs/fondo/fondo-contacto.webp",
+    srcDark = "/imgs/fondo/fondo-contacto.webp",
     className = "",
     titleColor = "text-white dark:text-white",
     titleFontSize = "4xl",
@@ -40,6 +40,7 @@ export default function BannerWithBackground({
                     <img
                         src={backgroundImage}
                         alt="Fondo del banner"
+                        fetchPriority="high"
                         className="w-full h-full object-cover object-top"
                     />
                 </div>

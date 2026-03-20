@@ -21,11 +21,11 @@ export default function DocumentosPublicosPage({ documents, currentPage, totalPa
         <AppLayout
             title="Documentos Públicos y Convocatorias - Alianza Para el Progreso"
             description="Accede de manera transparente a los documentos oficiales, reglamentos, comunicados y convocatorias de Alianza Para el Progreso. Información actualizada para todos los ciudadanos."
-            image="/imgs/fondo/fondo-historia.jpg"
+            image="/imgs/fondo/fondo-historia.webp"
             keywords={['documentos publicos', 'APP', 'archivos', 'convocatorias', 'transparencia']}
         >
             <BannerWithBackground
-                src="/imgs/fondo/fondo-historia.jpg"
+                src="/imgs/fondo/fondo-historia.webp"
                 title="DOCUMENTOS PÚBLICOS"
             />
             <ContainerSingle className="bg-gray-100 dark:bg-cb-900 border-t border-cb-100 dark:border-cb-800">

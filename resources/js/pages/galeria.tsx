@@ -8,7 +8,7 @@ export default function GaleriaPage() {
     return (
         <AppLayout title="Galería de Imágenes - Eventos y Actividades">
             <BannerWithBackground 
-                src="/imgs/fondo/fondo-historia.jpg" 
+                src="/imgs/fondo/fondo-historia.webp" 
                 title="GALERÍA" 
             />
             <ContainerSingle className="py-16">

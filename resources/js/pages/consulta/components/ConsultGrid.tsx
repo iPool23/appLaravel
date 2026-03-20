@@ -15,7 +15,7 @@ const ConsultGrid: React.FC<ConsultGridProps> = ({ candidates = [] }) => {
             {candidates.map((candidate) => (
                 <div key={candidate.id_candidato_anio} className="flex flex-col">
                     <RoundedImageCardLink
-                        src={candidate.foto_url || '/imgs/consulta/logoA.jpg'}
+                        src={candidate.foto_url || '/imgs/consulta/logoA.webp'}
                         link={`/${locale}/consulta/${candidate.id_candidato_anio}`}
                         centerText={candidate.nombre_completo || `Candidato ${candidate.id_candidato}`}
                         bottomText={`${candidate.nombre_cargo || `Cargo ${candidate.id_cargo}`}${candidate.nombre_departamento ? ` - ${candidate.nombre_departamento}` : ''}`}

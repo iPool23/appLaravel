@@ -32,19 +32,19 @@ export default function EfopPage() {
     const t = useTranslations('efop');
 
     const images = [
-        { src: "/imgs/efop/3.jpg", alt: "Mitin Político San Juan de Lurigancho" },
-        { src: "/imgs/efop/4.jpg", alt: "César Acuña en evento político" },
+        { src: "/imgs/efop/3.webp", alt: "Mitin Político San Juan de Lurigancho" },
+        { src: "/imgs/efop/4.webp", alt: "César Acuña en evento político" },
     ];
 
     const content: SectionContent[] = [
         {
-            src: "/imgs/efop/1.jpg",
+            src: "/imgs/efop/1.webp",
             imageAlt: "César Acuña en la inauguración de Alianza Para el Progreso",
             description: `${t('content1')}\n\n${t('content1Extra')}`,
             imagePosition: "left"
         },
         {
-            src: "/imgs/efop/2.jpg",
+            src: "/imgs/efop/2.webp",
             imageAlt: "César Acuña en la inauguración de Alianza Para el Progreso",
             description: `${t('content2')}\n\n${t('content2Extra')}`,
             imagePosition: "right"
@@ -54,8 +54,8 @@ export default function EfopPage() {
     return (
         <AppLayout title={t('pageTitle')}>
             <BannerWithBackground
-                src="/imgs/fondo/efop-fondo.png"
-                srcDark="/imgs/fondo/efop-fondo.png"
+                src="/imgs/fondo/efop-fondo.webp"
+                srcDark="/imgs/fondo/efop-fondo.webp"
                 title={t('bannerTitle')}
             />
             <ContainerSingle className="bg-gray-100 dark:bg-cb-950">

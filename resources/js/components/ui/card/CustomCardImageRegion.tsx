@@ -21,7 +21,7 @@ interface CustomCardImageRegionProps {
 
 export default function CustomCardImageRegion({
   image,
-  srcImage = "/imgs/placeholder.jpg",
+  srcImage = "/imgs/placeholder.webp",
   region = "No definido",
   charge = "Recepción General",
   slug = "/",

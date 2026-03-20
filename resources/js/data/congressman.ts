@@ -7,7 +7,7 @@ export interface PersonCard {
 
 export const congressmen: PersonCard[] = [
     {
-        src: '/imgs/congressman/mary.jpg',
+        src: '/imgs/congressman/mary.webp',
         centerText: 'MARÍA GRIMANEZA ACUÑA PERALTA',
         bottomText: 'Congresista de Lambayeque',
         socialLinks: [
@@ -18,7 +18,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/lady.jpg',
+        src: '/imgs/congressman/lady.webp',
         centerText: 'LADY MERCEDES CAMONES SORIANO',
         bottomText: 'Congresista de Áncash',
         socialLinks: [
@@ -30,7 +30,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/CORDERO.jpg',
+        src: '/imgs/congressman/CORDERO.webp',
         centerText: 'LUIS GUSTAVO CORDERO JON TAY',
         bottomText: 'Congresista de Lima Provincias',
         socialLinks: [
@@ -40,7 +40,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/joseelias.jpg',
+        src: '/imgs/congressman/joseelias.webp',
         centerText: 'JOSÉ LUIS ELÍAS ÁVALOS',
         bottomText: 'Congresista de Ica',
         socialLinks: [
@@ -50,7 +50,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/flores.jpg',
+        src: '/imgs/congressman/flores.webp',
         centerText: 'JORGE LUIS FLORES ANCACHI',
         bottomText: 'Congresista de Puno',
         socialLinks: [
@@ -62,7 +62,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/manuelgarcia.jpg',
+        src: '/imgs/congressman/manuelgarcia.webp',
         centerText: 'IDELSO MANUEL GARCÍA CORREA',
         bottomText: 'Congresista de Piura',
         socialLinks: [
@@ -74,7 +74,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/heidinger.jpg',
+        src: '/imgs/congressman/heidinger.webp',
         centerText: 'NELCY LIDIA HEIDINGER BALLESTEROS',
         bottomText: 'Congresista de Pasco',
         socialLinks: [
@@ -86,7 +86,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/edhitjulon.jpg',
+        src: '/imgs/congressman/edhitjulon.webp',
         centerText: 'ELVA EDHIT JULÓN IRIGOIN',
         bottomText: 'Congresista de Cajamarca',
         socialLinks: [
@@ -97,7 +97,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/kamiche.jpg',
+        src: '/imgs/congressman/kamiche.webp',
         centerText: 'LUIS ROBERTO KAMICHE MORANTE',
         bottomText: 'Congresista de La Libertad',
         socialLinks: [
@@ -109,7 +109,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/lizarsaburu.jpg',
+        src: '/imgs/congressman/lizarsaburu.webp',
         centerText: 'JUAN CARLOS MARTÍN LIZARZABURU',
         bottomText: 'Congresista de Peruanos en el Extranjero',
         socialLinks: [
@@ -120,7 +120,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/marticorena.jpg',
+        src: '/imgs/congressman/marticorena.webp',
         centerText: 'JORGE ALFONSO MARTICORENA MENDOZA',
         bottomText: 'Congresista de Ica',
         socialLinks: [
@@ -132,7 +132,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/QUIROZ.jpg',
+        src: '/imgs/congressman/QUIROZ.webp',
         centerText: 'SEGUNDO TEODOMIRO QUIROZ BARBOZA',
         bottomText: 'Congresista de Cajamarca',
         socialLinks: [
@@ -143,7 +143,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/Magaly1.jpg',
+        src: '/imgs/congressman/Magaly1.webp',
         centerText: 'MAGALY ROSMERY RUIZ RODRÍGUEZ',
         bottomText: 'Congresista de La Libertad',
         socialLinks: [
@@ -154,7 +154,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/salhuana.jpg',
+        src: '/imgs/congressman/salhuana.webp',
         centerText: 'EDUARDO SALHUANA CAVIDES',
         bottomText: 'Congresista de Madre de Dios',
         socialLinks: [
@@ -165,7 +165,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/soto.jpg',
+        src: '/imgs/congressman/soto.webp',
         centerText: 'ALEJANDRO SOTO REYES',
         bottomText: 'Congresista de Cusco',
         socialLinks: [
@@ -176,7 +176,7 @@ export const congressmen: PersonCard[] = [
         ],
     },
     {
-        src: '/imgs/congressman/rosiotorres.jpg',
+        src: '/imgs/congressman/rosiotorres.webp',
         centerText: 'ROSIO TORRES SALINAS',
         bottomText: 'Congresista de Loreto',
         socialLinks: [
@@ -190,17 +190,17 @@ export const congressmen: PersonCard[] = [
 
 export const voceros: PersonCard[] = [
     {
-        src: '/imgs/directive/luis-valdez-para-web-scaled.png',
+        src: '/imgs/directive/luis-valdez-para-web-scaled.webp',
         centerText: 'LUIS VALDEZ FARÍAS',
         bottomText: 'Secretario Ejecutivo Nacional',
     },
     {
-        src: '/imgs/congressman/salhuana.jpg',
+        src: '/imgs/congressman/salhuana.webp',
         centerText: 'EDUARDO SALHUANA CAVIDES',
         bottomText: 'Vocero',
     },
     {
-        src: '/imgs/congressman/lady.jpg',
+        src: '/imgs/congressman/lady.webp',
         centerText: 'LADY MERCEDES CAMONES SORIANO',
         bottomText: 'Vocera',
     },

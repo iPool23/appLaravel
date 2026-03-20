@@ -60,7 +60,7 @@ export default function UnsubscribePage({ email = '' }: UnsubscribeProps) {
 
                                 <div className="p-8 md:p-16 flex flex-col items-center">
                                     <div className="mb-12">
-                                        <InteractiveLogo src="/imgs/logo/logo.png" alt="Logo APP" width={120} height={120} href={`/${locale}`} />
+                                        <InteractiveLogo src="/imgs/logo/logo.webp" alt="Logo APP" width={120} height={120} href={`/${locale}`} />
                                     </div>
 
                                     <div className="text-center mb-12">
@@ -140,7 +140,7 @@ export default function UnsubscribePage({ email = '' }: UnsubscribeProps) {
                                 
                                 <div className="p-8 md:p-16 flex flex-col items-center">
                                     <div className="mb-12">
-                                        <InteractiveLogo src="/imgs/logo/logo.png" alt="Logo APP" width={100} height={100} href={`/${locale}`} />
+                                        <InteractiveLogo src="/imgs/logo/logo.webp" alt="Logo APP" width={100} height={100} href={`/${locale}`} />
                                     </div>
 
                                     <motion.div

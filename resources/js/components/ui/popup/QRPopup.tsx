@@ -68,7 +68,7 @@ export default function QRPopup({ documents }: QRPopupProps) {
                         <div className="bg-cb-default p-3 sm:p-4 flex items-center justify-between flex-shrink-0">
                             <div className="flex items-center gap-2 sm:gap-3">
                                 <img
-                                    src="/imgs/logo/logo-white.png"
+                                    src="/imgs/logo/logo-white.webp"
                                     alt="Alianza Para El Progreso"
                                     width={100}
                                     height={32}

@@ -79,10 +79,12 @@ export const Sidebar = () => {
           <div className="relative py-4 px-6 border-b border-zinc-200 dark:border-white/10 flex items-center justify-between">
             <Link href={`/${currentLanguage}`} onClick={closeMenu} className="flex items-center">
               <img
-                src={mounted && currentTheme === "dark" ? "/imgs/logo/logo-white.png" : "/imgs/logo/logo.png"}
+                src={mounted && currentTheme === "dark" ? "/imgs/logo/logo-white.webp" : "/imgs/logo/logo.webp"}
                 alt="Logo APP"
                 width={120}
                 height={40}
+                // @ts-ignore
+                fetchPriority="high"
                 className="object-contain"
               />
             </Link>

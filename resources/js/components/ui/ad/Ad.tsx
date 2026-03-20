@@ -25,7 +25,7 @@ interface AdProps {
 }
 
 const Ad = ({
-    src = "/imgs/prensa/2025-02-21-1.jpg",
+    src = "/imgs/prensa/2025-02-21-1.webp",
     number = "Â¡Noticia!",
     title = "Gobernador de La Libertad, CÃ©sar AcuÃ±a lidera acciones ante lluvias en la regiÃ³n",
     text = "Se coordina activamente la respuesta ante las intensas lluvias que afectan la regiÃ³n. Su gestiÃ³n ha dispuesto maquinaria pesada, apoyo logÃ­stico y asistencia a las familias damnificadas, en lÃ­nea con el compromiso de APP con el bienestar ciudadano.",

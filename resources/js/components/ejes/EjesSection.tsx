@@ -28,7 +28,7 @@ const getTitleSegments = (locale: string) => {
 
 export default function EjesSection({
     className = "",
-    imageUrl = "/imgs/ejes/ejescapweb.png",
+    imageUrl = "/imgs/ejes/ejescapweb.webp",
     imageAlt = "Bandera del Perú"
 }: EjesSectionProps) {
     const { props } = usePage();
@@ -109,6 +109,7 @@ export default function EjesSection({
                                 alt={imageAlt}
                                 width={550}
                                 height={800}
+                                loading="lazy"
                                 className="object-cover transition-transform duration-300 ease-in-out hover:scale-110"
                             />
                         </motion.div>

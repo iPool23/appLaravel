@@ -3,12 +3,12 @@ import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AppLayout from '@/layouts/AppLayout';
 
-const eventImages = ['/imgs/gallery/7.jpg', '/imgs/gallery/8.jpg', '/imgs/gallery/9.jpg'];
+const eventImages = ['/imgs/gallery/7.jpg', '/imgs/gallery/8.jpg', '/imgs/gallery/9.webp'];
 
 export default function EventosPage() {
     return (
         <AppLayout title="Eventos">
-            <BannerWithBackground src="/imgs/fondo/fondo-prensa.jpg" title="EVENTOS" />
+            <BannerWithBackground src="/imgs/fondo/fondo-prensa.webp" title="EVENTOS" />
             <ContainerSingle>
                 <ContainerTodo>
                     <div className="grid gap-8 lg:grid-cols-3">

@@ -24,7 +24,7 @@ interface RoundedImageCardLinkProps {
 }
 
 export default React.memo(function RoundedImageCardLink({
-  src = "/imgs/placeholder.jpg",
+  src = "/imgs/placeholder.webp",
   link = "/",
   centerText = "",
   bottomText = "",
@@ -48,7 +48,7 @@ export default React.memo(function RoundedImageCardLink({
         className={`h-full flex flex-col`}
       >
         <Link href={link} className="flex justify-center mb-4">
-          <div className={`rounded-t-none rounded-b-full ${colorCard} shadow-2xl shadow-cb-default/20 overflow-hidden border-t-4 border-cr-600`} style={{ backgroundImage: "url('/imgs/bg-cap.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+          <div className={`rounded-t-none rounded-b-full ${colorCard} shadow-2xl shadow-cb-default/20 overflow-hidden border-t-4 border-cr-600`} style={{ backgroundImage: "url('/imgs/bg-cap.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
             <div className="rounded-t-none rounded-b-full w-[220px] h-[220px]">
               <img
                 src={src}

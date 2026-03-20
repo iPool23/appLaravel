@@ -29,11 +29,11 @@ export default function PressPage({ articles, type, currentPage, totalPages }: P
         <AppLayout
             title={isComunicado ? 'Comunicados' : t('title')}
             description={isComunicado ? 'Comunicados oficiales y pronunciamientos institucionales de Alianza Para el Progreso.' : 'Ultimas noticias, comunicados y actividades de Alianza Para el Progreso.'}
-            image="/imgs/prensa/2025-02-17-1.jpg"
+            image="/imgs/prensa/2025-02-17-1.webp"
             keywords={['prensa', 'noticias', 'APP', 'Alianza Para el Progreso', type]}
             canonicalPath={`/${locale}/prensa?type=${encodeURIComponent(type)}`}
         >
-            <BannerWithBackground src="/imgs/fondo/fondo-prensa.jpg" title={isComunicado ? 'Comunicados' : t('title')} />
+            <BannerWithBackground src="/imgs/fondo/fondo-prensa.webp" title={isComunicado ? 'Comunicados' : t('title')} />
             <ContainerSingle className="bg-gray-100 dark:bg-gray-950">
                 <ContainerTodo>
                     <div className="mb-8 flex gap-3">

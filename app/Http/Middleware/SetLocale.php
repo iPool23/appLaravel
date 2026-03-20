@@ -12,9 +12,9 @@ class SetLocale
 
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->route('locale');
+        $locale = $request->route('locale') ?? 'es';
 
-        if ($locale && in_array($locale, $this->supportedLocales)) {
+        if (in_array($locale, $this->supportedLocales)) {
             app()->setLocale($locale);
         }
 

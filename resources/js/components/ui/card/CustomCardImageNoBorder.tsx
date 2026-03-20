@@ -9,7 +9,7 @@ interface CustomCardImageNoBorderProps {
 }
 
 export default function CustomCardImageNoBorder({
-  src = "/imgs/placeholder.jpg",
+  src = "/imgs/placeholder.webp",
   topText = "",
   centerText = "",
   bottomText = "",

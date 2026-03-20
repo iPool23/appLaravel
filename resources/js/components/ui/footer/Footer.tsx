@@ -22,19 +22,20 @@ export const Footer = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-0 sm:px-6 w-full">
-            <FooterContent href={`/${locale}/historia`} text={t('history').toUpperCase()} image="/imgs/carousel/2.png" />
-            <FooterContent href={`/${locale}/ejes`} text={t('axes').toUpperCase()} image="/imgs/ejes/6/2.jpg" />
+            <FooterContent href={`/${locale}/historia`} text={t('history').toUpperCase()} image="/imgs/carousel/2.webp" />
+            <FooterContent href={`/${locale}/ejes`} text={t('axes').toUpperCase()} image="/imgs/ejes/6/2.webp" />
             <Link href={"https://www.cesaracuna.pe/sobre-mi"} className="relative w-full h-48 md:h-80 group lg:h-auto lg:aspect-square rounded-3xl overflow-hidden flex items-center justify-center group border border-white/10">
               <img
-                src={"/imgs/footer/bannerSobreMi.jpg"}
+                src={"/imgs/footer/bannerSobreMi.webp"}
                 width={1000}
                 height={1000}
                 alt={"FUNDADOR"}
+                loading="lazy"
                 className="object-cover w-full h-full"
               />
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
               <span
-                className={`font-gotham-bold absolute text-white text-4xl sm:text-5xl lg:text-4xl xl:text-5xl leading-none font-black tracking-[-.1em] z-10`}
+                className={`font-gotham-bold absolute text-white text-4xl sm:text-5xl lg:text-4xl xl:text-5xl leading-none font-black -tracking-widest z-10`}
               >
                 {t('founder').toUpperCase()}
               </span>
@@ -62,7 +63,7 @@ export const Footer = () => {
 
 const FooterContent = ({
   text = "",
-  image = "/imgs/footer/1.jpeg",
+  image = "/imgs/footer/1.webp",
   href = "/"
 }: { text?: string, image?: string, href?: string }) => {
   return (
@@ -72,11 +73,12 @@ const FooterContent = ({
         width={1000}
         height={1000}
         alt={text}
+        loading="lazy"
         className="object-cover w-full h-full"
       />
       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors duration-300" />
       <span
-        className={`font-gotham-bold absolute text-white text-4xl sm:text-5xl lg:text-4xl xl:text-5xl leading-none font-black tracking-[-.1em] z-10`}
+        className={`font-gotham-bold absolute text-white text-4xl sm:text-5xl lg:text-4xl xl:text-5xl leading-none font-black -tracking-widest z-10`}
       >
         {text}
       </span>
@@ -107,7 +109,7 @@ const TextAPP = ({ text }: { text: string }) => {
   return (
     <TextReveal
       text={text}
-      className={`font-gotham-bold text-6xl sm:text-[115px] lg:text-[200px] xl:text-[275px] leading-tight sm:leading-tight xl:leading-none font-black text-center tracking-tighter bg-gradient-to-t from-[#006edb] to-white bg-clip-text text-transparent`}
+      className={`font-gotham-bold text-6xl sm:text-[115px] lg:text-[200px] xl:text-[275px] leading-tight sm:leading-tight xl:leading-none font-black text-center tracking-tighter bg-linear-to-t from-[#006edb] to-white bg-clip-text text-transparent`}
     />
   );
 }

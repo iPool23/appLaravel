@@ -20,7 +20,7 @@ const truncateText = (text: string, maxLength: number) => {
 };
 
 export default function ComunicadoCard({
-    src = "/imgs/placeholder.jpg",
+    src = "/imgs/placeholder.webp",
     bottomText = "",
     date = "",
     href = "/",

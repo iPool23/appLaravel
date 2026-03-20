@@ -14,10 +14,10 @@ export default function Footer() {
                     <p className="text-4xl font-black uppercase tracking-tight md:text-7xl">Progreso</p>
                 </div>
                 <div className="grid gap-4 md:grid-cols-4">
-                    <FooterCard href={`/${locale}/historia`} text={t('history')} image="/imgs/carousel/2.png" />
-                    <FooterCard href={`/${locale}/ejes`} text={t('axes')} image="/imgs/ejes/6/2.jpg" />
-                    <FooterCard href={`/${locale}/fundador`} text={t('founder')} image="/imgs/footer/bannerSobreMi.jpg" />
-                    <FooterCard href={`/${locale}/prensa?type=Prensa`} text={t('press')} image="/imgs/prensa/2025-02-17-1.jpg" />
+                    <FooterCard href={`/${locale}/historia`} text={t('history')} image="/imgs/carousel/2.webp" />
+                    <FooterCard href={`/${locale}/ejes`} text={t('axes')} image="/imgs/ejes/6/2.webp" />
+                    <FooterCard href={`/${locale}/fundador`} text={t('founder')} image="/imgs/footer/bannerSobreMi.webp" />
+                    <FooterCard href={`/${locale}/prensa?type=Prensa`} text={t('press')} image="/imgs/prensa/2025-02-17-1.webp" />
                 </div>
                 <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 md:flex-row">
                     <p className="text-sm text-white/80">{new Date().getFullYear()} © {t('rights')}</p>

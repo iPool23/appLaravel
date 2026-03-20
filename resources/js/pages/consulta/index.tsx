@@ -150,8 +150,8 @@ export default function ConsultaIndex({ candidates, positions, regions }: Props)
     return (
         <AppLayout title="Consulta de Candidatos" description="Busca y consulta los candidatos a las elecciones presidenciales 2026 de Alianza Para el Progreso.">
             <BannerWithBackground
-                src="/imgs/consulta/elecciones-internas.jpg"
-                srcDark="/imgs/consulta/elecciones-internas.jpg"
+                src="/imgs/consulta/elecciones-internas.webp"
+                srcDark="/imgs/consulta/elecciones-internas.webp"
                 title='Consulta de Candidatos'
             />
             

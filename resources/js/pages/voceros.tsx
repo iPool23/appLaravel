@@ -8,7 +8,7 @@ import AppLayout from '@/layouts/AppLayout';
 export default function VocerosPage() {
     return (
         <AppLayout title="Voceros">
-            <BannerWithBackground src="/imgs/fondo/fondo-prensa.jpg" title="VOCEROS" />
+            <BannerWithBackground src="/imgs/fondo/fondo-prensa.webp" title="VOCEROS" />
             <ContainerSingle>
                 <ContainerTodo>
                     <PeopleGrid people={voceros} />

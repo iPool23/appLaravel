@@ -45,7 +45,7 @@ export default function HomePage({ latestPress, latestComunicados, documents, ad
         <AppLayout
             title={t('title') || 'Inicio'}
             description={t('description') || "Portal oficial de Alianza Para el Progreso con noticias, documentos públicos, ejes de gobierno y participación ciudadana."}
-            image="/imgs/carousel/3.jpeg"
+            image="/imgs/carousel/3.webp"
             keywords={(t('keywords') as any) || ['APP', 'Alianza Para el Progreso', 'Peru', 'prensa', 'documentos publicos', 'ejes de gobierno']}
             canonicalPath={`/${locale}`}
         >

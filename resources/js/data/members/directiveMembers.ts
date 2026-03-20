@@ -2,13 +2,13 @@ import type { DirectiveMember } from "@/interfaces/member.interface";
 
 const directiveMembers: DirectiveMember[] = [
   {
-    src: "/imgs/directive/cesar-acuna.png",
+    src: "/imgs/directive/cesar-acuna.webp",
     centerText: "César Acuña Peralta",
     description:
       "Nació en Tacabamba, provincia de Chota, departamento de Cajamarca, Perú, el 26 de abril de 1966. Cursó sus estudios primarios y secundarios en su localidad natal. Entre 1991 y 1995 cursó estudios superiores de ingeniería civil en la Universidad Privada San Pedro de la ciudad de Chimbote. Entre el 2002 y el 2003 cursó la maestría en Docencia Universitaria en la Universidad César Vallejo de Trujillo y entre 2005 y 2006 el doctorado en Gestión Universitaria en la Universidad Nacional Pedro Ruiz Gallo. Además, ha participado en diferentes congresos, cursos, seminarios y talleres. Es ingeniero y político. Se desempeñó como gobernador regional de Lambayeque en dos periodos, 2011 – 2014 y 2015 - 2018. Como congresista de la República en el 2020-2021 y durante el periodo parlamentario fue presidente de la Comisión de Presupuesto y Cuenta General de la República. Fue gerente general de la Universidad Señor de Sipán - USS del 2004 al 2010.  Actualmente es el director general del campus UCV Chiclayo.",
     bottomText: "Presidente fundador",
     slug: "cesar-acuna-peralta",
-    signature: "/imgs/directive/firmas/firmacesar.png",
+    signature: "/imgs/directive/firmas/firmacesar.webp",
     socialLinks: [
       { provider: "tiktok", href: "https://www.tiktok.com/@cesaracunap" },
       { provider: "instagram", href: "https://www.instagram.com/cesaracunap" },
@@ -22,7 +22,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/luis-valdez-para-web-scaled.png",
+    src: "/imgs/directive/luis-valdez-para-web-scaled.webp",
     centerText: "Luis Valdez Farías",
     bottomText: "Secretario Ejecutivo Nacional",
     slug: "luis-valdez-farias",
@@ -34,7 +34,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/richard-acuna.png",
+    src: "/imgs/directive/richard-acuna.webp",
     centerText: "Richard Acuña Núñez",
     bottomText: "Dirección Ejecutiva Nacional",
     slug: "richard-acuna-nunez",
@@ -46,7 +46,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/humberto-acuna.png",
+    src: "/imgs/directive/humberto-acuna.webp",
     centerText: "Humberto Acuña Peralta",
     bottomText: "Secretario Nacional de Organización Partidaria",
     slug: "humberto-acuna-peralta",
@@ -59,7 +59,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/jorge-gonzales.png",
+    src: "/imgs/directive/jorge-gonzales.webp",
     centerText: "Jorge Gonzáles Oré",
     bottomText: "Secretario Nacional de Coordinación Territorial",
     slug: "jorge-gonzales-ore",
@@ -72,7 +72,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/marisol-espinoza.png",
+    src: "/imgs/directive/marisol-espinoza.webp",
     centerText: "Marisol Espinoza Cruz",
     bottomText: "Gerencia General y Secretaria Nacional de la Mujer",
     slug: "marisol-espinoza-cruz",
@@ -84,7 +84,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/yessenia-lozano.png",
+    src: "/imgs/directive/yessenia-lozano.webp",
     centerText: "Yessenia Lozano Millones",
     bottomText: "Secretaria Nacional de Juventudes",
     slug: "yessenia-lozano-millones",
@@ -99,7 +99,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/alejandra-loyola.png",
+    src: "/imgs/directive/alejandra-loyola.webp",
     centerText: "Alejandra Loyola Vera",
     bottomText: "Dirección de EFOP y Escuela Nacional de Personeros",
     slug: "alejandra-loyola-vera",
@@ -108,7 +108,7 @@ const directiveMembers: DirectiveMember[] = [
     ],
   },
   {
-    src: "/imgs/directive/fernando-velasco.png",
+    src: "/imgs/directive/fernando-velasco.webp",
     centerText: "Fernando Velasco",
     bottomText: "Secretario Nacional de Personeros",
     slug: "fernando-velasco",

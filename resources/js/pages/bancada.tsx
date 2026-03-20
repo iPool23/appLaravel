@@ -2,11 +2,11 @@ import { Title, ContentSection } from '@/components';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
-import CongressmanGrid from '@/components/ui/grid/CongressmanGrid';
 import { ImageGallery } from '@/components/gallery';
 import { congressmen } from '@/data/congressman';
 import AppLayout from '@/layouts/AppLayout';
 import { useTranslations } from '@/lib/i18n';
+import CongressmanGrid from '@/components/ui/grid/CongressManGrid';
 
 interface SectionContent {
     src: string;
@@ -20,21 +20,21 @@ export default function BancadaPage() {
     const t = useTranslations('bancada');
 
     const images = [
-        { src: "/imgs/congressman/3.jpg", alt: "Congreso de la República" },
-        { src: "/imgs/congressman/4.jpg", alt: "Congreso de la República" },
-        { src: "/imgs/congressman/5.jpg", alt: "Congreso de la República" },
+        { src: "/imgs/congressman/3.webp", alt: "Congreso de la República" },
+        { src: "/imgs/congressman/4.webp", alt: "Congreso de la República" },
+        { src: "/imgs/congressman/5.webp", alt: "Congreso de la República" },
     ];
 
     const content: SectionContent[] = [
         {
-            src: "/imgs/congressman/1.jpg",
+            src: "/imgs/congressman/1.webp",
             imageAlt: "Bancada Alianza Para el Progreso en el Congreso",
             description: t('content1'),
             imagePosition: "left",
             imgAreaPosition: "right"
         },
         {
-            src: "/imgs/congressman/2.jpg",
+            src: "/imgs/congressman/2.webp",
             imageAlt: "Eduardo Salhuana Cavides - Vocero de la Bancada",
             description: t('content2'),
             imagePosition: "right",
@@ -45,7 +45,7 @@ export default function BancadaPage() {
     return (
         <AppLayout title={t('pageTitle')}>
             <BannerWithBackground 
-                src="/imgs/fondo/FondoBancada.jpg" 
+                src="/imgs/fondo/FondoBancada.webp" 
                 title={t('title')} 
             />
             

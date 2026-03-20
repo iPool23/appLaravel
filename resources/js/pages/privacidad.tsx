@@ -12,7 +12,7 @@ export default function PrivacidadPage() {
 
     return (
         <AppLayout title="Política de Privacidad">
-            <BannerWithBackground src="/imgs/fondo/fondo-prensa.jpg" title="POLÍTICA DE PRIVACIDAD" />
+            <BannerWithBackground src="/imgs/fondo/fondo-prensa.webp" title="POLÍTICA DE PRIVACIDAD" />
             <ContainerSingle>
                 <ContainerTodo>
                     <div className="mx-auto max-w-4xl py-10">

@@ -10,42 +10,40 @@ use Inertia\Inertia;
 
 class HomeController extends Controller
 {
-    public function index(string $locale)
+    public function index(string $locale = 'es')
     {
-        $pressModel = $locale === 'qu' ? PressArticleQu::class : PressArticle::class;
+        $data = cache()->remember("home_data_{$locale}", 3600, function () use ($locale) {
+            $pressModel = $locale === 'qu' ? PressArticleQu::class : PressArticle::class;
 
-        $latestPress = $pressModel::published()
-            ->ofType('Prensa')
-            ->orderBy('publishedAt', 'desc')
-            ->limit(6)
-            ->get(['id', 'title', 'slug', 'summary', 'content', 'imageUrl', 'publishedAt', 'category', 'author']);
+            return [
+                'latestPress' => $pressModel::published()
+                    ->ofType('Prensa')
+                    ->orderBy('publishedAt', 'desc')
+                    ->limit(6)
+                    ->get(['id', 'title', 'slug', 'summary', 'content', 'imageUrl', 'publishedAt', 'category', 'author']),
 
-        $latestComunicados = $pressModel::published()
-            ->ofType('Comunicado')
-            ->orderBy('publishedAt', 'desc')
-            ->limit(6)
-            ->get(['id', 'title', 'slug', 'summary', 'content', 'imageUrl', 'publishedAt', 'category', 'author']);
+                'latestComunicados' => $pressModel::published()
+                    ->ofType('Comunicado')
+                    ->orderBy('publishedAt', 'desc')
+                    ->limit(6)
+                    ->get(['id', 'title', 'slug', 'summary', 'content', 'imageUrl', 'publishedAt', 'category', 'author']),
 
-        $documents = PublicDocument::active()
-            ->orderBy('order')
-            ->limit(8)
-            ->get(['id', 'title', 'slug', 'description', 'fileUrl', 'iconType', 'category']);
+                'documents' => PublicDocument::active()
+                    ->orderBy('order')
+                    ->limit(8)
+                    ->get(['id', 'title', 'slug', 'description', 'fileUrl', 'iconType', 'category']),
 
-        $ads = Ad::active()
-            ->where('showOnHomepage', true)
-            ->get();
+                'ads' => Ad::active()
+                    ->where('showOnHomepage', true)
+                    ->get(),
 
-        $popupDocuments = PublicDocument::active()
-            ->where('showInPopup', true)
-            ->orderBy('publishedAt', 'desc')
-            ->get(['id', 'title', 'fileUrl']);
+                'popupDocuments' => PublicDocument::active()
+                    ->where('showInPopup', true)
+                    ->orderBy('publishedAt', 'desc')
+                    ->get(['id', 'title', 'fileUrl']),
+            ];
+        });
 
-        return Inertia::render('home', [
-            'latestPress' => $latestPress,
-            'latestComunicados' => $latestComunicados,
-            'documents' => $documents,
-            'ads' => $ads,
-            'popupDocuments' => $popupDocuments,
-        ]);
+        return Inertia::render('home', $data);
     }
 }

@@ -20,7 +20,7 @@ export default function QRCodeGenerator({
                     level="H"
                     includeMargin={true}
                     imageSettings={showLogo ? {
-                        src: '/imgs/logo/logo.png',
+                        src: '/imgs/logo/logo.webp',
                         height: 50,
                         width: 50,
                         excavate: true,

@@ -26,7 +26,7 @@ export default function EjeShowPage({ slug }: { slug: string }) {
         <AppLayout
             title={`${eje.title} | APP Ejes`}
             description={eje.shortDescription}
-            image="/imgs/ejes/ejes-gobierno.jpg"
+            image="/imgs/ejes/ejes-gobierno.webp"
             keywords={['ejes de gobierno', 'APP', eje.category, 'Perú']}
             canonicalPath={`/${locale}/ejes/${slug}`}
         >

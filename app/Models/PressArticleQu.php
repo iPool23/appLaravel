@@ -12,6 +12,18 @@ class PressArticleQu extends Model
     const CREATED_AT = 'createdAt';
     const UPDATED_AT = 'updatedAt';
 
+    /**
+     * Get the image URL, replacing .png or .jpg with .webp if available.
+     * 
+     * @param string|null $value
+     * @return string|null
+     */
+    public function getImageUrlAttribute($value)
+    {
+        if (!$value) return $value;
+        return str_replace(['.png', '.jpg', '.jpeg'], '.webp', $value);
+    }
+
     protected $fillable = [
         'title', 'slug', 'summary', 'content', 'imageUrl', 'imageAlt',
         'category', 'author', 'publishedAt', 'isPublished', 'isFeatured',

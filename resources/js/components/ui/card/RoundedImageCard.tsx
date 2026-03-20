@@ -18,7 +18,7 @@ interface RoundedImageCardProps {
 }
 
 export default React.memo(function RoundedImageCard({
-  src = "/imgs/placeholder.jpg",
+  src = "/imgs/placeholder.webp",
   centerText = "",
   bottomText = "",
   colorCard = "bg-white dark:bg-transparent",

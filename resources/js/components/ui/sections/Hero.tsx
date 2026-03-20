@@ -5,31 +5,31 @@ import { HeroNavigation } from "./HeroNavigation"
 
 const slides = [
     {
-        image: "/imgs/carousel/2.png",
+        image: "/imgs/carousel/2.webp",
         badge: "Trujillo",
         title: "César Acuña como Alcalde de Trujillo",
         description: "Como alcalde de Trujillo en dos periodos consecutivos (2007-2010 y 2011-2014), donde impulsó obras emblemáticas en infraestructura, educación y salud, donando el 100% de su sueldo durante sus dos periodos y enfocándose en el desarrollo regional.",
     },
     {
-        image: "/imgs/carousel/1.jpeg",
+        image: "/imgs/carousel/1.webp",
         badge: "Trujillo",
         title: "César Acuña como Alcalde de Trujillo",
         description: "Lideró la ejecución de más de 320 obras públicas, priorizando la igualdad y el progreso, y renunció en 2014 para postularse como gobernador regional.",
     },
     {
-        image: "/imgs/carousel/3.jpeg",
+        image: "/imgs/carousel/3.webp",
         badge: "Alianza para el Progreso",
         title: "25° Aniversario",
         description: "César Acuña fundó Alianza Para el Progreso (APP) el 8 de diciembre de 2001 en Trujillo; en 2025 se celebra el 25° aniversario, destacando su visión para el desarrollo regional y nacional, con énfasis en juventud e igualdad.",
     },
     {
-        image: "/imgs/carousel/4.jpeg",
+        image: "/imgs/carousel/4.webp",
         badge: "La Libertad",
         title: "Caravana de César Acuña en La Libertad",
         description: "César Acuña ha participado en múltiples caravanas políticas en la región La Libertad, como en Ascope y Trujillo, para promover su compromiso con el progreso y el bienestar durante campañas electorales y actividades proselitistas.",
     },
     {
-        image: "/imgs/carousel/5.png",
+        image: "/imgs/carousel/5.webp",
         badge: "Gobernador Libertad",
         title: "César Acuña",
         description: "Fue gobernador regional de La Libertad en dos periodos (2015-2022 y 2023-2025), renunciando en octubre de 2025 para su candidatura presidencial en 2026, con logros en obras públicas y seguridad sin corrupción.",
@@ -59,7 +59,7 @@ export default function HeroSection() {
                 role="img"
                 aria-label={slides[currentSlide].title}
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
+                <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/50" />
             </div>
 
             <div className="absolute inset-0 flex flex-col items-start justify-end pb-24 md:pb-36 container mx-auto text-white px-6 md:px-0">

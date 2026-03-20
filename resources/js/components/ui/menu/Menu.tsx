@@ -120,7 +120,7 @@ export const Menu = ({ className = "" }: MenuProps) => {
             <div className="shrink-0">
               <Link href={`/${currentLanguage}`}>
                 <img
-                  src={mounted && currentTheme === "dark" ? "/imgs/logo/logo-white.png" : "/imgs/logo/logo.png"}
+                  src={mounted && currentTheme === "dark" ? "/imgs/logo/logo-white.webp" : "/imgs/logo/logo.webp"}
                   alt="Logo Alianza Para el Progreso"
                   width={140}
                   height={47}

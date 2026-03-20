@@ -25,8 +25,8 @@ export default function ConsultaShow({ candidate }: Props) {
     return (
         <AppLayout title={candidate.nombre_completo || 'Detalle del Candidato'} description={`Consulta el perfil completo de ${candidate.nombre_completo}, sus propuestas para las elecciones presidenciales 2026 y su hoja de vida.`}>
             <BannerWithBackground
-                src="/imgs/consulta/elecciones-internas.jpg"
-                srcDark="/imgs/consulta/elecciones-internas.jpg"
+                src="/imgs/consulta/elecciones-internas.webp"
+                srcDark="/imgs/consulta/elecciones-internas.webp"
                 title='Perfil del Candidato'
                 className="brightness-50"
             />
@@ -39,7 +39,7 @@ export default function ConsultaShow({ candidate }: Props) {
                                 <div className="absolute inset-0 bg-cb-default rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
                                 <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-8 border-white dark:border-cb-full shadow-2xl overflow-hidden bg-white">
                                     <img
-                                        src={candidate.foto_url || '/imgs/consulta/logoA.jpg'}
+                                        src={candidate.foto_url || '/imgs/consulta/logoA.webp'}
                                         alt={candidate.nombre_completo}
                                         className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
                                     />

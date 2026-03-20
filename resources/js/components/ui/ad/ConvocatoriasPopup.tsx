@@ -45,7 +45,7 @@ export default function ConvocatoriasPopup() {
             <div className="relative z-10 w-full max-w-md bg-white dark:bg-cb-900 rounded-lg shadow-xl overflow-hidden">
                 <div className="p-4 flex flex-col items-center gap-4">
                     <img
-                        src="/imgs/logo/logo.png"
+                        src="/imgs/logo/logo.webp"
                         alt="Alianza para el Progreso Logo"
                         width={300}
                         height={300}
