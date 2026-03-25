@@ -43,7 +43,7 @@ export default function PressPage({ articles, type, currentPage, totalPages }: P
                         <a href={`/${locale}/prensa?type=Comunicado`} className={`rounded-full px-4 py-2 text-sm font-semibold ${isComunicado ? 'bg-cb-default text-white' : 'bg-white text-cb-default dark:bg-cb-900 dark:text-white'}`}>
                             Comunicados
                         </a>
-                        <a href={`/${locale}/prensa?type=Comunicado`} className={`rounded-full px-4 py-2 text-sm font-semibold bg-white text-cb-default dark:bg-cb-900 dark:text-white`}>
+                        <a href={`/${locale}/documentos-publicos`} className={`rounded-full px-4 py-2 text-sm font-semibold bg-white text-cb-default dark:bg-cb-900 dark:text-white`}>
                             Documentos
                         </a>
                     </div>
@@ -59,7 +59,7 @@ export default function PressPage({ articles, type, currentPage, totalPages }: P
                             );
                         })}
                     </div>
-                    <Pagination totalPages={totalPages} currentPage={currentPage} type={type} />
+                    <Pagination totalPages={totalPages} currentPage={currentPage} />
                 </ContainerTodo>
             </ContainerSingle>
         </AppLayout>

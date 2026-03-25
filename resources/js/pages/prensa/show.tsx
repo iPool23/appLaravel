@@ -1,8 +1,8 @@
 'use client';
 
 import { Link } from '@inertiajs/react';
-import { useState, useEffect } from 'react';
-import { FaArrowLeft, FaWhatsapp, FaShare } from 'react-icons/fa';
+import { useState, useEffect, useCallback } from 'react';
+import { FaArrowLeft, FaWhatsapp, FaShare, FaChevronLeft, FaChevronRight, FaTimes, FaExpand, FaSearchPlus } from 'react-icons/fa';
 import FacebookIcon from '@/components/svg/FacebookIcon';
 import InstagramIcon from '@/components/svg/InstagramIcon';
 import LinkedInIcon from '@/components/svg/LinkedInIcon';
@@ -21,31 +21,144 @@ const formatDateTime = (date: string): string => {
     const minutes = d.getMinutes().toString().padStart(2, '0');
     const ampm = hours >= 12 ? 'p. m.' : 'a. m.';
     const displayHours = hours % 12 || 12;
-
     return `${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()} - ${displayHours}:${minutes} ${ampm}`;
 };
 
 const extractImages = (content: string, mainImage: string): string[] => {
-    const images = [mainImage];
+    const images = mainImage ? [mainImage] : [];
     const imageRegex = /\[IMAGE:(.*?)\]/g;
     let match;
-
     while ((match = imageRegex.exec(content)) !== null) {
-        if (match[1] && !images.includes(match[1])) {
-            images.push(match[1]);
-        }
+        if (match[1] && !images.includes(match[1])) images.push(match[1]);
     }
-
     return images;
 };
 
-interface VerticalSocialShareProps {
+// ─────────────────────────────────────────────
+// Lightbox modal
+// ─────────────────────────────────────────────
+interface LightboxProps {
+    images: string[];
+    index: number;
+    onClose: () => void;
+    onNavigate: (idx: number) => void;
+    alt?: string;
+}
+
+function Lightbox({ images, index, onClose, onNavigate, alt }: LightboxProps) {
+    const hasPrev = index > 0;
+    const hasNext = index < images.length - 1;
+
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') onClose();
+            if (e.key === 'ArrowLeft'  && hasPrev) onNavigate(index - 1);
+            if (e.key === 'ArrowRight' && hasNext) onNavigate(index + 1);
+        };
+        window.addEventListener('keydown', handleKey);
+        // Lock body scroll
+        document.body.style.overflow = 'hidden';
+        return () => {
+            window.removeEventListener('keydown', handleKey);
+            document.body.style.overflow = '';
+        };
+    }, [index, hasPrev, hasNext, onClose, onNavigate]);
+
+    return (
+        <div
+            className="fixed inset-0 z-[9999] flex items-center justify-center"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Visor de imagen"
+        >
+            {/* Backdrop */}
+            <div
+                className="absolute inset-0 bg-black/90 backdrop-blur-sm"
+                onClick={onClose}
+            />
+
+            {/* Close button */}
+            <button
+                onClick={onClose}
+                aria-label="Cerrar visor"
+                className="absolute top-4 right-4 z-10 w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition-all duration-200"
+            >
+                <FaTimes className="w-5 h-5" />
+            </button>
+
+            {/* Image counter */}
+            {images.length > 1 && (
+                <span className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-white/70 text-sm font-medium bg-black/40 px-3 py-1 rounded-full">
+                    {index + 1} / {images.length}
+                </span>
+            )}
+
+            {/* Prev arrow */}
+            {hasPrev && (
+                <button
+                    onClick={() => onNavigate(index - 1)}
+                    aria-label="Imagen anterior"
+                    className="absolute left-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-110"
+                >
+                    <FaChevronLeft className="w-5 h-5" />
+                </button>
+            )}
+
+            {/* Image */}
+            <div className="relative z-10 max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+                <img
+                    src={images[index]}
+                    alt={alt ?? `Imagen ${index + 1}`}
+                    className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl select-none"
+                    draggable={false}
+                />
+            </div>
+
+            {/* Next arrow */}
+            {hasNext && (
+                <button
+                    onClick={() => onNavigate(index + 1)}
+                    aria-label="Imagen siguiente"
+                    className="absolute right-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-110"
+                >
+                    <FaChevronRight className="w-5 h-5" />
+                </button>
+            )}
+
+            {/* Thumbnail strip (only if multiple images) */}
+            {images.length > 1 && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2 max-w-[90vw] overflow-x-auto px-2">
+                    {images.map((img, i) => (
+                        <button
+                            key={i}
+                            onClick={(e) => { e.stopPropagation(); onNavigate(i); }}
+                            className={`flex-shrink-0 w-14 h-10 rounded overflow-hidden transition-all duration-200 ${
+                                i === index
+                                    ? 'ring-2 ring-white scale-110'
+                                    : 'ring-1 ring-white/40 opacity-60 hover:opacity-100'
+                            }`}
+                        >
+                            <img src={img} alt="" className="w-full h-full object-cover" draggable={false} />
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+// ─────────────────────────────────────────────
+// Floating social panel
+// ─────────────────────────────────────────────
+interface FloatingSocialPanelProps {
     url: string;
     title: string;
     description: string;
 }
 
-function VerticalSocialShare({ url, title, description }: VerticalSocialShareProps) {
+function FloatingSocialPanel({ url, title, description }: FloatingSocialPanelProps) {
+    const [open, setOpen] = useState(true);
     const [mounted, setMounted] = useState(false);
     const [supportsShare, setSupportsShare] = useState(false);
 
@@ -60,130 +173,99 @@ function VerticalSocialShare({ url, title, description }: VerticalSocialSharePro
         return () => cancelAnimationFrame(handle);
     }, []);
 
-    const encodedUrl = encodeURIComponent(fullUrl);
-    const shareTextRaw = description ? `${title} - ${description}` : title;
-    const encodedShareText = encodeURIComponent(shareTextRaw);
-    const encodedTitle = encodeURIComponent(title);
+    const encodedUrl         = encodeURIComponent(fullUrl);
+    const shareTextRaw       = description ? `${title} - ${description}` : title;
+    const encodedShareText   = encodeURIComponent(shareTextRaw);
+    const encodedTitle       = encodeURIComponent(title);
     const encodedDescription = encodeURIComponent(description);
 
     const shareLinks = {
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedShareText}`,
-        twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedShareText}`,
+        twitter:  `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedShareText}`,
         linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}&summary=${encodedDescription}`,
         whatsapp: `https://wa.me/?text=${encodedShareText}%20${encodedUrl}`,
     };
 
     const handleNativeShare = async () => {
         if (supportsShare) {
-            try {
-                await navigator.share({ title, text: description, url: fullUrl });
-            } catch (error) {
-                console.log('Error sharing:', error);
-            }
+            try { await navigator.share({ title, text: description, url: fullUrl }); } catch { /* silent */ }
         }
     };
 
-    const handleInstagramShare = async () => {
+    const copyAndAlert = async (msg: string) => {
         if (supportsShare) {
-            try {
-                await navigator.share({ title, text: description, url: fullUrl });
-                return;
-            } catch {
-                /* fallback */
-            }
+            try { await navigator.share({ title, text: description, url: fullUrl }); return; } catch { /* fallback */ }
         }
         if (typeof navigator !== 'undefined' && 'clipboard' in navigator) {
-            try {
-                await navigator.clipboard.writeText(fullUrl);
-                alert('Enlace copiado al portapapeles. Abre Instagram y pégalo en tu publicación.');
-                return;
-            } catch {
-                /* fallback */
-            }
-        }
-        window.open(fullUrl, '_blank', 'noopener,noreferrer');
-    };
-
-    const handleTikTokShare = async () => {
-        if (supportsShare) {
-            try {
-                await navigator.share({ title, text: description, url: fullUrl });
-                return;
-            } catch {
-                /* fallback */
-            }
-        }
-        if (typeof navigator !== 'undefined' && 'clipboard' in navigator) {
-            try {
-                await navigator.clipboard.writeText(fullUrl);
-                alert('Enlace copiado al portapapeles. Abre TikTok y pégalo en tu publicación o bio.');
-                return;
-            } catch {
-                /* fallback */
-            }
+            try { await navigator.clipboard.writeText(fullUrl); alert(msg); return; } catch { /* fallback */ }
         }
         window.open(fullUrl, '_blank', 'noopener,noreferrer');
     };
 
     const socialButtons = [
-        { onClick: handleTikTokShare, icon: <TikTokIcon />, label: 'TikTok', bgColor: 'bg-black' },
-        { onClick: handleInstagramShare, icon: <InstagramIcon />, label: 'Instagram', bgColor: 'bg-gradient-to-r from-purple-500 to-pink-500' },
-        { href: shareLinks.facebook, icon: <FacebookIcon />, label: 'Facebook', bgColor: 'bg-blue-600' },
-        { href: shareLinks.twitter, icon: <TwitterIcon />, label: 'Twitter', bgColor: 'bg-black' },
-        { href: shareLinks.linkedin, icon: <LinkedInIcon />, label: 'LinkedIn', bgColor: 'bg-blue-700' },
-        { href: shareLinks.whatsapp, icon: <FaWhatsapp className="w-5 h-5 text-white" />, label: 'WhatsApp', bgColor: 'bg-green-600' },
+        { onClick: () => copyAndAlert('Enlace copiado. Abre TikTok y pégalo en tu publicación.'),   icon: <TikTokIcon />,                              label: 'TikTok',     bg: 'bg-black' },
+        { onClick: () => copyAndAlert('Enlace copiado. Abre Instagram y pégalo en tu publicación.'), icon: <InstagramIcon />,                            label: 'Instagram',  bg: 'bg-gradient-to-b from-purple-500 to-pink-500' },
+        { href: shareLinks.facebook,  icon: <FacebookIcon />,                                        label: 'Facebook',   bg: 'bg-blue-600' },
+        { href: shareLinks.twitter,   icon: <TwitterIcon />,                                         label: 'X / Twitter',bg: 'bg-black' },
+        { href: shareLinks.linkedin,  icon: <LinkedInIcon />,                                        label: 'LinkedIn',   bg: 'bg-blue-700' },
+        { href: shareLinks.whatsapp,  icon: <FaWhatsapp className="w-5 h-5 text-white" />,           label: 'WhatsApp',   bg: 'bg-green-500' },
     ];
 
     return (
-        <div className="flex flex-col gap-3 items-center">
-            <span className="text-xs font-medium text-cb-700 dark:text-cb-300 text-center mb-2">
-                Compartir
-            </span>
-            <div className='flex flex-row flex-wrap gap-3 mx-4 lg:mx-auto lg:flex-col lg:flex-nowrap justify-center items-center'>
-                {socialButtons.map((button, index) => (
-                    button.onClick ? (
-                        <button
-                            key={index}
-                            onClick={button.onClick}
-                            aria-label={button.label}
-                            title={button.label}
-                            className={`p-2 w-10 h-10 ${button.bgColor} rounded-full flex items-center justify-center shadow-sm hover:shadow-md transform transition duration-200 ease-out hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2`}
-                        >
-                            {button.icon}
+        <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 flex items-center" aria-label="Panel de compartir en redes sociales">
+            <div className={`overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-w-[4rem]' : 'max-w-0'}`}>
+                <div
+                    className="flex flex-col gap-3 py-4 px-2 bg-white dark:bg-cb-900 shadow-xl border border-gray-200 dark:border-cb-700 rounded-r-2xl"
+                    style={{ maxHeight: 'calc(100vh - 120px)' }}
+                >
+                    {socialButtons.map((btn, i) =>
+                        btn.onClick ? (
+                            <button key={i} onClick={btn.onClick} aria-label={btn.label} title={btn.label}
+                                className={`w-10 h-10 ${btn.bg} rounded-full flex items-center justify-center shadow hover:shadow-lg hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none`}>
+                                {btn.icon}
+                            </button>
+                        ) : (
+                            <a key={i} href={btn.href} target="_blank" rel="noopener noreferrer" aria-label={btn.label} title={btn.label}
+                                className={`w-10 h-10 ${btn.bg} rounded-full flex items-center justify-center shadow hover:shadow-lg hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none`}>
+                                {btn.icon}
+                            </a>
+                        )
+                    )}
+                    {mounted && supportsShare && (
+                        <button onClick={handleNativeShare} aria-label="Compartir nativo" title="Compartir"
+                            className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center shadow hover:shadow-lg hover:scale-110 active:scale-95 transition-all duration-200">
+                            <FaShare className="w-4 h-4 text-gray-700 dark:text-gray-200" />
                         </button>
-                    ) : (
-                        <a
-                            key={index}
-                            href={button.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={button.label}
-                            title={button.label}
-                            className={`p-2 w-10 h-10 ${button.bgColor} rounded-full flex items-center justify-center shadow-sm hover:shadow-md transform transition duration-200 ease-out hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2`}
-                        >
-                            {button.icon}
-                        </a>
-                    )
-                ))}
-                {mounted && supportsShare && (
-                    <button
-                        onClick={handleNativeShare}
-                        aria-label="Compartir nativo"
-                        title="Compartir nativo"
-                        className="p-2 w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center shadow-sm hover:shadow-md transform transition duration-200 ease-out hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-                    >
-                        <FaShare className="w-4 h-4 text-gray-700 dark:text-gray-200" />
-                    </button>
-                )}
+                    )}
+                </div>
             </div>
+
+            <button
+                onClick={() => setOpen(prev => !prev)}
+                aria-label={open ? 'Ocultar opciones de compartir' : 'Mostrar opciones de compartir'}
+                title={open ? 'Ocultar' : 'Compartir'}
+                className="flex items-center justify-center w-6 h-14 bg-white dark:bg-cb-900 border border-gray-200 dark:border-cb-700 rounded-r-xl shadow-md text-gray-500 dark:text-gray-400 hover:text-cb-600 dark:hover:text-cb-300 transition-colors duration-200"
+            >
+                {open ? <FaChevronLeft className="w-3 h-3" /> : <FaChevronRight className="w-3 h-3" />}
+            </button>
         </div>
     );
 }
 
+// ─────────────────────────────────────────────
+// Main page
+// ─────────────────────────────────────────────
 export default function PressShowPage({ article }: { article: any }) {
     const locale = useLocale();
     const images = extractImages(article.content || '', article.imageUrl);
     const [selectedImage, setSelectedImage] = useState(images[0]);
+
+    // Lightbox state
+    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+    const openLightbox = useCallback((idx: number) => setLightboxIndex(idx), []);
+    const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+    const navigateLightbox = useCallback((idx: number) => setLightboxIndex(idx), []);
 
     const cleanContent = article.content?.replace(/\[IMAGE:(.*?)\]/g, '') || '';
 
@@ -197,8 +279,28 @@ export default function PressShowPage({ article }: { article: any }) {
             canonicalPath={`/${locale}/prensa/${article.slug}`}
             publishedTime={new Date(article.publishedAt).toISOString()}
         >
+            {/* Lightbox */}
+            {lightboxIndex !== null && (
+                <Lightbox
+                    images={images}
+                    index={lightboxIndex}
+                    onClose={closeLightbox}
+                    onNavigate={navigateLightbox}
+                    alt={article.imageAlt || article.title}
+                />
+            )}
+
+            {/* Floating share panel */}
+            <FloatingSocialPanel
+                url={`/${locale}/prensa/${article.slug}`}
+                title={article.title}
+                description={article.summary ?? ''}
+            />
+
             <div className="min-h-screen bg-white dark:bg-cb-full text-gray-900 dark:text-white">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 pt-36">
+                <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 pt-36">
+
+                    {/* Back link */}
                     <div className="mb-8">
                         <Link
                             href={`/${locale}/prensa`}
@@ -209,79 +311,95 @@ export default function PressShowPage({ article }: { article: any }) {
                         </Link>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row gap-8">
-                        <div className="flex-1 max-w-4xl">
-                            <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
-                                {article.title}
-                            </h1>
+                    {/* Title */}
+                    <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
+                        {article.title}
+                    </h1>
 
-                            <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base mb-6">
-                                {article.category}
-                            </p>
+                    {/* Category */}
+                    <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base mb-6">
+                        {article.category}
+                    </p>
 
-                            <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg mb-8 leading-relaxed italic">
-                                {article.summary}
-                            </p>
+                    {/* Summary / lead */}
+                    <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl mb-8 leading-relaxed italic">
+                        {article.summary}
+                    </p>
 
-                            <div className="mb-6 rounded-lg overflow-hidden">
-                                <img
-                                    src={selectedImage}
-                                    alt={article.imageAlt || article.title}
-                                    className="w-full h-auto object-cover"
-                                />
-                            </div>
-
-                            {images.length > 1 && (
-                                <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
-                                    {images.map((img, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => setSelectedImage(img)}
-                                            className={`flex-shrink-0 w-32 h-24 rounded overflow-hidden transition-all duration-300 ${selectedImage === img
-                                                ? 'ring-4 ring-cb-500 dark:ring-cb-400'
-                                                : 'ring-2 ring-gray-300 dark:ring-gray-600 hover:ring-cb-300'
-                                                }`}
-                                        >
-                                            <img
-                                                src={img}
-                                                alt={`Imagen ${index + 1}`}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-
-                            <p className="text-gray-500 dark:text-gray-400 text-sm mb-8">
-                                {formatDateTime(article.publishedAt)}
-                            </p>
-
-                            <article className="prose prose-lg dark:prose-invert max-w-none">
-                                <div className="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4 text-justify whitespace-pre-line">
-                                    {cleanContent}
-                                </div>
-                            </article>
-
-                            <div className="mt-16 text-center">
-                                <Link
-                                    href={`/${locale}/prensa`}
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-cb-600 text-white hover:bg-cb-700 transition-all duration-300 rounded"
-                                >
-                                    <span>Ver más noticias</span>
-                                    <FaArrowLeft className="rotate-180 text-sm" />
-                                </Link>
-                            </div>
+                    {/* Main image — clickable → lightbox */}
+                    <div
+                        className="mb-6 rounded-lg overflow-hidden relative group cursor-zoom-in"
+                        onClick={() => openLightbox(images.indexOf(selectedImage))}
+                        role="button"
+                        tabIndex={0}
+                        aria-label="Ver imagen en pantalla completa"
+                        onKeyDown={(e) => e.key === 'Enter' && openLightbox(images.indexOf(selectedImage))}
+                    >
+                        <img
+                            src={selectedImage}
+                            alt={article.imageAlt || article.title}
+                            className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+                        />
+                        {/* Expand hint overlay */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                                <FaSearchPlus className="w-4 h-4" />
+                                Ver en pantalla completa
+                            </span>
                         </div>
+                    </div>
 
-                        <aside className="lg:w-20 flex-shrink-0">
-                            <div className="lg:sticky lg:top-44">
-                                <VerticalSocialShare
-                                    url={`/${locale}/prensa/${article.slug}`}
-                                    title={article.title}
-                                    description={article.summary}
-                                />
-                            </div>
-                        </aside>
+                    {/* Thumbnail strip — click selects + opens lightbox on double-click */}
+                    {images.length > 1 && (
+                        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+                            {images.map((img, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => {
+                                        setSelectedImage(img);
+                                        openLightbox(index);
+                                    }}
+                                    aria-label={`Ver imagen ${index + 1} en pantalla completa`}
+                                    className={`flex-shrink-0 w-32 h-24 rounded overflow-hidden transition-all duration-300 relative group ${
+                                        selectedImage === img
+                                            ? 'ring-4 ring-cb-500 dark:ring-cb-400'
+                                            : 'ring-2 ring-gray-300 dark:ring-gray-600 hover:ring-cb-300'
+                                    }`}
+                                >
+                                    <img
+                                        src={img}
+                                        alt={`Imagen ${index + 1}`}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-200 flex items-center justify-center">
+                                        <FaExpand className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Date */}
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-8">
+                        {formatDateTime(article.publishedAt)}
+                    </p>
+
+                    {/* Article body */}
+                    <article className="prose dark:prose-invert max-w-none">
+                        <div className="text-gray-800 dark:text-gray-200 leading-[1.9] space-y-5 text-justify whitespace-pre-line text-[1.125rem] md:text-[1.2rem]">
+                            {cleanContent}
+                        </div>
+                    </article>
+
+                    {/* Bottom CTA */}
+                    <div className="mt-16 text-center">
+                        <Link
+                            href={`/${locale}/prensa`}
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-cb-600 text-white hover:bg-cb-700 transition-all duration-300 rounded"
+                        >
+                            <span>Ver más noticias</span>
+                            <FaArrowLeft className="rotate-180 text-sm" />
+                        </Link>
                     </div>
                 </div>
             </div>

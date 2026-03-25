@@ -72,7 +72,7 @@ export default function AppLayout({
                 {absoluteImage ? <meta name="twitter:image" content={absoluteImage} /> : null}
                 {publishedTime ? <meta property="article:published_time" content={publishedTime} /> : null}
             </Head>
-            <div className="relative min-h-screen bg-white dark:bg-cb-full">
+            <div className="relative min-h-screen bg-white dark:bg-cb-full overflow-x-hidden">
                 <div className="hidden sm:hidden md:hidden lg:hidden xl:flex">
                     <ContactTopBar />
                 </div>

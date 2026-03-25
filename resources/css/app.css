@@ -142,6 +142,10 @@
   scrollbar-color: #2756a1 transparent;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   overflow-x: hidden;
   font-family: var(--font-gotham);
