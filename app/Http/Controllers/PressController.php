@@ -41,6 +41,10 @@ class PressController extends Controller
 
         return Inertia::render('prensa/show', [
             'article' => $article,
+        ])->withViewData([
+            'meta_title' => $article->title . ' | Alianza Para el Progreso',
+            'meta_description' => $article->summary,
+            'meta_image' => $article->imageUrl
         ]);
     }
 }
