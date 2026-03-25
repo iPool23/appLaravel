@@ -8,6 +8,7 @@ import InstagramIcon from '@/components/svg/InstagramIcon';
 import LinkedInIcon from '@/components/svg/LinkedInIcon';
 import TikTokIcon from '@/components/svg/TikTokIcon';
 import TwitterIcon from '@/components/svg/TwitterIcon';
+import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AppLayout from '@/layouts/AppLayout';
 import { useLocale } from '@/lib/i18n';
 
@@ -297,9 +298,8 @@ export default function PressShowPage({ article }: { article: any }) {
                 description={article.summary ?? ''}
             />
 
-            <div className="min-h-screen bg-white dark:bg-cb-full text-gray-900 dark:text-white">
-                <div className="max-w-4xl mx-auto px-4 md:px-8 py-8 pt-36">
-
+            <div className="min-h-screen bg-white dark:bg-cb-full text-gray-900 dark:text-white pb-20">
+                <ContainerTodo className="pt-36">
                     {/* Back link */}
                     <div className="mb-8">
                         <Link
@@ -311,97 +311,111 @@ export default function PressShowPage({ article }: { article: any }) {
                         </Link>
                     </div>
 
-                    {/* Title */}
-                    <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-gray-900 dark:text-white">
-                        {article.title}
-                    </h1>
+                    <div className="flex flex-col gap-10">
+                        {/* Header side: Title & Category & Summary */}
+                        <div className="max-w-5xl">
+                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900 dark:text-white">
+                                {article.title}
+                            </h1>
 
-                    {/* Category */}
-                    <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base mb-6">
-                        {article.category}
-                    </p>
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-8 border-l-4 border-cb-500 pl-4">
+                                <span className="text-cb-600 dark:text-cb-400 font-bold uppercase tracking-wider text-sm">
+                                    {article.category}
+                                </span>
+                                <span className="text-gray-400 dark:text-gray-600">•</span>
+                                <span className="text-gray-500 dark:text-gray-400 text-sm">
+                                    {formatDateTime(article.publishedAt)}
+                                </span>
+                            </div>
 
-                    {/* Summary / lead */}
-                    <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl mb-8 leading-relaxed italic">
-                        {article.summary}
-                    </p>
-
-                    {/* Main image — clickable → lightbox */}
-                    <div
-                        className="mb-6 rounded-lg overflow-hidden relative group cursor-zoom-in"
-                        onClick={() => openLightbox(images.indexOf(selectedImage))}
-                        role="button"
-                        tabIndex={0}
-                        aria-label="Ver imagen en pantalla completa"
-                        onKeyDown={(e) => e.key === 'Enter' && openLightbox(images.indexOf(selectedImage))}
-                    >
-                        <img
-                            src={selectedImage}
-                            alt={article.imageAlt || article.title}
-                            className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-                        />
-                        {/* Expand hint overlay */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2">
-                                <FaSearchPlus className="w-4 h-4" />
-                                Ver en pantalla completa
-                            </span>
+                            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl leading-relaxed italic opacity-90">
+                                {article.summary}
+                            </p>
                         </div>
-                    </div>
 
-                    {/* Thumbnail strip — click selects + opens lightbox on double-click */}
-                    {images.length > 1 && (
-                        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
-                            {images.map((img, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => {
-                                        setSelectedImage(img);
-                                        openLightbox(index);
-                                    }}
-                                    aria-label={`Ver imagen ${index + 1} en pantalla completa`}
-                                    className={`flex-shrink-0 w-32 h-24 rounded overflow-hidden transition-all duration-300 relative group ${
-                                        selectedImage === img
-                                            ? 'ring-4 ring-cb-500 dark:ring-cb-400'
-                                            : 'ring-2 ring-gray-300 dark:ring-gray-600 hover:ring-cb-300'
-                                    }`}
+                        {/* Visual block: Main Image and thumbnails side by side or stacked */}
+                        <div className="w-full">
+                            <div
+                                className="mb-6 rounded-2xl overflow-hidden relative group cursor-zoom-in shadow-2xl"
+                                onClick={() => openLightbox(images.indexOf(selectedImage))}
+                                role="button"
+                                tabIndex={0}
+                                aria-label="Ver imagen en pantalla completa"
+                                onKeyDown={(e) => e.key === 'Enter' && openLightbox(images.indexOf(selectedImage))}
+                            >
+                                <img
+                                    src={selectedImage}
+                                    alt={article.imageAlt || article.title}
+                                    className="w-full h-auto max-h-[75vh] object-contain bg-gray-100 dark:bg-gray-900 transition-transform duration-500 group-hover:scale-[1.01]"
+                                />
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                                    <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2">
+                                        <FaSearchPlus className="w-4 h-4" />
+                                        Ver en pantalla completa
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Thumbnail strip */}
+                            {images.length > 1 && (
+                                <div className="flex gap-3 overflow-x-auto pb-4 custom-scrollbar scroll-smooth">
+                                    {images.map((img, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => {
+                                                setSelectedImage(img);
+                                                openLightbox(index);
+                                            }}
+                                            aria-label={`Ver imagen ${index + 1} en pantalla completa`}
+                                            className={`flex-shrink-0 w-32 h-24 md:w-40 md:h-28 rounded-xl overflow-hidden transition-all duration-300 relative group ${
+                                                selectedImage === img
+                                                    ? 'ring-4 ring-cb-500 scale-105 shadow-lg'
+                                                    : 'opacity-70 hover:opacity-100 hover:scale-105 grayscale hover:grayscale-0'
+                                            }`}
+                                        >
+                                            <img
+                                                src={img}
+                                                alt={`Imagen ${index + 1}`}
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-200 flex items-center justify-center">
+                                                <FaExpand className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                            </div>
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Article Content: keeps a max-width for line length readability, but parent is full width */}
+                        <div className="w-full">
+                            <article className="prose dark:prose-invert max-w-none">
+                                <div className="
+                                    text-gray-800 dark:text-gray-200
+                                    leading-[2]
+                                    space-y-8
+                                    text-justify
+                                    whitespace-pre-line
+                                    text-[1.15rem] md:text-[1.25rem]
+                                    max-w-5xl
+                                ">
+                                    {cleanContent}
+                                </div>
+                            </article>
+
+                            {/* Bottom CTA */}
+                            <div className="mt-20 border-t border-gray-100 dark:border-cb-800 pt-10">
+                                <Link
+                                    href={`/${locale}/prensa`}
+                                    className="group inline-flex items-center gap-3 px-8 py-4 bg-cb-default text-white hover:bg-cb-700 transition-all duration-300 rounded-xl font-bold shadow-lg shadow-cb-500/20"
                                 >
-                                    <img
-                                        src={img}
-                                        alt={`Imagen ${index + 1}`}
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-200 flex items-center justify-center">
-                                        <FaExpand className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                                    </div>
-                                </button>
-                            ))}
+                                    <FaArrowLeft className="group-hover:-translate-x-1 transition-transform" />
+                                    <span>Explorar más noticias</span>
+                                </Link>
+                            </div>
                         </div>
-                    )}
-
-                    {/* Date */}
-                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-8">
-                        {formatDateTime(article.publishedAt)}
-                    </p>
-
-                    {/* Article body */}
-                    <article className="prose dark:prose-invert max-w-none">
-                        <div className="text-gray-800 dark:text-gray-200 leading-[1.9] space-y-5 text-justify whitespace-pre-line text-[1.125rem] md:text-[1.2rem]">
-                            {cleanContent}
-                        </div>
-                    </article>
-
-                    {/* Bottom CTA */}
-                    <div className="mt-16 text-center">
-                        <Link
-                            href={`/${locale}/prensa`}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-cb-600 text-white hover:bg-cb-700 transition-all duration-300 rounded"
-                        >
-                            <span>Ver más noticias</span>
-                            <FaArrowLeft className="rotate-180 text-sm" />
-                        </Link>
                     </div>
-                </div>
+                </ContainerTodo>
             </div>
         </AppLayout>
     );

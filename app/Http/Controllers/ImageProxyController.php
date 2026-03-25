@@ -19,7 +19,7 @@ class ImageProxyController extends Controller
     // Maximum dimensions for og:image (Facebook/WhatsApp recommendation)
     private const MAX_WIDTH  = 1200;
     private const MAX_HEIGHT = 630;
-    private const QUALITY    = 78;   // JPEG quality (0-100)
+    private const QUALITY    = 72;   // Slightly lower quality for better WhatsApp compatibility
     private const CACHE_DAYS = 30;   // How long to cache processed images
 
     public function show(Request $request)
