@@ -129,27 +129,48 @@ class RecursoController extends Controller
             ->with('category')
             ->first();
 
+        $docTitle       = null;
+        $docDescription = null;
+
+        if ($file) {
+            // ResourceFile found — take its name as title
+            $docTitle = $file->name ?? $file->originalName ?? null;
+        }
+
         if (!$file) {
             $doc = PublicDocument::where('slug', $slug)
                 ->orWhere('id', $slug)
                 ->where('isActive', true)
                 ->where('isDeleted', false)
                 ->firstOrFail();
-            
+
+            $docTitle       = $doc->title;
+            $docDescription = $doc->description;
+
             $file = (object) [
-                'id' => $doc->id,
-                'name' => $doc->title,
-                'originalName' => $doc->fileName ?? $doc->title,
-                'filePath' => $doc->fileUrl,
-                'isPublicDocument' => true
+                'id'               => $doc->id,
+                'name'             => $doc->title,
+                'originalName'     => $doc->fileName ?? $doc->title,
+                'filePath'         => $doc->fileUrl,
+                'isPublicDocument' => true,
             ];
         }
+
+        // Use document title if available, fall back to generic
+        $metaTitle = $docTitle
+            ? strip_tags($docTitle) . ' | Alianza Para el Progreso'
+            : 'Documento Oficial | Alianza Para el Progreso';
+
+        $metaDesc = $docDescription
+            ? strip_tags($docDescription)
+            : 'Descarga el documento oficial de Alianza Para el Progreso. Consulta nuestros comunicados, estatutos y materiales de transparencia institucional.';
 
         return Inertia::render('descarga', [
             'file'    => $file,
             'metaSEO' => [
-                'title'  => 'Descarga de Documento | APP',
-                'robots' => 'noindex, nofollow',
+                'title'       => $metaTitle,
+                'description' => $metaDesc,
+                'image'       => asset('imgs/prensa/comunicadoDefault.jpg'),
             ],
         ]);
     }

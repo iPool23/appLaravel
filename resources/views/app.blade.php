@@ -26,12 +26,16 @@
             $metaDesc  = strip_tags($metaDesc);
 
             // Ensure image URL is always absolute and HTTPS
+            // Use url('/') (request-based) instead of config('app.url') which may be localhost
             if (!str_starts_with($metaImg, 'http')) {
-                $metaImg = rtrim(config('app.url'), '/') . '/' . ltrim($metaImg, '/');
+                $baseUrl = rtrim(url('/'), '/');
+                $metaImg = $baseUrl . '/' . ltrim($metaImg, '/');
             }
+            // Force HTTPS for external FTP or same-domain images
             $metaImg = str_replace('http://', 'https://', $metaImg);
 
-            $metaUrl = url()->current();
+            // Ensure og:url is also HTTPS
+            $metaUrl = str_replace('http://', 'https://', url()->current());
         @endphp
 
         <title inertia>{{ $metaTitle }}</title>

@@ -13,8 +13,13 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\MilitanteController;
 use App\Http\Controllers\ConsultaController;
 
+use App\Http\Controllers\ImageProxyController;
+
 // Home / maps to default es
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Image proxy for og:image (publicly accessible, no locale prefix)
+Route::get('/meta-img', [ImageProxyController::class, 'show'])->name('meta-img');
 
 Route::prefix('{locale}')
 	->where(['locale' => 'es|qu'])

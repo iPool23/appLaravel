@@ -44,20 +44,38 @@ class PressController extends Controller
 
         $article->increment('viewsCount');
 
-        // Resolve absolute image URL for social crawlers
-        $coverUrl = $article->imageUrl ?? '';
-        if ($coverUrl && !str_starts_with($coverUrl, 'http')) {
-            $coverUrl = rtrim(config('app.url'), '/') . '/' . ltrim($coverUrl, '/');
+        // Use the RAW imageUrl from DB (bypassing the .webp accessor)
+        $rawImageUrl = $article->getRawOriginal('imageUrl') ?? $article->imageUrl ?? '';
+
+        // Resolve to absolute URL
+        if ($rawImageUrl && !str_starts_with($rawImageUrl, 'http')) {
+            $rawImageUrl = rtrim(url('/'), '/') . '/' . ltrim($rawImageUrl, '/');
         }
-        $coverUrl = $coverUrl ?: asset('imgs/webalianza.webp');
-        $coverUrl = str_replace('http://', 'https://', $coverUrl);
+        $rawImageUrl = $rawImageUrl ? str_replace('http://', 'https://', $rawImageUrl) : null;
+
+        // Route external images through our proxy to resize/compress for og:image
+        // This ensures Facebook/WhatsApp can download them fast (<8MB, <3s)
+        if ($rawImageUrl) {
+            $proxyUrl = url('/meta-img') . '?url=' . urlencode($rawImageUrl);
+        } else {
+            $proxyUrl = str_replace('http://', 'https://', url('/')) . 'imgs/webalianza.webp';
+        }
+
+        // Clean description: strip bullet points, HTML, leading special chars
+        $summary = $article->summary ?? $article->title ?? '';
+        $summary = strip_tags($summary);
+        $summary = preg_replace('/^[•·\-–—*\s]+/', '', $summary);
+        $summary = trim(preg_replace('/\s+/', ' ', $summary));
+        if (mb_strlen($summary) > 300) {
+            $summary = mb_substr($summary, 0, 297) . '...';
+        }
 
         return Inertia::render('prensa/show', [
             'article'  => $article,
             'metaSEO'  => [
-                'title'       => $article->title . ' | Alianza Para el Progreso',
-                'description' => $article->summary ?? $article->title,
-                'image'       => $coverUrl,
+                'title'       => strip_tags($article->title) . ' | Alianza Para el Progreso',
+                'description' => $summary,
+                'image'       => $proxyUrl,
                 'type'        => 'article',
             ],
         ]);
