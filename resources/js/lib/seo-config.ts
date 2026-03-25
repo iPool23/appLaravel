@@ -5,9 +5,9 @@
 
 export const SEO_CONFIG = {
     siteName: 'Alianza Para el Progreso',
-    siteUrl: 'https://app.pe', // Update to actual production URL
+    siteUrl:  'https://app.pe', // Update to actual production URL
     defaultLocale: 'es_PE',
-    twitterHandle: '@APP_Peru', // Update with actual handle
+    twitterHandle: '@APP_Peru', 
     organization: {
         name: 'Alianza Para el Progreso',
         logo: '/imgs/logo.png',
@@ -15,7 +15,7 @@ export const SEO_CONFIG = {
         founderUrl: 'https://cesaracuna.pe',
         foundingDate: '2001-12-08',
     },
-    defaultImage: '/imgs/cap.webp',
+    defaultImage: '/imgs/webalianza.webp',
     themeColor: '#CD1A18', // APP red color
 };
 

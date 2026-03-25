@@ -5,6 +5,7 @@ import { Footer } from '@/components/ui/footer/Footer';
 import { ContactTopBar } from '@/components/ui/menu/ContactTopBar';
 import { Menu } from '@/components/ui/menu/Menu';
 import { Sidebar } from '@/components/ui/sidebar/Sidebar';
+import { SEO_CONFIG } from '@/lib/seo-config';
 
 interface AppLayoutProps extends PropsWithChildren {
     title?: string;
@@ -41,10 +42,10 @@ export default function AppLayout({
     const { props, url } = usePage<SharedPageProps>();
     const appUrl = props.appUrl ?? 'http://localhost:8000';
     const locale = props.locale ?? 'es';
-    const siteName = props.name ?? 'Alianza Para el Progreso';
+    const siteName = props.name ?? SEO_CONFIG.siteName;
     const resolvedPath = canonicalPath ?? url;
     const absoluteUrl = new URL(resolvedPath, appUrl).toString();
-    const finalImage = image || '/imgs/cap.webp';
+    const finalImage = image || SEO_CONFIG.defaultImage;
     const absoluteImage = new URL(finalImage, appUrl).toString();
     const finalKeywords = keywords 
         ? (Array.isArray(keywords) ? keywords.join(', ') : keywords) 

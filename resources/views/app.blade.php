@@ -4,7 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
+        <title inertia>{{ config('app.name', 'Alianza Para el Progreso') }}</title>
+
+        <!-- Static SEO Fallback (For social crawlers that don't run JS) -->
+        <meta name="description" content="Portal oficial de Alianza Para el Progreso. Trabajando por un Perú con oportunidades y justicia social.">
+        <meta property="og:title" content="Alianza Para el Progreso">
+        <meta property="og:description" content="Portal oficial de Alianza Para el Progreso. Trabajando por un Perú con oportunidades y justicia social.">
+        <meta property="og:image" content="{{ asset('imgs/webalianza.webp') }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="{{ asset('imgs/webalianza.webp') }}">
 
         <link rel="icon" href="/favicon.ico?v=2" sizes="any">
         <link rel="apple-touch-icon" href="/favicon.ico?v=2">
