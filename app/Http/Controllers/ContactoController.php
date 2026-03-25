@@ -15,7 +15,13 @@ class ContactoController extends Controller
 {
     public function index(string $locale)
     {
-        return Inertia::render('contacto');
+        return Inertia::render('contacto', [
+            'metaSEO' => [
+                'title'       => 'Contáctanos | Alianza Para el Progreso',
+                'description' => '¿Tienes preguntas o deseas unirte? Escríbenos y nuestro equipo te responderá. Estamos para atenderte en toda consulta.',
+                'image'       => asset('imgs/webalianza.webp'),
+            ],
+        ]);
     }
 
     public function store(Request $request, string $locale)

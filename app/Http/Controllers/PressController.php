@@ -24,10 +24,15 @@ class PressController extends Controller
             ->get(['id', 'title', 'slug', 'summary', 'content', 'imageUrl', 'publishedAt', 'category', 'author']);
 
         return Inertia::render('prensa/index', [
-            'articles' => $articles,
-            'type' => $type,
+            'articles'    => $articles,
+            'type'        => $type,
             'currentPage' => $page,
-            'totalPages' => $totalPages,
+            'totalPages'  => $totalPages,
+            'metaSEO'     => [
+                'title'       => 'Sala de Prensa | Alianza Para el Progreso',
+                'description' => 'Últimas noticias, notas de prensa y comunicados oficiales de Alianza Para el Progreso. Mantente informado sobre nuestra acción política en el Perú.',
+                'image'       => asset('imgs/webalianza.webp'),
+            ],
         ]);
     }
 
@@ -39,12 +44,22 @@ class PressController extends Controller
 
         $article->increment('viewsCount');
 
+        // Resolve absolute image URL for social crawlers
+        $coverUrl = $article->imageUrl ?? '';
+        if ($coverUrl && !str_starts_with($coverUrl, 'http')) {
+            $coverUrl = rtrim(config('app.url'), '/') . '/' . ltrim($coverUrl, '/');
+        }
+        $coverUrl = $coverUrl ?: asset('imgs/webalianza.webp');
+        $coverUrl = str_replace('http://', 'https://', $coverUrl);
+
         return Inertia::render('prensa/show', [
-            'article' => $article,
-        ])->withViewData([
-            'meta_title' => $article->title . ' | Alianza Para el Progreso',
-            'meta_description' => $article->summary,
-            'meta_image' => $article->imageUrl
+            'article'  => $article,
+            'metaSEO'  => [
+                'title'       => $article->title . ' | Alianza Para el Progreso',
+                'description' => $article->summary ?? $article->title,
+                'image'       => $coverUrl,
+                'type'        => 'article',
+            ],
         ]);
     }
 }

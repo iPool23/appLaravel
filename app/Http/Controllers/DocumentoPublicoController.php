@@ -19,6 +19,12 @@ class DocumentoPublicoController extends Controller
             'documents'   => $paginator->items(),
             'currentPage' => $paginator->currentPage(),
             'totalPages'  => $paginator->lastPage(),
+            'metaSEO'     => [
+                'title'       => 'Documentos Públicos y Transparencia | APP',
+                'description' => 'Accede a los estatutos, reglamentos internos, planes de gobierno y documentos oficiales de Alianza Para el Progreso.',
+                'image'       => asset('imgs/webalianza.webp'),
+            ],
         ]);
+
     }
 }

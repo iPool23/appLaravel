@@ -44,6 +44,12 @@ class HomeController extends Controller
             ];
         });
 
-        return Inertia::render('home', $data);
+        return Inertia::render('home', array_merge($data, [
+            'metaSEO' => [
+                'title'       => 'Alianza Para el Progreso | Uniendo al Perú para el Progreso',
+                'description' => 'Portal oficial de Alianza Para el Progreso (APP). Más de 370,000 militantes trabajando por un Perú con oportunidades, justicia social y progreso real para cada región.',
+                'image'       => asset('imgs/webalianza.webp'),
+            ],
+        ]));
     }
 }

@@ -14,7 +14,14 @@ class NewsletterController extends Controller
 {
     public function index(string $locale)
     {
-        return Inertia::render('boletin');
+        return Inertia::render('boletin', [
+            'metaSEO' => [
+                'title'       => 'Boletín Informativo | Alianza Para el Progreso',
+                'description' => 'Suscríbete y recibe las últimas noticias, propuestas y actividades de APP directamente en tu correo.',
+                'image'       => asset('imgs/webalianza.webp'),
+                'robots'      => 'noindex, follow',
+            ],
+        ]);
     }
 
     public function store(Request $request, string $locale)
@@ -73,7 +80,11 @@ class NewsletterController extends Controller
     public function unsubscribeForm(Request $request, string $locale)
     {
         return Inertia::render('unsubscribe', [
-            'email' => $request->query('email'),
+            'email'   => $request->query('email'),
+            'metaSEO' => [
+                'title'  => 'Cancelar Suscripción | APP',
+                'robots' => 'noindex, nofollow',
+            ],
         ]);
     }
 

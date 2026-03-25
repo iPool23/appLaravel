@@ -78,8 +78,13 @@ class RecursoController extends Controller
             });
 
         return Inertia::render('recursos', [
-            'categories' => $categories,
+            'categories'      => $categories,
             'isAuthenticated' => $isAuthenticated,
+            'metaSEO'         => [
+                'title'       => 'Recursos y Materiales | Alianza Para el Progreso',
+                'description' => 'Descarga recursos, materiales de campaña, formatos de afiliación y documentos de formación política de APP.',
+                'image'       => asset('imgs/webalianza.webp'),
+            ],
         ]);
     }
 
@@ -141,7 +146,11 @@ class RecursoController extends Controller
         }
 
         return Inertia::render('descarga', [
-            'file' => $file,
+            'file'    => $file,
+            'metaSEO' => [
+                'title'  => 'Descarga de Documento | APP',
+                'robots' => 'noindex, nofollow',
+            ],
         ]);
     }
 

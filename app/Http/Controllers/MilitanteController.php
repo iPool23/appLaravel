@@ -404,7 +404,12 @@ class MilitanteController extends Controller
     public function index()
     {
         return Inertia::render('militante/index', [
-            'militants' => $this->getMilitanciaData()
+            'militants' => $this->getMilitanciaData(),
+            'metaSEO'   => [
+                'title'       => 'Militantes por Región | Alianza Para el Progreso',
+                'description' => 'Consulta los puntos de afiliación de APP en tu región. Únete a más de 370,000 militantes que construyen el Perú del futuro.',
+                'image'       => asset('imgs/webalianza.webp'),
+            ],
         ]);
     }
 
@@ -417,8 +422,15 @@ class MilitanteController extends Controller
             abort(404);
         }
 
+        $militante = (array) $militante;
+
         return Inertia::render('militante/show', [
-            'militante' => $militante
+            'militante' => $militante,
+            'metaSEO'   => [
+                'title'       => 'Afiliación en ' . ($militante['region'] ?? 'tu Región') . ' | APP',
+                'description' => 'Conoce cómo afiliarte a Alianza Para el Progreso en ' . ($militante['region'] ?? 'tu región') . '. Horarios, dirección y más información.',
+                'image'       => asset($militante['srcImage'] ?? $militante['image'] ?? 'imgs/webalianza.webp'),
+            ],
         ]);
     }
 }
