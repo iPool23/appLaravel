@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import { useForm, usePage, Link } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, CheckCircle2, ArrowRight, Home, LayoutPanelLeft, UserMinus, ShieldCheck } from 'lucide-react';
-import AppLayout from '@/layouts/AppLayout';
+import React, { useState } from 'react';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import { InteractiveLogo } from '@/components/ui/logo/InteractiveLogo';
+import AppLayout from '@/layouts/AppLayout';
 import { useLocale } from '@/lib/i18n';
 
 interface UnsubscribeProps {
@@ -20,10 +20,6 @@ export default function UnsubscribePage({ email = '' }: UnsubscribeProps) {
     const { data, setData, post, processing, errors } = useForm({
         email: email || '',
     });
-
-    useEffect(() => {
-        if (props.flash?.success) setShowSuccess(true);
-    }, [props.flash?.success]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

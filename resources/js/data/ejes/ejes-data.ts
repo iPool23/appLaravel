@@ -1,10 +1,10 @@
-import { Eje } from "@/interfaces/axles.interface";
-import WorkIcon from "@/components/svg/WorkIcon";
-import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { IoMdBookmarks } from "react-icons/io";
-import { GiHealthIncrease } from "react-icons/gi";
 import { FaHandshake } from "react-icons/fa";
+import { GiHealthIncrease } from "react-icons/gi";
 import { HiDocumentMagnifyingGlass } from "react-icons/hi2";
+import { IoMdBookmarks } from "react-icons/io";
+import { IoShieldCheckmarkSharp } from "react-icons/io5";
+import WorkIcon from "@/components/svg/WorkIcon";
+import type { Eje } from "@/interfaces/axles.interface";
 
 // Datos base de los ejes con traducciones en español
 export const ejesData: Eje[] = [

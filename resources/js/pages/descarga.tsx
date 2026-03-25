@@ -1,8 +1,8 @@
 import { useForm } from '@inertiajs/react';
+import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AppLayout from '@/layouts/AppLayout';
-import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
 
 interface FileData {
     id: string | number;

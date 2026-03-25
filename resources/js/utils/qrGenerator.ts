@@ -85,7 +85,7 @@ export class QRCodeGenerator {
     /**
      * Genera un código QR para el perfil completo del miembro - URL PERMANENTE
      */
-    static async generateMemberProfileQR(memberSlug: string, memberName: string): Promise<string> {
+    static async generateMemberProfileQR(memberSlug: string): Promise<string> {
         // DOMINIO PERMANENTE: https://app.pe
         const profileUrl = `https://app.pe/member/${memberSlug}`;
 
@@ -109,8 +109,8 @@ export const useQRGenerator = () => {
         return QRCodeGenerator.generateSocialQR(provider, url);
     };
 
-    const generateQRForProfile = async (memberSlug: string, memberName: string) => {
-        return QRCodeGenerator.generateMemberProfileQR(memberSlug, memberName);
+    const generateQRForProfile = async (memberSlug: string) => {
+        return QRCodeGenerator.generateMemberProfileQR(memberSlug);
     };
 
     const generateCustomQR = async (options: QRCodeOptions) => {

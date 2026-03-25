@@ -1,14 +1,14 @@
 import { Title, ContentSection } from '@/components';
+import { ImageGallery } from '@/components/gallery';
+import FacebookIcon from '@/components/svg/FacebookIcon';
+import InstagramIcon from '@/components/svg/InstagramIcon';
+import TikTokIcon from '@/components/svg/TikTokIcon';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
-import { ImageGallery } from '@/components/gallery';
 import SocialLinks from '@/components/ui/social/SocialLinks';
-import FacebookIcon from '@/components/svg/FacebookIcon';
-import InstagramIcon from '@/components/svg/InstagramIcon';
 import AppLayout from '@/layouts/AppLayout';
 import { useTranslations } from '@/lib/i18n';
-import TikTokIcon from '@/components/svg/TikTokIcon';
 
 const efopSocialLinks = [
     { href: 'https://www.facebook.com/EFOPAPP/', icon: <FacebookIcon />, label: 'Facebook', bgColor: 'bg-blue-600' },

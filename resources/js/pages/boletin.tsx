@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import { useForm, usePage, Link } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Newspaper, CheckCircle2, ArrowRight, Home, LayoutPanelLeft, Share2, Sparkles, BellRing } from 'lucide-react';
+import { Mail, ArrowRight, Home, LayoutPanelLeft, Share2 } from 'lucide-react';
+import React, { useState } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import AppLayout from '@/layouts/AppLayout';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import { InteractiveLogo } from '@/components/ui/logo/InteractiveLogo';
+import AppLayout from '@/layouts/AppLayout';
 import { useTranslations, useLocale } from '@/lib/i18n';
 
 export default function BoletinPage() {
@@ -22,9 +22,6 @@ export default function BoletinPage() {
         recaptchaToken: '',
     });
 
-    useEffect(() => {
-        if (props.flash?.success) setShowSuccess(true);
-    }, [props.flash?.success]);
 
     const handleReset = () => {
         setShowSuccess(false);
@@ -52,13 +49,6 @@ export default function BoletinPage() {
             }
         });
     };
-
-    const benefits = [
-        { text: "Recibe las últimas noticias y actualizaciones políticas", icon: Newspaper },
-        { text: "Entérate de eventos y actividades en tu región", icon: BellRing },
-        { text: "Conoce nuestras propuestas y planes de gobierno", icon: Sparkles },
-        { text: "Acceso exclusivo a nuevos recursos y documentos", icon: LayoutPanelLeft }
-    ];
 
     return (
         <AppLayout

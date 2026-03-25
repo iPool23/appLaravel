@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
-import { getAllImages } from "@/data/gallery-data";
 import { ImageGallery } from "@/components/gallery";
+import { getAllImages } from "@/data/gallery-data";
 
 export default function GalleryContent() {
     const [activeCategory] = useState<string | null>(null);

@@ -1,8 +1,8 @@
-import React from 'react';
 import { User } from 'lucide-react';
+import React from 'react';
+import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import { MinimalDropdown } from '@/components/ui/dropdown/MinimalDropdown';
 import { FormInputField } from '@/components/ui/form/FormInputField';
-import ContainerTodo from '@/components/ui/container/ContainerTodo';
 
 interface CandidateSearchFormProps {
     filters: {

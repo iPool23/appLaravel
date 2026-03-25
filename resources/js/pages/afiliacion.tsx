@@ -1,10 +1,10 @@
-import AppLayout from '@/layouts/AppLayout';
+import { motion } from "framer-motion";
+import { Download, MapPin, Info, RefreshCw, Users, HelpCircle, AlertTriangle } from "lucide-react";
 import BannerWithBackground from "@/components/ui/banner/BannerWithBackground";
 import ContainerSingle from "@/components/ui/container/ContainerSingle";
 import ContainerTodo from "@/components/ui/container/ContainerTodo";
+import AppLayout from '@/layouts/AppLayout';
 import { useTranslations } from "@/lib/i18n";
-import { Download, MapPin, Info, RefreshCw, Users, HelpCircle, AlertTriangle } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function AfiliacionPage() {
     const t = useTranslations('afiliacion');

@@ -2,9 +2,9 @@ import { Head } from '@inertiajs/react';
 import { usePage } from '@inertiajs/react';
 import type { PropsWithChildren, ReactNode } from 'react';
 import { Footer } from '@/components/ui/footer/Footer';
+import { ContactTopBar } from '@/components/ui/menu/ContactTopBar';
 import { Menu } from '@/components/ui/menu/Menu';
 import { Sidebar } from '@/components/ui/sidebar/Sidebar';
-import { ContactTopBar } from '@/components/ui/menu/ContactTopBar';
 
 interface AppLayoutProps extends PropsWithChildren {
     title?: string;

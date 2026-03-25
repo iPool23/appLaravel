@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';
+import { useState, useMemo } from 'react';
+import { FaFilePdf, FaFileWord, FaFileExcel, FaFilePowerpoint, FaFileImage, FaFileVideo, FaFileAudio, FaFileAlt, FaFolder } from 'react-icons/fa';
+import { IoFolderOpenOutline, IoChevronForward, IoHome, IoSearch } from 'react-icons/io5';
+import { RiDownloadLine } from 'react-icons/ri';
+import PasswordGate from '@/components/recursos/PasswordGate';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AppLayout from '@/layouts/AppLayout';
 import { useLocale } from '@/lib/i18n';
-import { IoFolderOpenOutline, IoChevronForward, IoHome, IoSearch } from 'react-icons/io5';
-import { FaFilePdf, FaFileWord, FaFileExcel, FaFilePowerpoint, FaFileImage, FaFileVideo, FaFileAudio, FaFileAlt, FaFolder } from 'react-icons/fa';
-import { RiDownloadLine } from 'react-icons/ri';
-import PasswordGate from '@/components/recursos/PasswordGate';
 
 interface Category {
     id: string;
@@ -32,100 +32,23 @@ export default function RecursosPage({ categories, isAuthenticated: serverAuth }
     const locale = useLocale();
     const [currentCategoryId, setCurrentCategoryId] = useState<string | null>(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const [breadcrumbs, setBreadcrumbs] = useState<{ id: string | null; name: string }[]>([]);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isCheckingAuth, setIsCheckingAuth] = useState(true);
-
-    // Check authentication on mount
-    useEffect(() => {
-        const checkAuth = () => {
-            // Check if authenticated from server
-            if (serverAuth) {
-                setIsAuthenticated(true);
-                setIsCheckingAuth(false);
-                return;
-            }
-
-            // Check sessionStorage
-            const sessionAuth = sessionStorage.getItem('recursos_authenticated');
-            if (sessionAuth === 'true') {
-                setIsAuthenticated(true);
-            }
-            setIsCheckingAuth(false);
-        };
-
-        checkAuth();
-    }, [serverAuth]);
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        if (serverAuth) return true;
+        if (typeof window !== 'undefined') {
+            return sessionStorage.getItem('recursos_authenticated') === 'true';
+        }
+        return false;
+    });
 
     const handleAuthenticated = () => {
         setIsAuthenticated(true);
     };
 
-    const getCategoryIcon = (name: string) => {
-        const lowerName = name.toLowerCase();
-        if (lowerName.includes('documento') || lowerName.includes('pdf')) return FaFilePdf;
-        if (lowerName.includes('imagen') || lowerName.includes('foto')) return FaFileImage;
-        if (lowerName.includes('video')) return FaFileVideo;
-        if (lowerName.includes('audio')) return FaFileAudio;
-        return FaFolder;
-    };
-
-    const getFileIcon = (fileName: string) => {
-        const ext = fileName.split('.').pop()?.toLowerCase();
-        switch (ext) {
-            case 'pdf': return FaFilePdf;
-            case 'doc':
-            case 'docx': return FaFileWord;
-            case 'xls':
-            case 'xlsx': return FaFileExcel;
-            case 'ppt':
-            case 'pptx': return FaFilePowerpoint;
-            case 'jpg':
-            case 'jpeg':
-            case 'png':
-            case 'gif': return FaFileImage;
-            case 'mp4':
-            case 'avi':
-            case 'mov': return FaFileVideo;
-            case 'mp3':
-            case 'wav': return FaFileAudio;
-            default: return FaFileAlt;
-        }
-    };
-
-    const findCategoryById = (cats: Category[], id: string): Category | null => {
-        for (const cat of cats) {
-            if (cat.id === id || cat.id.toString() === id) return cat;
-            const childList = cat.Children || cat.children;
-            if (childList) {
-                const found = findCategoryById(childList, id);
-                if (found) return found;
-            }
-        }
-        return null;
-    };
-
-    const buildBreadcrumbs = (cats: Category[], targetId: string, path: { id: string | null; name: string }[] = []): { id: string | null; name: string }[] | null => {
-        for (const cat of cats) {
-            if (cat.id === targetId) {
-                return [...path, { id: cat.id, name: cat.name }];
-            }
-            const childList = cat.Children || cat.children;
-            if (childList) {
-                const result = buildBreadcrumbs(childList, targetId, [...path, { id: cat.id, name: cat.name }]);
-                if (result) return result;
-            }
-        }
-        return null;
-    };
-
-    useEffect(() => {
+    const breadcrumbs = useMemo(() => {
         if (currentCategoryId) {
-            const crumbs = buildBreadcrumbs(categories, currentCategoryId);
-            setBreadcrumbs(crumbs || []);
-        } else {
-            setBreadcrumbs([]);
+            return buildBreadcrumbs(categories, currentCategoryId) || [];
         }
+        return [];
     }, [currentCategoryId, categories]);
 
     const getCurrentCategories = (): Category[] => {
@@ -164,7 +87,7 @@ export default function RecursosPage({ categories, isAuthenticated: serverAuth }
     };
 
     // Show password gate if not authenticated
-    if (!isCheckingAuth && !isAuthenticated) {
+    if (!isAuthenticated) {
         return (
             <AppLayout
                 title="Recursos - Acceso Protegido"
@@ -317,3 +240,60 @@ export default function RecursosPage({ categories, isAuthenticated: serverAuth }
         </AppLayout>
     );
 }
+const getCategoryIcon = (name: string) => {
+    const lowerName = name.toLowerCase();
+    if (lowerName.includes('documento') || lowerName.includes('pdf')) return FaFilePdf;
+    if (lowerName.includes('imagen') || lowerName.includes('foto')) return FaFileImage;
+    if (lowerName.includes('video')) return FaFileVideo;
+    if (lowerName.includes('audio')) return FaFileAudio;
+    return FaFolder;
+};
+
+const getFileIcon = (fileName: string) => {
+    const ext = fileName.split('.').pop()?.toLowerCase();
+    switch (ext) {
+        case 'pdf': return FaFilePdf;
+        case 'doc':
+        case 'docx': return FaFileWord;
+        case 'xls':
+        case 'xlsx': return FaFileExcel;
+        case 'ppt':
+        case 'pptx': return FaFilePowerpoint;
+        case 'jpg':
+        case 'jpeg':
+        case 'png':
+        case 'gif': return FaFileImage;
+        case 'mp4':
+        case 'avi':
+        case 'mov': return FaFileVideo;
+        case 'mp3':
+        case 'wav': return FaFileAudio;
+        default: return FaFileAlt;
+    }
+};
+
+const findCategoryById = (cats: Category[], id: string): Category | null => {
+    for (const cat of cats) {
+        if (cat.id === id || cat.id.toString() === id) return cat;
+        const childList = cat.Children || cat.children;
+        if (childList) {
+            const found = findCategoryById(childList, id);
+            if (found) return found;
+        }
+    }
+    return null;
+};
+
+const buildBreadcrumbs = (cats: Category[], targetId: string, path: { id: string | null; name: string }[] = []): { id: string | null; name: string }[] | null => {
+    for (const cat of cats) {
+        if (cat.id === targetId) {
+            return [...path, { id: cat.id, name: cat.name }];
+        }
+        const childList = cat.Children || cat.children;
+        if (childList) {
+            const result = buildBreadcrumbs(childList, targetId, [...path, { id: cat.id, name: cat.name }]);
+            if (result) return result;
+        }
+    }
+    return null;
+};

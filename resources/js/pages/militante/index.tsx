@@ -1,12 +1,11 @@
 import React from 'react';
-import { Head, Link } from '@inertiajs/react';
-import ContainerSingle from '@/components/ui/container/ContainerSingle';
-import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
 import CustomCardImageRegion from '@/components/ui/card/CustomCardImageRegion';
+import ContainerSingle from '@/components/ui/container/ContainerSingle';
+import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AppLayout from '@/layouts/AppLayout';
-import { Militant } from '../../types/militant';
 import { useLocale } from '@/lib/i18n';
+import type { Militant } from '../../types/militant';
 
 interface Props {
     militants: Militant[];

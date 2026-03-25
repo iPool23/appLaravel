@@ -1,7 +1,7 @@
+import GalleryContent from '@/components/gallery/GalleryContent';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
-import GalleryContent from '@/components/gallery/GalleryContent';
 import AppLayout from '@/layouts/AppLayout';
 
 export default function GaleriaPage() {

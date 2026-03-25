@@ -10,3 +10,11 @@ declare module '@inertiajs/core' {
         };
     }
 }
+declare global {
+    interface Window {
+        gtag: (command: string, ...args: any[]) => void;
+        dataLayer: any[];
+    }
+}
+
+export {};

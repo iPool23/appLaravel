@@ -1,11 +1,11 @@
+import { Download, Facebook, Twitter, Instagram, Linkedin, MessageCircle, MapPin, Briefcase, Award } from 'lucide-react';
 import React from 'react';
-import AppLayout from '@/layouts/AppLayout';
-import ContainerSingle from '@/components/ui/container/ContainerSingle';
-import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
-import { Candidate } from '@/types/candidate';
-import { Download, Facebook, Twitter, Instagram, Linkedin, MessageCircle, MapPin, Briefcase, Award } from 'lucide-react';
+import ContainerSingle from '@/components/ui/container/ContainerSingle';
+import ContainerTodo from '@/components/ui/container/ContainerTodo';
+import AppLayout from '@/layouts/AppLayout';
+import type { Candidate } from '@/types/candidate';
 
 interface Props {
     candidate: Candidate;

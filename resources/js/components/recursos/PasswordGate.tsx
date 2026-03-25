@@ -1,5 +1,6 @@
-import { useState, FormEvent } from 'react';
 import { router, usePage } from '@inertiajs/react';
+import type { FormEvent } from 'react';
+import { useState } from 'react';
 import { IoShieldCheckmark, IoLockClosed, IoInformationCircle } from 'react-icons/io5';
 
 interface PasswordGateProps {

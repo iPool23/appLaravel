@@ -1,4 +1,4 @@
-import { LogoItem } from "@/components/ui/logo/SectionLogo";
+import type { LogoItem } from "@/components/ui/logo/SectionLogo";
 
 export const defaultLogos: LogoItem[] = [
     {

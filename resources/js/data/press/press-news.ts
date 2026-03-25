@@ -1,4 +1,4 @@
-import { PressNews } from "@/interfaces/press.interface";
+import type { PressNews } from "@/interfaces/press.interface";
 
 export const pressNewsData: PressNews[] = [
   {

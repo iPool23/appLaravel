@@ -1,9 +1,9 @@
+import { Download, Eye } from 'lucide-react';
 import { EjesSection } from '@/components';
 import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
+import { Button } from '@/components/ui/button';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import AppLayout from '@/layouts/AppLayout';
-import { Button } from '@/components/ui/button';
-import { Download, Eye } from 'lucide-react';
 import { useLocale } from '@/lib/i18n';
 
 export default function EjesPage() {

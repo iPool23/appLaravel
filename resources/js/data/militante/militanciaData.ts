@@ -1,4 +1,4 @@
-import { Militant } from "@/interfaces/militant.interface";
+import type { Militant } from "@/interfaces/militant.interface";
 
 export const militanciaData: Militant[] = [
     {

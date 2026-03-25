@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useLanguage = () => {
     const [currentLanguage, setCurrentLanguage] = useState<'es' | 'qu'>(

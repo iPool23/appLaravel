@@ -5,8 +5,8 @@
  * en diferentes escenarios.
  */
 
-import { optimizeImage, optimizeImages, getOptimizationInfo } from './image-optimizer';
 import { toast } from 'sonner';
+import { optimizeImage, optimizeImages, getOptimizationInfo } from './image-optimizer';
 
 // ============================================
 // EJEMPLO 1: Optimización Simple

@@ -1,4 +1,4 @@
-import Script from 'next/script';
+import React from 'react';
 
 const GA_MEASUREMENT_ID = 'G-QX9SV9GH3Q';
 
@@ -12,9 +12,8 @@ export default function GoogleAnalytics() {
     return (
         <>
             {/* Inicialización del modo de consentimiento - debe ejecutarse ANTES de cualquier config/event */}
-            <Script
+            <script
                 id="google-consent-mode-default"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
             window.dataLayer = window.dataLayer || [];
@@ -37,15 +36,14 @@ export default function GoogleAnalytics() {
             />
 
             {/* Google tag (gtag.js) - se carga después que el default consent */}
-            <Script
+            <script
+                async
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-                strategy="afterInteractive"
             />
 
             {/* Config básica de GA4 - se ejecuta tras la carga del script */}
-            <Script
+            <script
                 id="google-analytics-config"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
             window.dataLayer = window.dataLayer || [];

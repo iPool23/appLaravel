@@ -1,15 +1,15 @@
-import React from 'react';
 import { useForm, usePage } from '@inertiajs/react';
-import AppLayout from '@/layouts/AppLayout';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import React from 'react';
+import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
-import { useTranslations } from '@/lib/i18n';
 import { FormInput } from '@/components/ui/form/FormInput';
 import { FormSelect } from '@/components/ui/form/FormSelect';
 import { FormTextarea } from '@/components/ui/form/FormTextarea';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle, Clock, Info } from 'lucide-react';
-import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
+import AppLayout from '@/layouts/AppLayout';
+import { useTranslations } from '@/lib/i18n';
 
 export default function ContactoPage() {
     const t = useTranslations('contact');

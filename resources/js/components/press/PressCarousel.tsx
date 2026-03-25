@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { usePage } from "@inertiajs/react";
+import React from "react";
 import { Navigation, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { CustomCardImage, ComunicadoCard } from "@/components/ui";
+import { ComunicadoCardSkeleton } from "@/components/ui/card/ComunicadoCard";
+import { CustomCardImageSkeleton } from "@/components/ui/card/CustomCardImage";
+
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { CustomCardImage, ComunicadoCard } from "@/components/ui";
-import { CustomCardImageSkeleton } from "@/components/ui/card/CustomCardImage";
-import { ComunicadoCardSkeleton } from "@/components/ui/card/ComunicadoCard";
-import { usePage } from "@inertiajs/react";
 
 interface PressCarouselProps {
     type: 'Prensa' | 'Comunicado';
@@ -14,39 +16,33 @@ interface PressCarouselProps {
     items?: any[];
 }
 
+const formatDateForCard = (dateValue: Date | string): string => {
+    const date = typeof dateValue === 'string' ? new Date(dateValue) : dateValue;
+    if (isNaN(date.getTime())) return "";
+
+    const day = date.getDate();
+    const months = [
+        'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+        'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day} de ${month} ${year}`;
+};
+
+const truncateText = (text: string, maxLength: number = 150): string => {
+    if (!text) return "";
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength).trim() + '...';
+};
+
 export default function PressCarousel({ type, title, items: articles }: PressCarouselProps) {
-    const [items, setItems] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(!articles);
     const { props } = usePage();
     const locale = (props as any).locale || 'es';
 
-    const formatDateForCard = (dateValue: Date | string): string => {
-        const date = typeof dateValue === 'string' ? new Date(dateValue) : dateValue;
-        if (isNaN(date.getTime())) return "";
-
-        const day = date.getDate();
-        const months = [
-            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
-            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
-        ];
-        const month = months[date.getMonth()];
-        const year = date.getFullYear();
-
-        return `${day} de ${month} ${year}`;
-    };
-
-    const truncateText = (text: string, maxLength: number = 150): string => {
-        if (!text) return "";
-        if (text.length <= maxLength) return text;
-        return text.slice(0, maxLength).trim() + '...';
-    };
-
-    useEffect(() => {
-        if (articles) {
-            setItems(articles);
-            setIsLoading(false);
-        }
-    }, [articles]);
+    const items = articles || [];
+    const isLoading = !articles;
 
     if (isLoading) {
         return (

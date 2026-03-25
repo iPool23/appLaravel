@@ -1,8 +1,8 @@
-import { Grid, GridItem, Title, Line } from "@/components/ui";
-import CustomCardIconLink from "@/components/ui/card/CustomCardIconLink";
+import { usePage } from "@inertiajs/react";
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
-import { usePage } from "@inertiajs/react";
+import { Grid, GridItem } from "@/components/ui";
+import CustomCardIconLink from "@/components/ui/card/CustomCardIconLink";
 import { getEjesIzquierda, getEjesDerecha } from "@/data/ejes/ejes-data";
 import AnimatedSectionTitle from "../ui/AnimatedSectionTitle";
 

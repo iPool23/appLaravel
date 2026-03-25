@@ -1,12 +1,12 @@
 import { Title, ContentSection } from '@/components';
+import { ImageGallery } from '@/components/gallery';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
-import { ImageGallery } from '@/components/gallery';
+import CongressmanGrid from '@/components/ui/grid/CongressManGrid';
 import { congressmen } from '@/data/congressman';
 import AppLayout from '@/layouts/AppLayout';
 import { useTranslations } from '@/lib/i18n';
-import CongressmanGrid from '@/components/ui/grid/CongressManGrid';
 
 interface SectionContent {
     src: string;

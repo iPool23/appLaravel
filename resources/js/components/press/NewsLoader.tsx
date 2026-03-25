@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { usePage } from "@inertiajs/react";
-import { CustomCardImage } from "@/components/ui";
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
+import React, { useMemo } from "react";
+import { CustomCardImage } from "@/components/ui";
 
 interface PressNewsItem {
     id: string;
@@ -34,42 +33,37 @@ interface NewsLoaderProps {
     articles?: any[];
 }
 
+const formatDateForCard = (dateValue: Date | string): string => {
+    const date = typeof dateValue === 'string' ? new Date(dateValue) : dateValue;
+    if (isNaN(date.getTime())) return "";
+
+    const day = date.getDate();
+    const months = [
+        'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+        'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day} de ${month} ${year}`;
+};
+
 export default function NewsLoader({ limit = 3, articles }: NewsLoaderProps) {
-    const { url: pathname } = usePage();
-    const [items, setItems] = useState<PressNewsItem[]>([]);
-    const [isLoading, setIsLoading] = useState(!articles);
-
-    const formatDateForCard = (dateValue: Date | string): string => {
-        const date = typeof dateValue === 'string' ? new Date(dateValue) : dateValue;
-        if (isNaN(date.getTime())) return "";
-
-        const day = date.getDate();
-        const months = [
-            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
-            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
-        ];
-        const month = months[date.getMonth()];
-        const year = date.getFullYear();
-
-        return `${day} de ${month} ${year}`;
-    };
-
-    useEffect(() => {
-        if (articles) {
-            const mappedItems: PressNewsItem[] = articles.map((article) => ({
-                id: article.id,
-                src: article.imageUrl || article.image_url,
-                centerText: article.title,
-                date: article.publishedAt || article.published_at
-                    ? formatDateForCard(article.publishedAt || article.published_at)
-                    : "",
-                bottomText: article.summary,
-                slug: article.slug,
-            }));
-            setItems(mappedItems);
-            setIsLoading(false);
-        }
+    const items = useMemo<PressNewsItem[]>(() => {
+        if (!articles) return [];
+        return articles.map((article) => ({
+            id: article.id,
+            src: article.imageUrl || article.image_url,
+            centerText: article.title,
+            date: article.publishedAt || article.published_at
+                ? formatDateForCard(article.publishedAt || article.published_at)
+                : "",
+            bottomText: article.summary,
+            slug: article.slug,
+        }));
     }, [articles]);
+
+    const isLoading = !articles;
 
     // Animation variants for news cards
     const cardVariants = {

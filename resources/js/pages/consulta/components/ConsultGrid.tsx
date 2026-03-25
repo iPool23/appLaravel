@@ -1,7 +1,7 @@
 import React from "react";
 import RoundedImageCardLink from "@/components/ui/card/RoundedImageCardLink";
-import { Candidate } from "@/types/candidate";
 import { useLocale } from "@/lib/i18n";
+import type { Candidate } from "@/types/candidate";
 
 interface ConsultGridProps {
     candidates?: Candidate[];

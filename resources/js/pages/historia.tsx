@@ -1,23 +1,18 @@
-import { useState, useEffect } from 'react';
-import AppLayout from '@/layouts/AppLayout';
+import { useState } from 'react';
 import { Title } from "@/components";
-import ContentSection from "@/components/ui/content/ContentSection";
+import ImageGallery from "@/components/gallery/ImageGallery";
+import AnimatedSectionTitle from "@/components/ui/AnimatedSectionTitle";
 import BannerWithBackground from "@/components/ui/banner/BannerWithBackground";
 import ContainerSingle from "@/components/ui/container/ContainerSingle";
 import ContainerTodo from "@/components/ui/container/ContainerTodo";
-import ImageGallery from "@/components/gallery/ImageGallery";
-import AnimatedSectionTitle from "@/components/ui/AnimatedSectionTitle";
+import ContentSection from "@/components/ui/content/ContentSection";
 import VideoModal from "@/components/ui/modal/VideoModal";
+import AppLayout from '@/layouts/AppLayout';
 import { useTranslations } from "@/lib/i18n";
 
 export default function HistoriaPage() {
-    const [isVideoOpen, setIsVideoOpen] = useState(false);
+    const [isVideoOpen, setIsVideoOpen] = useState(true);
     const t = useTranslations('history');
-
-    useEffect(() => {
-        // Abrir el modal automáticamente al cargar la página
-        setIsVideoOpen(true);
-    }, []);
 
     const images = [
         { src: "/imgs/gallery/mitin-politico-san-juan-de-lurigancho.webp", alt: "Mitin Político San Juan de Lurigancho", title: "Mitin Político San Juan de Lurigancho" },

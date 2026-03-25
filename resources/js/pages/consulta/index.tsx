@@ -1,15 +1,13 @@
+import { ChevronLeft, ChevronRight, SearchX } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
-import AppLayout from '@/layouts/AppLayout';
-import ContainerSingle from '@/components/ui/container/ContainerSingle';
-import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
-import { Grid } from '@/components/ui/grid/Grid';
-import { GridItem } from '@/components/ui/grid/GridItem';
+import ContainerSingle from '@/components/ui/container/ContainerSingle';
+import ContainerTodo from '@/components/ui/container/ContainerTodo';
+import AppLayout from '@/layouts/AppLayout';
+import type { Candidate } from '@/types/candidate';
 import CandidateSearchForm from './components/CandidateSearchForm';
 import ConsultGrid from './components/ConsultGrid';
-import { Candidate } from '@/types/candidate';
-import { ChevronLeft, ChevronRight, SearchX } from 'lucide-react';
 
 interface Props {
     candidates: Candidate[];

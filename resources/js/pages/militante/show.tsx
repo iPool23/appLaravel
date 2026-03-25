@@ -1,15 +1,13 @@
 import React from 'react';
-import { Head, Link } from '@inertiajs/react';
-import { Grid } from '@/components/ui/grid/Grid';
-import { GridItem } from '@/components/ui/grid/GridItem';
+import FaqAccordion from '@/components/ui/accordion/FaqAccordion';
 import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
 import CustomBlogCard from '@/components/ui/card/CustomBlogCard';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
-import FaqAccordion from '@/components/ui/accordion/FaqAccordion';
+import { Grid } from '@/components/ui/grid/Grid';
+import { GridItem } from '@/components/ui/grid/GridItem';
 import AppLayout from '@/layouts/AppLayout';
-import { Militant } from '../../types/militant';
-import { useLocale } from '@/lib/i18n';
+import type { Militant } from '../../types/militant';
 
 interface Props {
     militante: Militant;

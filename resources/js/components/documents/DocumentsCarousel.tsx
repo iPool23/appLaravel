@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import { RiFilePdf2Fill, RiMegaphoneFill, RiFile2Fill } from "react-icons/ri";
-import { FaDownload } from "react-icons/fa";
 import { Link, router, usePage } from "@inertiajs/react";
 import { Loader2 } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { FaDownload } from "react-icons/fa";
+import { RiFilePdf2Fill, RiMegaphoneFill, RiFile2Fill } from "react-icons/ri";
+import { Navigation, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import ALogoIcon from "@/components/svg/ALogoIcon";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 interface Document {
     id: string;
@@ -35,7 +37,8 @@ export function DocumentCard({ doc, locale }: { doc: Document; locale: string })
     const { url: pathname } = usePage();
 
     useEffect(() => {
-        setIsLoading(false);
+        const handle = requestAnimationFrame(() => setIsLoading(false));
+        return () => cancelAnimationFrame(handle);
     }, [pathname]);
 
     const formatDate = (d: Date | string | null | undefined) => {
@@ -134,17 +137,11 @@ interface DocumentsCarouselProps {
 }
 
 export default function DocumentsCarousel({ title, documents }: DocumentsCarouselProps) {
-    const [items, setItems] = useState<Document[]>([]);
-    const [isLoading, setIsLoading] = useState(!documents);
     const { props } = usePage();
     const locale = (props as any).locale || 'es';
 
-    useEffect(() => {
-        if (documents) {
-            setItems(documents);
-            setIsLoading(false);
-        }
-    }, [documents]);
+    const items = documents || [];
+    const isLoading = !documents;
 
     if (isLoading) {
         return (

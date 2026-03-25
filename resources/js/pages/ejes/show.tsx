@@ -1,9 +1,9 @@
 import { Link } from '@inertiajs/react';
+import { FaArrowLeft, FaTag } from 'react-icons/fa';
+import { Title } from '@/components';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import AppLayout from '@/layouts/AppLayout';
-import { Title } from '@/components';
-import { FaArrowLeft, FaTag } from 'react-icons/fa';
 import { useLocale, useMessages } from '@/lib/i18n';
 
 export default function EjeShowPage({ slug }: { slug: string }) {

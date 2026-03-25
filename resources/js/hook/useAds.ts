@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-import { Ad } from '@/interfaces/ad.interface';
-const getAds = async (r:any) => ({ok:true, ads:[]});
+import type { Ad } from '@/interfaces/ad.interface';
+const getAds = async (): Promise<{ success: boolean; data: Ad[]; error?: string }> => ({ success: true, data: [], error: undefined });
 
 interface UseAdsOptions {
     showOnHomepage?: boolean;
@@ -12,8 +12,6 @@ interface UseAdsOptions {
 }
 
 export function useAds({
-    showOnHomepage = true,
-    showOnAllPages = false,
     autoRefresh = false,
     refreshInterval = 300000, // 5 minutes
 }: UseAdsOptions = {}) {
@@ -24,39 +22,32 @@ export function useAds({
     const loadAds = useCallback(async () => {
         try {
             setError(null);
-            const result = await getAds({
-                isActive: true,
-                showOnHomepage,
-                showOnAllPages,
-            });
+            const result = await getAds();
 
             if (result.success && result.data) {
-                // Filtrar ads activos que están en el período correcto
                 const now = new Date();
                 const activeAds = result.data.filter((ad: Ad) => {
-                    const startDate = ad.startDate ? new Date(ad.startDate) : null;
-                    const endDate = ad.endDate ? new Date(ad.endDate) : null;
+                    const sd = ad.startDate ? new Date(ad.startDate) : null;
+                    const ed = ad.endDate ? new Date(ad.endDate) : null;
 
-                    if (startDate && now < startDate) return false;
-                    if (endDate && now > endDate) return false;
+                    if (sd && now < sd) return false;
+                    if (ed && now > ed) return false;
 
                     return true;
                 });
 
-                // Ordenar por prioridad
-                activeAds.sort((a, b) => b.priority - a.priority);
-
+                activeAds.sort((a, b) => (b.priority || 0) - (a.priority || 0));
                 setAds(activeAds);
             } else {
                 setError(result.error || 'Error al cargar anuncios');
             }
-        } catch (error) {
-            console.error('Error loading ads:', error);
+        } catch (err: any) {
+            console.error('Error loading ads:', err);
             setError('Error al cargar anuncios');
         } finally {
             setLoading(false);
         }
-    }, [showOnHomepage, showOnAllPages]);
+    }, []);
 
     useEffect(() => {
         loadAds();

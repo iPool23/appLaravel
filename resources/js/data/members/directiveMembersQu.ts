@@ -1,4 +1,4 @@
-import { DirectiveMember } from "@/interfaces/member.interface";
+import type { DirectiveMember } from "@/interfaces/member.interface";
 
 const directiveMembersQu: DirectiveMember[] = [
   {

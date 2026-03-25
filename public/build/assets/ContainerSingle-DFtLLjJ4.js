@@ -1,1 +1,0 @@
-import{j as i}from"./app-D_pZ8ySY.js";import{c as m}from"./compiler-runtime-DJ6VW_i7.js";function a(n){const s=m.c(3),{children:e,className:r}=n,o=`py-8 sm:py-12 md:py-16 ${r}`;let t;return s[0]!==e||s[1]!==o?(t=i.jsx("div",{className:o,children:e}),s[0]=e,s[1]=o,s[2]=t):t=s[2],t}export{a as C};

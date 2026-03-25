@@ -1,4 +1,4 @@
-import { CongressMan } from "@/interfaces/congressMan.interface";
+import type { CongressMan } from "@/interfaces/congressMan.interface";
 
 // Optimized congressman data with preload hints and efficient structure
 const congressManData: CongressMan[] = [

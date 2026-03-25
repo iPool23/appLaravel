@@ -1,3 +1,4 @@
+import { RiFile2Fill } from "react-icons/ri";
 import { DocumentCard } from '@/components/documents/DocumentsCarousel';
 import BannerWithBackground from '@/components/ui/banner/BannerWithBackground';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
@@ -5,7 +6,6 @@ import ContainerTodo from '@/components/ui/container/ContainerTodo';
 import { Pagination } from '@/components/ui/pagination/Pagination';
 import AppLayout from '@/layouts/AppLayout';
 import { useLocale } from '@/lib/i18n';
-import { RiFile2Fill } from "react-icons/ri";
 
 interface Props {
     documents: any[];

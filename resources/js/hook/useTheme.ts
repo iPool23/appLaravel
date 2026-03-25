@@ -4,12 +4,15 @@ export const useTheme = () => {
     const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>(
         (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'system'
     );
-    const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>('light');
+    const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(() => {
+        if (typeof window !== 'undefined') {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        return 'light';
+    });
 
     useEffect(() => {
         const mql = window.matchMedia('(prefers-color-scheme: dark)');
-        setSystemTheme(mql.matches ? 'dark' : 'light');
-
         const handler = (e: MediaQueryListEvent) => {
             setSystemTheme(e.matches ? 'dark' : 'light');
         };

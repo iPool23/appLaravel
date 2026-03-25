@@ -4,10 +4,10 @@ import { Link } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import { FaArrowLeft, FaWhatsapp, FaShare } from 'react-icons/fa';
 import FacebookIcon from '@/components/svg/FacebookIcon';
-import TwitterIcon from '@/components/svg/TwitterIcon';
-import LinkedInIcon from '@/components/svg/LinkedInIcon';
 import InstagramIcon from '@/components/svg/InstagramIcon';
+import LinkedInIcon from '@/components/svg/LinkedInIcon';
 import TikTokIcon from '@/components/svg/TikTokIcon';
+import TwitterIcon from '@/components/svg/TwitterIcon';
 import AppLayout from '@/layouts/AppLayout';
 import { useLocale } from '@/lib/i18n';
 
@@ -53,8 +53,11 @@ function VerticalSocialShare({ url, title, description }: VerticalSocialSharePro
     const fullUrl = url.startsWith('http') ? url : baseUrl + url;
 
     useEffect(() => {
-        setMounted(true);
-        setSupportsShare(typeof navigator !== 'undefined' && 'share' in navigator);
+        const handle = requestAnimationFrame(() => {
+            setMounted(true);
+            setSupportsShare(typeof navigator !== 'undefined' && 'share' in navigator);
+        });
+        return () => cancelAnimationFrame(handle);
     }, []);
 
     const encodedUrl = encodeURIComponent(fullUrl);
@@ -85,14 +88,18 @@ function VerticalSocialShare({ url, title, description }: VerticalSocialSharePro
             try {
                 await navigator.share({ title, text: description, url: fullUrl });
                 return;
-            } catch (err) { }
+            } catch {
+                /* fallback */
+            }
         }
         if (typeof navigator !== 'undefined' && 'clipboard' in navigator) {
             try {
                 await navigator.clipboard.writeText(fullUrl);
                 alert('Enlace copiado al portapapeles. Abre Instagram y pégalo en tu publicación.');
                 return;
-            } catch (err) { }
+            } catch {
+                /* fallback */
+            }
         }
         window.open(fullUrl, '_blank', 'noopener,noreferrer');
     };
@@ -102,14 +109,18 @@ function VerticalSocialShare({ url, title, description }: VerticalSocialSharePro
             try {
                 await navigator.share({ title, text: description, url: fullUrl });
                 return;
-            } catch (err) { }
+            } catch {
+                /* fallback */
+            }
         }
         if (typeof navigator !== 'undefined' && 'clipboard' in navigator) {
             try {
                 await navigator.clipboard.writeText(fullUrl);
                 alert('Enlace copiado al portapapeles. Abre TikTok y pégalo en tu publicación o bio.');
                 return;
-            } catch (err) { }
+            } catch {
+                /* fallback */
+            }
         }
         window.open(fullUrl, '_blank', 'noopener,noreferrer');
     };

@@ -1,22 +1,21 @@
-import { Link } from '@inertiajs/react';
-import DocumentsCarousel from '@/components/documents/DocumentsCarousel';
+import { motion, easeOut } from "framer-motion";
+import React from 'react';
 import { EjesSection, FaqAccordion, Grid, GridItem, ScrollingBanner,  AdModal } from '@/components';
-import { CustomBulletin } from '@/components/ui/bulletin/CustomBulletin';
+import DocumentsCarousel from '@/components/documents/DocumentsCarousel';
 import PressCarousel from '@/components/press/PressCarousel';
 import AnimatedSectionTitle from '@/components/ui/AnimatedSectionTitle';
+import CustomBlogCard from '@/components/ui/card/CustomBlogCard';
 import ContainerSingle from '@/components/ui/container/ContainerSingle';
 import ContainerTodo from '@/components/ui/container/ContainerTodo';
-import CustomBlogCard from '@/components/ui/card/CustomBlogCard';
-import SectionLogo from '@/components/ui/logo/SectionLogo';
-import SectionVideo from '@/components/ui/section/SectionVideo';
 import DirectiveGrid from '@/components/ui/grid/DirectiveGrid';
+import SectionLogo from '@/components/ui/logo/SectionLogo';
 import QRPopup from '@/components/ui/popup/QRPopup';
+import SectionVideo from '@/components/ui/section/SectionVideo';
 import HeroSection from '@/components/ui/sections/Hero';
 import StatisticsSection from '@/components/ui/statistics/StatisticsSection';
-import AppLayout from '@/layouts/AppLayout';
 import { defaultLogos } from '@/data/logos';
+import AppLayout from '@/layouts/AppLayout';
 import { useLocale, useTranslations } from '@/lib/i18n';
-import { motion, easeOut } from "framer-motion";
 
 interface HomeProps {
     latestPress: any[];

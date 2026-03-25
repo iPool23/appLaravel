@@ -1,8 +1,4 @@
-'use client';
-
-import { useEffect } from 'react';
-import Script from 'next/script';
-import { getStoredConsent } from '@/lib/cookieConsent';
+import React, { useEffect } from 'react';
 
 const GA_MEASUREMENT_ID = 'G-QX9SV9GH3Q';
 
@@ -12,28 +8,22 @@ const GA_MEASUREMENT_ID = 'G-QX9SV9GH3Q';
  */
 export function GoogleAnalytics() {
     useEffect(() => {
-        // Verificar si ya hay consentimiento guardado
-        const storedConsent = getStoredConsent();
+        // Cargar el script de Google Tag (gtag.js)
+        const script = document.createElement('script');
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        script.async = true;
+        document.head.appendChild(script);
 
-        if (storedConsent) {
-            // Si ya hay consentimiento guardado, actualizarlo
-            if (window.gtag) {
-                window.gtag('consent', 'update', {
-                    ad_storage: storedConsent.ad_storage,
-                    ad_user_data: storedConsent.ad_user_data,
-                    ad_personalization: storedConsent.ad_personalization,
-                    analytics_storage: storedConsent.analytics_storage,
-                });
-            }
-        }
+        return () => {
+            document.head.removeChild(script);
+        };
     }, []);
 
     return (
         <>
             {/* Script de inicialización de Consent Mode - DEBE ir ANTES de gtag.js */}
-            <Script
+            <script
                 id="google-consent-mode-init"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
             window.dataLayer = window.dataLayer || [];
@@ -41,11 +31,11 @@ export function GoogleAnalytics() {
             
             // Configuración por defecto de Consent Mode (TODO DENEGADO hasta que usuario acepte)
             gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'ad_user_data': 'denied',
-              'ad_personalization': 'denied',
-              'analytics_storage': 'denied',
-              'wait_for_update': 500
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'wait_for_update': 500
             });
             
             // Habilitar modo avanzado (envía pings anónimos)
@@ -55,16 +45,9 @@ export function GoogleAnalytics() {
                 }}
             />
 
-            {/* Google Tag (gtag.js) */}
-            <Script
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-                strategy="afterInteractive"
-            />
-
             {/* Configuración de Google Analytics 4 */}
-            <Script
+            <script
                 id="google-analytics-config"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
             window.dataLayer = window.dataLayer || [];
@@ -73,15 +56,15 @@ export function GoogleAnalytics() {
             
             // Configuración principal de GA4
             gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-              // Google Signals (datos demográficos e intereses)
-              allow_google_signals: true,
-              allow_ad_personalization_signals: true,
-              // Opciones de privacidad
-              anonymize_ip: true,
-              cookie_flags: 'SameSite=None;Secure',
-              // Debugging (remover en producción)
-              debug_mode: false
+                page_path: window.location.pathname,
+                // Google Signals (datos demográficos e intereses)
+                allow_google_signals: true,
+                allow_ad_personalization_signals: true,
+                // Opciones de privacidad
+                anonymize_ip: true,
+                cookie_flags: 'SameSite=None;Secure',
+                // Debugging (remover en producción)
+                debug_mode: false
             });
           `,
                 }}
@@ -97,8 +80,8 @@ export const sendGAEvent = (
     eventName: string,
     parameters?: Record<string, any>
 ) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('event', eventName, parameters);
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', eventName, parameters);
     }
 };
 
@@ -106,8 +89,8 @@ export const sendGAEvent = (
  * Hook para rastrear vistas de página
  */
 export const sendPageView = (url: string) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('config', GA_MEASUREMENT_ID, {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('config', GA_MEASUREMENT_ID, {
             page_path: url,
         });
     }
