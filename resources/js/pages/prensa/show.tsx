@@ -312,8 +312,8 @@ export default function PressShowPage({ article }: { article: any }) {
                     </div>
 
                     <div className="flex flex-col gap-10">
-                        {/* Header side: Title & Category & Summary */}
-                        <div className="max-w-5xl">
+                        {/* Header side: Title & Category & Summary — removed max-w-5xl to use full width */}
+                        <div className="w-full">
                             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900 dark:text-white">
                                 {article.title}
                             </h1>
@@ -334,9 +334,9 @@ export default function PressShowPage({ article }: { article: any }) {
                         </div>
 
                         {/* Visual block: Main Image and thumbnails side by side or stacked */}
-                        <div className="w-full">
+                        <div className="w-full flex flex-col items-center">
                             <div
-                                className="mb-6 rounded-2xl overflow-hidden relative group cursor-zoom-in shadow-2xl"
+                                className="w-full max-w-full mb-6 rounded-2xl overflow-hidden relative group cursor-zoom-in shadow-2xl bg-gray-100 dark:bg-gray-900 flex justify-center"
                                 onClick={() => openLightbox(images.indexOf(selectedImage))}
                                 role="button"
                                 tabIndex={0}
@@ -346,7 +346,7 @@ export default function PressShowPage({ article }: { article: any }) {
                                 <img
                                     src={selectedImage}
                                     alt={article.imageAlt || article.title}
-                                    className="w-full h-auto max-h-[75vh] object-contain bg-gray-100 dark:bg-gray-900 transition-transform duration-500 group-hover:scale-[1.01]"
+                                    className="h-auto max-h-[600px] object-contain transition-transform duration-500 group-hover:scale-[1.01]"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                                     <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2">
@@ -358,7 +358,7 @@ export default function PressShowPage({ article }: { article: any }) {
 
                             {/* Thumbnail strip */}
                             {images.length > 1 && (
-                                <div className="flex gap-3 overflow-x-auto pb-4 custom-scrollbar scroll-smooth">
+                                <div className="w-full flex gap-3 overflow-x-auto pb-4 custom-scrollbar scroll-smooth justify-center">
                                     {images.map((img, index) => (
                                         <button
                                             key={index}
@@ -397,7 +397,7 @@ export default function PressShowPage({ article }: { article: any }) {
                                     text-justify
                                     whitespace-pre-line
                                     text-[1.15rem] md:text-[1.25rem]
-                                    max-w-5xl
+                                    w-full
                                 ">
                                     {cleanContent}
                                 </div>
