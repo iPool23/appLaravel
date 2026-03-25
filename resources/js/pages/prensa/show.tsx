@@ -260,6 +260,7 @@ export default function PressShowPage({ article }: { article: any }) {
     const locale = useLocale();
     const images = extractImages(article.content || '', article.imageUrl);
     const [selectedImage, setSelectedImage] = useState(images[0]);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     // Lightbox state
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -267,6 +268,32 @@ export default function PressShowPage({ article }: { article: any }) {
     const openLightbox = useCallback((idx: number) => setLightboxIndex(idx), []);
     const closeLightbox = useCallback(() => setLightboxIndex(null), []);
     const navigateLightbox = useCallback((idx: number) => setLightboxIndex(idx), []);
+
+    // Carousel Logic: Auto-play every 5s
+    useEffect(() => {
+        if (images.length <= 1 || lightboxIndex !== null) return;
+
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [images.length, lightboxIndex]);
+
+    // Sync selectedImage with currentIndex
+    useEffect(() => {
+        setSelectedImage(images[currentIndex]);
+    }, [currentIndex, images]);
+
+    const handlePrev = useCallback((e?: React.MouseEvent) => {
+        e?.stopPropagation();
+        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    }, [images.length]);
+
+    const handleNext = useCallback((e?: React.MouseEvent) => {
+        e?.stopPropagation();
+        setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, [images.length]);
 
     const cleanContent = article.content?.replace(/\[IMAGE:(.*?)\]/g, '') || '';
 
@@ -312,7 +339,7 @@ export default function PressShowPage({ article }: { article: any }) {
                     </div>
 
                     <div className="flex flex-col gap-10">
-                        {/* Header side: Title & Category & Summary — removed max-w-5xl to use full width */}
+                        {/* Header side: Title & Category & Summary */}
                         <div className="w-full">
                             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900 dark:text-white">
                                 {article.title}
@@ -333,26 +360,55 @@ export default function PressShowPage({ article }: { article: any }) {
                             </p>
                         </div>
 
-                        {/* Visual block: Main Image and thumbnails side by side or stacked */}
+                        {/* Visual block: Carousel with navigation */}
                         <div className="w-full flex flex-col items-center">
                             <div
-                                className="w-full max-w-full mb-6 rounded-2xl overflow-hidden relative group cursor-zoom-in shadow-2xl bg-gray-100 dark:bg-gray-900 flex justify-center"
-                                onClick={() => openLightbox(images.indexOf(selectedImage))}
-                                role="button"
-                                tabIndex={0}
-                                aria-label="Ver imagen en pantalla completa"
-                                onKeyDown={(e) => e.key === 'Enter' && openLightbox(images.indexOf(selectedImage))}
+                                className="w-full max-w-full mb-6 rounded-2xl overflow-hidden relative group shadow-2xl bg-gray-100 dark:bg-gray-900 flex justify-center h-[400px] md:h-[600px]"
+                                role="region"
+                                aria-label="Carrusel de imágenes"
                             >
+                                {/* Main Image */}
                                 <img
                                     src={selectedImage}
                                     alt={article.imageAlt || article.title}
-                                    className="h-auto max-h-[600px] object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+                                    className="h-full w-full object-contain transition-all duration-700 opacity-100 scale-100"
+                                    key={selectedImage} // Force transition on source change
                                 />
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                                    <span className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-black/60 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2">
+
+                                {/* Overlays: Navigation Arrows (Only if >1 images) */}
+                                {images.length > 1 && (
+                                    <>
+                                        <button
+                                            onClick={handlePrev}
+                                            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-all duration-300"
+                                            aria-label="Imagen anterior"
+                                        >
+                                            <FaChevronLeft className="w-5 h-5" />
+                                        </button>
+                                        <button
+                                            onClick={handleNext}
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-all duration-300"
+                                            aria-label="Imagen siguiente"
+                                        >
+                                            <FaChevronRight className="w-5 h-5" />
+                                        </button>
+                                    </>
+                                )}
+
+                                {/* Bottom Overlay: Zoom & Counter */}
+                                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-between items-end">
+                                    <button
+                                        onClick={() => openLightbox(currentIndex)}
+                                        className="bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-white/40 transition-colors"
+                                    >
                                         <FaSearchPlus className="w-4 h-4" />
                                         Ver en pantalla completa
-                                    </span>
+                                    </button>
+                                    {images.length > 1 && (
+                                        <span className="text-white/80 text-sm font-medium bg-black/40 px-3 py-1 rounded-full">
+                                            {currentIndex + 1} / {images.length}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
 
@@ -362,15 +418,12 @@ export default function PressShowPage({ article }: { article: any }) {
                                     {images.map((img, index) => (
                                         <button
                                             key={index}
-                                            onClick={() => {
-                                                setSelectedImage(img);
-                                                openLightbox(index);
-                                            }}
-                                            aria-label={`Ver imagen ${index + 1} en pantalla completa`}
+                                            onClick={() => setCurrentIndex(index)}
+                                            aria-label={`Ver imagen ${index + 1}`}
                                             className={`flex-shrink-0 w-32 h-24 md:w-40 md:h-28 rounded-xl overflow-hidden transition-all duration-300 relative group ${
-                                                selectedImage === img
-                                                    ? 'ring-4 ring-cb-500 scale-105 shadow-lg'
-                                                    : 'opacity-70 hover:opacity-100 hover:scale-105 grayscale hover:grayscale-0'
+                                                currentIndex === index
+                                                    ? 'ring-4 ring-cb-500 scale-105 shadow-lg opacity-100 grayscale-0'
+                                                    : 'opacity-60 hover:opacity-100 hover:scale-105 grayscale hover:grayscale-0'
                                             }`}
                                         >
                                             <img
@@ -378,16 +431,13 @@ export default function PressShowPage({ article }: { article: any }) {
                                                 alt={`Imagen ${index + 1}`}
                                                 className="w-full h-full object-cover"
                                             />
-                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-200 flex items-center justify-center">
-                                                <FaExpand className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                                            </div>
                                         </button>
                                     ))}
                                 </div>
                             )}
                         </div>
 
-                        {/* Article Content: keeps a max-width for line length readability, but parent is full width */}
+                        {/* Article Content */}
                         <div className="w-full">
                             <article className="prose dark:prose-invert max-w-none">
                                 <div className="
