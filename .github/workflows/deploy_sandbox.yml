@@ -1,0 +1,33 @@
+name: Deploy to Bluehost on push to sandbox
+
+on:
+  push:
+    branches:
+      - sandbox
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH and run update script
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            cd ${{ secrets.PROJECT_PATH_SANDBOX }}
+            echo "Conectado al servidor en $(pwd)"
+            chmod +x update-project-app-sandbox.sh
+            ./update-project-app-sandbox.sh
+            echo "Despliegue completado: $(date)"
+          debug: true
+          use_insecure_cipher: true
+          cipher: aes128-cbc
+          envs: >-
+            KEX_ALGORITHMS=diffie-hellman-group-exchange-sha256 
