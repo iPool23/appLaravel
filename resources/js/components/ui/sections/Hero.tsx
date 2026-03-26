@@ -5,16 +5,16 @@ import { HeroNavigation } from "./HeroNavigation"
 
 const slides = [
     {
-        image: "/imgs/carousel/2.webp",
-        badge: "Trujillo",
-        title: "César Acuña como Alcalde de Trujillo",
-        description: "Como alcalde de Trujillo en dos periodos consecutivos (2007-2010 y 2011-2014), donde impulsó obras emblemáticas en infraestructura, educación y salud, donando el 100% de su sueldo durante sus dos periodos y enfocándose en el desarrollo regional.",
-    },
-    {
         image: "/imgs/carousel/1.webp",
         badge: "Trujillo",
         title: "César Acuña como Alcalde de Trujillo",
         description: "Lideró la ejecución de más de 320 obras públicas, priorizando la igualdad y el progreso, y renunció en 2014 para postularse como gobernador regional.",
+    },
+    {
+        image: "/imgs/carousel/2.webp",
+        badge: "Trujillo",
+        title: "César Acuña como Alcalde de Trujillo",
+        description: "Como alcalde de Trujillo en dos periodos consecutivos (2007-2010 y 2011-2014), donde impulsó obras emblemáticas en infraestructura, educación y salud, donando el 100% de su sueldo durante sus dos periodos y enfocándose en el desarrollo regional.",
     },
     {
         image: "/imgs/carousel/3.webp",
@@ -51,27 +51,37 @@ export default function HeroSection() {
 
     return (
         <div id="hero" className="relative h-[95vh] w-full overflow-hidden bg-cb-default">
-            <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
-                style={{
-                    backgroundImage: `url('${slides[currentSlide].image}')`,
-                }}
-                role="img"
-                aria-label={slides[currentSlide].title}
-            >
-                <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/50" />
-            </div>
+            {slides.map((slide, index) => (
+                <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out will-change-opacity ${
+                        currentSlide === index ? "opacity-100 z-10" : "opacity-0 z-0"
+                    }`}
+                >
+                    <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-full object-cover"
+                        // @ts-ignore - Improved LCP by setting fetch priority
+                        fetchpriority={index === 0 ? "high" : "low"}
+                        loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/50" />
+                </div>
+            ))}
 
-            <div className="absolute inset-0 flex flex-col items-start justify-end pb-24 md:pb-36 container mx-auto text-white px-6 md:px-0">
-                <span className="px-4 py-2 bg-cb-default rounded-full font-bold mb-2 text-sm md:text-base">
-                    {slides[currentSlide].badge}
-                </span>
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-sans mb-4 leading-tight px-4 py-2 backdrop-blur-sm rounded-lg border border-gray-400/30">
-                    {slides[currentSlide].title}
-                </h1>
-                <p className="text-base md:text-lg lg:text-xl text-white font-semibold max-w-2xl md:max-w-3xl lg:max-w-5xl px-4 py-3 backdrop-blur-sm rounded-lg border border-gray-400/30">
-                    {slides[currentSlide].description}
-                </p>
+            <div className="absolute inset-0 z-20 flex flex-col items-start justify-end pb-24 md:pb-36 container mx-auto text-white px-6 md:px-0 pointer-events-none">
+                <div className="pointer-events-auto flex flex-col items-start px-6 md:px-0">
+                    <span className="px-4 py-2 bg-cb-default rounded-full font-bold mb-2 text-sm md:text-base">
+                        {slides[currentSlide].badge}
+                    </span>
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-sans mb-4 leading-tight px-4 py-2 backdrop-blur-sm rounded-lg border border-gray-400/30">
+                        {slides[currentSlide].title}
+                    </h1>
+                    <p className="text-base md:text-lg lg:text-xl text-white font-semibold max-w-2xl md:max-w-3xl lg:max-w-5xl px-4 py-3 backdrop-blur-sm rounded-lg border border-gray-400/30">
+                        {slides[currentSlide].description}
+                    </p>
+                </div>
             </div>
 
             <HeroNavigation
