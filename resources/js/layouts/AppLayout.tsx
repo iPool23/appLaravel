@@ -1,6 +1,7 @@
 import { Head } from '@inertiajs/react';
 import { usePage } from '@inertiajs/react';
 import type { PropsWithChildren, ReactNode } from 'react';
+import { CookieConsent } from '@/components/CookieConsent';
 import { Footer } from '@/components/ui/footer/Footer';
 import { ContactTopBar } from '@/components/ui/menu/ContactTopBar';
 import { Menu } from '@/components/ui/menu/Menu';
@@ -90,6 +91,9 @@ export default function AppLayout({
                 <div className="relative z-20 bg-white dark:bg-cb-full">
                     <Footer />
                 </div>
+                
+                {/* Cookie Consent Banner */}
+                <CookieConsent />
             </div>
         </>
     );

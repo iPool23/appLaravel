@@ -79,6 +79,39 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+        <!-- Google Analytics 4 (Consent Mode v2) -->
+        @if(env('VITE_GOOGLE_ANALYTICS_ID'))
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+
+                // Default consent (denied until accepted)
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied',
+                    'wait_for_update': 500
+                });
+
+                // Advanced privacy
+                gtag('set', 'ads_data_redaction', true);
+                gtag('set', 'url_passthrough', true);
+            </script>
+
+            <!-- Load gtag.js -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GOOGLE_ANALYTICS_ID') }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', "{{ env('VITE_GOOGLE_ANALYTICS_ID') }}", {
+                    anonymize_ip: true,
+                    cookie_flags: 'SameSite=None;Secure'
+                });
+            </script>
+        @endif
+
         @viteReactRefresh
         @vite(['resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
         @inertiaHead
