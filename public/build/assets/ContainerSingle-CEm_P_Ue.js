@@ -1,1 +1,0 @@
-import{j as m}from"./app-D8W6lNq9.js";import{c as n}from"./compiler-runtime-CNPUpbOa.js";/* empty css            */function l(r){const t=n.c(3),{children:e,className:i}=r,o=`py-8 sm:py-12 md:py-16 ${i}`;let s;return t[0]!==e||t[1]!==o?(s=m.jsx("div",{className:o,children:e}),t[0]=e,t[1]=o,t[2]=s):s=t[2],s}export{l as default};
