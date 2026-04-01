@@ -1,4 +1,8 @@
 // ** Components
+// * Analytics & Tracking
+export * from "./CookieConsent";
+export { default as GoogleAnalytics } from "./GoogleAnalytics.server";
+export { default as GoogleAnalyticsClient } from "./GoogleAnalytics.client";
 
 // * WhatsApp Channel Button
 

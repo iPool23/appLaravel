@@ -104,7 +104,7 @@ class ContactoController extends Controller
                                     <p><strong>1. Afiliación presencial (Militante regular en Lima)</strong><br>
                                     Entrega tu ficha física original en nuestra sede central:<br>
                                     🏠 <em>Av. de la Policía N.º 643, Jesús María, Lima.</em><br>
-                                    ⏰ Horario: Lunes a Sábado, de 9:00 a. m. a 6:00 p. m.</p>
+                                    ⏰ Horario: Lunes a Viernes, de 9:00 a. m. a 6:00 p. m.</p>
                                 </div>
 
                                 <div style='margin-bottom:20px;'>

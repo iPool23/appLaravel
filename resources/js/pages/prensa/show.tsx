@@ -2,7 +2,7 @@
 
 import { Link } from '@inertiajs/react';
 import { useState, useEffect, useCallback } from 'react';
-import { FaArrowLeft, FaWhatsapp, FaShare, FaChevronLeft, FaChevronRight, FaTimes, FaExpand, FaSearchPlus } from 'react-icons/fa';
+import { FaArrowLeft, FaWhatsapp, FaShare, FaChevronLeft, FaChevronRight, FaTimes, FaSearchPlus } from 'react-icons/fa';
 import FacebookIcon from '@/components/svg/FacebookIcon';
 import InstagramIcon from '@/components/svg/InstagramIcon';
 import LinkedInIcon from '@/components/svg/LinkedInIcon';

@@ -15,7 +15,7 @@ try {
     $userContent .= "<p>Puedes encontrar todos los formatos (AFI-01, AFI-02, etc.) en este enlace oficial:<br>";
     $userContent .= "<a href='https://drive.google.com/drive/folders/1iK-Ndxvkz_znpUCdbuxsV3f2mZHQwpQh?usp=sharing' style='color:#02509d; font-weight:bold; text-decoration:underline;'>Descargar Formatos de Afiliación (Google Drive)</a></p></div>";
     
-    $userContent .= "<p>📍 <strong>Sede Central:</strong> Av. de la Policía N.º 643, Jesús María, Lima.<br>⏰ Horario: Lunes a Sábado, 9:00 a. m. a 6:00 p. m.</p>";
+    $userContent .= "<p>📍 <strong>Sede Central:</strong> Av. de la Policía N.º 643, Jesús María, Lima.<br>⏰ Horario: Lunes a Viernes, 9:00 a. m. a 6:00 p. m.</p>";
 
     Mail::to('test-completo@app.pe')->send(new AppDefaultMail('🚀 TEST: Información de Afiliación APP (CON LINK)', $userContent));
     print "✅ Correo COMPLETO enviado. Revisa tu bandeja!\n";

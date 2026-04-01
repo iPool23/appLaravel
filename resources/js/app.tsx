@@ -1,4 +1,16 @@
-import { createInertiaApp } from '@inertiajs/react';
+import { createInertiaApp, router } from '@inertiajs/react';
+
+// Track page views on navigation (GA4)
+const GA_ID = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
+if (GA_ID) {
+    router.on('navigate', (event) => {
+        if (window.gtag) {
+            window.gtag('config', GA_ID, {
+                page_path: event.detail.page.url,
+            });
+        }
+    });
+}
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import React from 'react';
 import { createRoot } from 'react-dom/client';

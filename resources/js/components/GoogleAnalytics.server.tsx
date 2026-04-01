@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GA_MEASUREMENT_ID = 'G-QX9SV9GH3Q';
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GOOGLE_ANALYTICS_ID || 'G-QX9SV9GH3Q';
 
 /**
  * Server component: inyecta los scripts críticos en el <head>.

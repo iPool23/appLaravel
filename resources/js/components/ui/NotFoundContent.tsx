@@ -16,7 +16,7 @@ export default function NotFoundContent({
     number = "404",
     title = "PÃGINA NO ENCONTRADA",
     text = "La pÃ¡gina que buscas no existe o ha sido movida.",
-    buttonTitle = "CONOCE NUESTRAS PROPUESTAS",
+    buttonTitle = "CONOCE NUESTROS EJES",
     buttonLink = "/ejes"
 }: NotFoundContentProps) {
     return (
