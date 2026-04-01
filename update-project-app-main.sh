@@ -21,7 +21,7 @@ fi
 
 # 2. Pull desde el remoto (rama main o master)
 echo "Haciendo git pull..."
-git pull origin sandbox
+git pull origin main
 
 # Si usas otra rama, cmbialo aqu:
 # git pull origin tu-rama
