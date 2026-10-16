@@ -168,7 +168,8 @@ class RecursoController extends Controller
             ? strip_tags($docDescription)
             : 'Descarga el documento oficial de Alianza Para el Progreso. Consulta nuestros comunicados, estatutos y materiales de transparencia institucional.';
 
-        $publishedDate = $publishedAt ? $publishedAt->format('Y-m-d') : null;
+        // Fecha en hora de Lima, igual que el panel de administración
+        $publishedDate = $publishedAt ? $publishedAt->copy()->setTimezone('America/Lima')->format('Y-m-d') : null;
         $isPublic      = (bool) ($file->isPublicDocument ?? false);
         $pageUrl       = rtrim(config('app.site_url'), '/') . '/' . $locale . '/descarga/' . $slug;
 
