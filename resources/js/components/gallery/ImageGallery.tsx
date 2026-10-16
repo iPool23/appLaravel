@@ -72,7 +72,7 @@ export default function ImageGallery({
                                     <div className="aspect-square relative">
                                         <img
                                             src={image.src}
-                                            alt={image.alt}
+                                            alt={image.alt} title={image.alt}
                                             loading="lazy"
                                             className={`w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 ${imageClassName}`}
                                         />
@@ -118,7 +118,7 @@ export default function ImageGallery({
                         <div className="relative w-full h-full max-w-5xl max-h-[90vh]">
                             <img
                                 src={selectedImage.src}
-                                alt={selectedImage.alt}
+                                alt={selectedImage.alt} title={selectedImage.alt}
                                 className="w-full h-full object-contain"
                             />
                         </div>

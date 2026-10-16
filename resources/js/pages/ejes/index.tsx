@@ -36,6 +36,7 @@ export default function EjesPage() {
 
             <ContainerSingle className="bg-gray-50 dark:bg-cb-full">
                 <AnimatedSectionTitle
+                        as="h1"
                     smallTitle="2026 - 2031"
                     mainTitleSegments={getTitleSegments(locale)}
                 />

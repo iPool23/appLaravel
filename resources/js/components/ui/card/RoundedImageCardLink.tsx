@@ -52,7 +52,7 @@ export default React.memo(function RoundedImageCardLink({
             <div className="rounded-t-none rounded-b-full w-[220px] h-[220px]">
               <img
                 src={src}
-                alt={centerText || 'Profile image'}
+                alt={centerText || 'Profile image'} title={centerText || 'Profile image'}
                 width={imageSizes.congressman.width}
                 height={imageSizes.congressman.height}
                 loading={loading}

@@ -13,7 +13,19 @@ interface FileData {
     isPublicDocument?: boolean;
 }
 
-export default function DescargaPage({ file }: { file: FileData }) {
+function formatPublishedDate(value?: string | null): string | null {
+    if (!value) return null;
+    const [year, month, day] = value.split('-').map(Number);
+    if (!year || !month || !day) return null;
+    return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('es-PE', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC',
+    });
+}
+
+export default function DescargaPage({ file, publishedAt }: { file: FileData; publishedAt?: string | null }) {
     const { data, setData, post, processing, errors } = useForm({
         email: '',
         password: '',
@@ -21,17 +33,30 @@ export default function DescargaPage({ file }: { file: FileData }) {
     });
 
     const isDirectDownload = file.isPublicDocument || !file.filePath.includes('descarga-protegida');
+    const publishedLabel = formatPublishedDate(publishedAt);
 
     return (
-        <AppLayout title={file.name} robots="noindex,nofollow">
+        <AppLayout
+            title={file.name}
+            type="article"
+            publishedTime={publishedAt ?? undefined}
+            robots={file.isPublicDocument ? 'index,follow' : 'noindex,nofollow'}
+        >
             <ContainerSingle className="pt-20">
                 <ContainerTodo>
                     <AnimatedSectionTitle
+                        as="h1"
                         smallTitle="Archivos Públicos"
                         mainTitleSegments={[
                             { text: file.name.toUpperCase(), breakAfter: false },
                         ]}
                     />
+
+                    {publishedLabel && (
+                        <p className="text-cb-600 dark:text-cb-300 text-center mb-6 text-base font-medium">
+                            Publicado el <time dateTime={publishedAt ?? undefined}>{publishedLabel}</time>
+                        </p>
+                    )}
 
                     {file.description && (
                         <p className="text-cb-600 dark:text-cb-300 text-center mb-10 max-w-2xl mx-auto text-lg leading-relaxed">

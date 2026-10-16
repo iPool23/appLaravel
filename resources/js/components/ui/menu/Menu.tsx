@@ -121,7 +121,7 @@ export const Menu = ({ className = "" }: MenuProps) => {
               <Link href={`/${currentLanguage}`}>
                 <img
                   src={mounted && currentTheme === "dark" ? "/imgs/logo/logo-white.webp" : "/imgs/logo/logo.webp"}
-                  alt="Logo Alianza Para el Progreso"
+                  alt="Logo Alianza Para el Progreso" title="Logo Alianza Para el Progreso"
                   width={140}
                   height={47}
                   className="filter transition-all duration-300 sm:w-[150px] sm:h-[50px] md:w-[160px] md:h-[53px]"

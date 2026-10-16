@@ -14,6 +14,8 @@ interface TitleProps {
   color?: string;
   fontWeight?: 'light' | 'normal' | 'medium' | 'bold';
   h1Class?: string;
+  /** Nivel semántico del encabezado. Un solo h1 por página; por defecto h2. */
+  as?: 'h1' | 'h2' | 'h3' | 'p';
 }
 
 export const Title = ({
@@ -24,6 +26,7 @@ export const Title = ({
   color = "!text-cb-800 dark:!text-cb-100",
   fontWeight = 'bold',
   h1Class = '',
+  as: Tag = 'h2',
 }: TitleProps) => {
   const fontSizeClasses = {
     'sm': 'text-sm',
@@ -54,7 +57,7 @@ export const Title = ({
             {segment.text}
           </span>
           {index < segments.length - 1 && !segment.breakAfter && ' '}
-          {segment.breakAfter && <br />}
+          {segment.breakAfter && (<>{' '}<br /></>)}
         </React.Fragment>
       ));
     } else {
@@ -62,9 +65,13 @@ export const Title = ({
     }
   };
 
+  // No emitir encabezados vacíos (mala señal para SEO y lectores de pantalla)
+  const hasContent = segments?.length ? segments.some((segment) => segment.text.trim()) : Boolean(title?.trim());
+  if (!hasContent) return null;
+
   return (
     <div className={`${className}`}>
-      <h1
+      <Tag
         className={`
           ${fontWeight === 'bold' ? 'font-gotham-bold' : ''}
           antialiased 
@@ -78,7 +85,7 @@ export const Title = ({
         `}
       >
         {renderContent()}
-      </h1>
+      </Tag>
     </div>
   );
 };

@@ -1,0 +1,44 @@
+{
+    "specVersion": "1.0",
+    "host": {
+        "displayName": "Alianza Para el Progreso (APP) - Sitio oficial",
+        "identifier": "did:web:www.app.pe",
+        "documentationUrl": "https://www.app.pe/llms.txt",
+        "logoUrl": "https://www.app.pe/imgs/logo/logo.webp"
+    },
+    "entries": [
+        {
+            "identifier": "urn:air:app.pe:skills:sitio-oficial",
+            "displayName": "Sitio oficial de Alianza Para el Progreso",
+            "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+            "url": "https://www.app.pe/agent-skills/app/SKILL.md",
+            "description": "Skill para agentes que explica cómo consultar el sitio oficial de Alianza Para el Progreso (APP), partido político del Perú fundado por César Acuña Peralta: historia, ejes de gobierno, bancada, voceros, noticias y comunicados oficiales, documentos públicos descargables, afiliación y datos de contacto, mediante llms.txt, sitemaps por tipo y páginas con JSON-LD.",
+            "tags": [
+                "alianza-para-el-progreso",
+                "app",
+                "peru",
+                "partido-politico",
+                "cesar-acuna",
+                "ejes-de-gobierno",
+                "comunicados",
+                "documentos-publicos",
+                "afiliacion"
+            ],
+            "capabilities": [
+                "BuscarComunicados",
+                "ListarDocumentosPublicos",
+                "ConsultarEjesDeGobierno",
+                "DatosContacto"
+            ],
+            "representativeQueries": [
+                "¿Qué es Alianza Para el Progreso y quién lo fundó?",
+                "¿Cuáles son los ejes de gobierno de APP?",
+                "¿Cuáles son los últimos comunicados oficiales de APP?",
+                "¿Dónde descargo los documentos públicos de APP?",
+                "¿Cómo contacto a Alianza Para el Progreso?"
+            ],
+            "version": "1.0.0",
+            "updatedAt": "2026-10-16T00:00:00Z"
+        }
+    ]
+}

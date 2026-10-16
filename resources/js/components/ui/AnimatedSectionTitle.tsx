@@ -13,6 +13,8 @@ interface AnimatedSectionTitleProps {
     className?: string;
     href?: string;
     titleClassName?: string;
+    /** Nivel del título principal (h1 solo en el título principal de la página). */
+    as?: 'h1' | 'h2' | 'h3';
 }
 
 const AnimatedSectionTitle: React.FC<AnimatedSectionTitleProps> = ({
@@ -21,7 +23,8 @@ const AnimatedSectionTitle: React.FC<AnimatedSectionTitleProps> = ({
     showLine = true,
     className = "",
     href,
-    titleClassName = ""
+    titleClassName = "",
+    as = 'h2'
 }) => {
     // Variantes de animación para los títulos
     const titleVariants = {
@@ -94,6 +97,7 @@ const AnimatedSectionTitle: React.FC<AnimatedSectionTitleProps> = ({
                         <Title
                             title={smallTitle}
                             fontSize="md"
+                            as="p"
                             className="tracking-widest uppercase transition-all duration-300 group-hover:text-cr-600 dark:group-hover:text-cr-400 group-hover:scale-105"
                             color="text-cr-default dark:text-cr-500"
                         />
@@ -103,6 +107,7 @@ const AnimatedSectionTitle: React.FC<AnimatedSectionTitleProps> = ({
                     <Title
                         title={smallTitle}
                         fontSize="md"
+                        as="p"
                         className="tracking-widest uppercase"
                         color="text-cr-default dark:text-cr-500"
                     />
@@ -116,6 +121,7 @@ const AnimatedSectionTitle: React.FC<AnimatedSectionTitleProps> = ({
                 <Title
                     segments={mainTitleSegments}
                     fontSize="3xl"
+                    as={as}
                     className="tracking-widest uppercase"
                     color="text-cb-default dark:text-cb-200"
                 />

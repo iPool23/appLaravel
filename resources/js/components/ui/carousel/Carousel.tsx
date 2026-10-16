@@ -129,7 +129,7 @@ export default function Carousel() {
                             >
                                 <img
                                     src={slide.image || "/imgs/placeholder.webp"}
-                                    alt={slide.alt || `Cesar Acuña ${index + 1}`}
+                                    alt={slide.alt || `Cesar Acuña ${index + 1}`} title={slide.alt || `Cesar Acuña ${index + 1}`}
                                     onLoad={() => handleImageLoad(index)}
                                     // @ts-ignore
                                     fetchPriority={index === 0 ? "high" : "auto"}

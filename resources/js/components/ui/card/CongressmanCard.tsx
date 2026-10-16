@@ -50,7 +50,7 @@ export default function CongressmanCard({ src, name, region, socialLinks }: Cong
                         <div className="rounded-t-none rounded-b-full w-[220px] h-[220px]">
                             <img
                                 src={src}
-                                alt={name}
+                                alt={name} title={name}
                                 className="rounded-t-none rounded-b-full w-[220px] h-[220px] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
                             />
                         </div>

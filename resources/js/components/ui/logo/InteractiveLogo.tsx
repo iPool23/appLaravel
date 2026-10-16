@@ -62,7 +62,7 @@ export const InteractiveLogo = ({ src, alt, width = 180, height = 180, href = "/
                     onMouseLeave={() => setIsHovered(false)}
                 />
                 {/* @ts-ignore */}
-                <img src={src} alt={alt} width={1} height={1} fetchPriority="high" className="hidden" />
+                <img src={src} alt={alt} title={alt} width={1} height={1} fetchPriority="high" className="hidden" />
             </div>
         </Link>
     );

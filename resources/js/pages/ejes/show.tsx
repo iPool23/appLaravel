@@ -46,6 +46,7 @@ export default function EjeShowPage({ slug }: { slug: string }) {
 
                             <header className="mb-12">
                                 <Title
+                                    as="h1"
                                     title={eje.title}
                                     fontSize="4xl"
                                     className="tracking-tight mb-6 leading-tight"
@@ -73,7 +74,7 @@ export default function EjeShowPage({ slug }: { slug: string }) {
                                                     <div className="relative w-full max-w-2xl aspect-video rounded-lg overflow-hidden shadow-lg">
                                                         <img
                                                             src={imageUrl}
-                                                            alt={`${eje.title} - Imagen ilustrativa`}
+                                                            alt={`${eje.title} - Imagen ilustrativa`} title={`${eje.title} - Imagen ilustrativa`}
                                                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                                                         />
                                                     </div>

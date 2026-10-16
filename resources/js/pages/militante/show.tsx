@@ -40,7 +40,7 @@ const ContactInfoCard = ({ militante }: { militante: Militant }) => (
                             <div className="w-14 h-16 relative flex items-center justify-center bg-cr-600 border-l border-cb-default shadow-sm shrink-0 overflow-hidden">
                                 <img
                                     src={militante.image}
-                                    alt={militante.region}
+                                    alt={militante.region} title={militante.region}
                                     className="object-contain invert p-2 w-full h-full"
                                 />
                             </div>
@@ -74,7 +74,7 @@ const ContactInfoCard = ({ militante }: { militante: Militant }) => (
                     <div className="w-full h-full min-h-[400px] relative items-center justify-center flex">
                         <img
                             src={militante.srcImage}
-                            alt={militante.region}
+                            alt={militante.region} title={militante.region}
                             className="max-h-full object-contain transform transition-transform hover:scale-105 duration-300"
                         />
                     </div>

@@ -41,7 +41,7 @@ export const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
                 <div className="absolute inset-0">
                     <img
                         src={imageUrl}
-                        alt={title}
+                        alt={title} title={title}
                         className="w-full h-full object-cover object-center"
                     />
                 </div>

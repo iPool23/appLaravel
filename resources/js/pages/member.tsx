@@ -65,7 +65,7 @@ export default function MemberPage({ slug }: { slug: string }) {
                                     <div className="rounded-t-none rounded-b-full w-[280px] h-[280px]">
                                         <img
                                             src={member.src}
-                                            alt={member.centerText}
+                                            alt={member.centerText} title={member.centerText}
                                             className="rounded-t-none rounded-b-full w-full h-full object-cover"
                                         />
                                     </div>
@@ -129,7 +129,7 @@ export default function MemberPage({ slug }: { slug: string }) {
                                     >
                                         <img
                                             src={member.signature}
-                                            alt="Firma"
+                                            alt="Firma" title="Firma"
                                             className="w-56 h-auto opacity-100 drop-shadow-xl dark:invert"
                                         />
                                     </motion.div>
@@ -165,6 +165,7 @@ export default function MemberPage({ slug }: { slug: string }) {
                                 <div className="pl-28 pb-20 flex flex-col justify-end h-full">
                                     <div className="animate-in slide-in-from-left duration-1000">
                                         <Title
+                                            as="h1"
                                             segments={
                                                 [
                                                     { text: member.centerText.split(" ")[0] || "", color: "text-white", breakAfter: true, },
@@ -198,7 +199,7 @@ export default function MemberPage({ slug }: { slug: string }) {
                                         
                                         <img
                                             src={member.src}
-                                            alt={member.centerText}
+                                            alt={member.centerText} title={member.centerText}
                                             className="relative z-10 h-[750px] w-auto object-contain transform scale-110 translate-y-4 transition-all duration-700 group-hover:scale-[1.12] group-hover:translate-y-2 drop-shadow-[0_45px_45px_rgba(0,0,0,0.6)]"
                                         />
                                         
@@ -206,7 +207,7 @@ export default function MemberPage({ slug }: { slug: string }) {
                                             <div className="absolute bottom-20 -right-20 z-20 animate-in fade-in slide-in-from-right-20 duration-1000 delay-700">
                                                 <img
                                                     src={member.signature}
-                                                    alt="Firma"
+                                                    alt="Firma" title="Firma"
                                                     className="w-80 h-auto drop-shadow-[0_20px_20px_rgba(0,0,0,0.4)] transition-all duration-500 hover:scale-110 hover:-rotate-3 dark:invert opacity-100"
                                                 />
                                             </div>

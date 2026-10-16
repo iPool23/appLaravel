@@ -44,6 +44,7 @@ export default function CustomBlogCard({
             <div className="mb-4">
                 <Title
                     title={titleTop}
+                    as="p"
                     fontSize="sm"
                     className="tracking-widest font-medium"
                     color="text-cb-default dark:text-cb-200"
@@ -70,7 +71,7 @@ export default function CustomBlogCard({
             {isImage && (
                 <img
                     src={imageUrl}
-                    alt="Campaign image"
+                    alt="Campaign image" title="Campaign image"
                     className="w-full h-auto"
                 />
             )}

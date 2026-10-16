@@ -22,7 +22,7 @@ export default function CustomCardImageNoBorder({
         <div className="overflow-hidden rounded-2xl mb-8">
           <img
             src={src}
-            alt="Campaign image"
+            alt="Campaign image" title="Campaign image"
             width={760}
             height={579}
             className="rounded-2xl transition-transform duration-300 ease-in-out hover:scale-110"

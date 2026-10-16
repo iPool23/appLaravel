@@ -106,7 +106,7 @@ export default function EjesSection({
                         >
                             <img
                                 src={imageUrl}
-                                alt={imageAlt}
+                                alt={imageAlt} title={imageAlt}
                                 width={550}
                                 height={800}
                                 loading="lazy"

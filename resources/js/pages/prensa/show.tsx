@@ -110,7 +110,7 @@ function Lightbox({ images, index, onClose, onNavigate, alt }: LightboxProps) {
             <div className="relative z-10 max-w-[90vw] max-h-[90vh] flex items-center justify-center">
                 <img
                     src={images[index]}
-                    alt={alt ?? `Imagen ${index + 1}`}
+                    alt={alt ?? `Imagen ${index + 1}`} title={alt ?? `Imagen ${index + 1}`}
                     className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl select-none"
                     draggable={false}
                 />
@@ -370,7 +370,7 @@ export default function PressShowPage({ article }: { article: any }) {
                                 {/* Main Image */}
                                 <img
                                     src={selectedImage}
-                                    alt={article.imageAlt || article.title}
+                                    alt={article.imageAlt || article.title} title={article.imageAlt || article.title}
                                     className="h-full w-full object-contain transition-all duration-700 opacity-100 scale-100"
                                     key={selectedImage} // Force transition on source change
                                 />
@@ -428,7 +428,7 @@ export default function PressShowPage({ article }: { article: any }) {
                                         >
                                             <img
                                                 src={img}
-                                                alt={`Imagen ${index + 1}`}
+                                                alt={`Imagen ${index + 1}`} title={`Imagen ${index + 1}`}
                                                 className="w-full h-full object-cover"
                                             />
                                         </button>

@@ -32,11 +32,73 @@
                 $metaImg = $baseUrl . '/' . ltrim($metaImg, '/');
             }
             $metaImg = str_replace('http://', 'https://', $metaImg);
-            $metaUrl = str_replace('http://', 'https://', url()->current());
+            $siteUrl = rtrim(config('app.site_url'), '/');
+            $metaUrl = $siteUrl . '/' . ltrim(request()->path() === '/' ? 'es' : request()->path(), '/');
+
+            // Canonical + hreflang (es / qu / x-default) servidos en el HTML inicial
+            $localeRest = null;
+            if (preg_match('#^/(es|qu)(/.*)?$#', parse_url($metaUrl, PHP_URL_PATH) ?: '', $m)) {
+                $localeRest = $m[2] ?? '';
+            }
+            $queryKeep = array_filter([
+                'type' => request()->query('type'),
+                'page' => (int) request()->query('page', 1) > 1 ? (int) request()->query('page') : null,
+            ]);
+            $querySuffix = $queryKeep ? '?' . http_build_query($queryKeep) : '';
+            $canonicalUrl = $metaUrl . $querySuffix;
+
+            $organizationLd = [
+                '@context' => 'https://schema.org',
+                '@graph' => [
+                    [
+                        '@type' => 'PoliticalParty',
+                        '@id' => $siteUrl . '/#organization',
+                        'name' => 'Alianza Para el Progreso',
+                        'alternateName' => 'APP',
+                        'url' => $siteUrl . '/es',
+                        'logo' => $siteUrl . '/imgs/logo/logo.webp',
+                        'foundingDate' => '2001-12-08',
+                        'founder' => ['@type' => 'Person', 'name' => 'César Acuña Peralta', 'url' => 'https://www.cesaracuna.pe'],
+                        'telephone' => '+51-1-2024600',
+                        'address' => [
+                            '@type' => 'PostalAddress',
+                            'streetAddress' => 'Av. de la Policía 643',
+                            'addressLocality' => 'Jesús María, Lima',
+                            'addressCountry' => 'PE',
+                        ],
+                        'sameAs' => [
+                            'https://www.facebook.com/valientesdeapp',
+                            'https://twitter.com/APP_Peru',
+                            'https://www.instagram.com/alianzaparaelprogreso_peru/',
+                        ],
+                    ],
+                    [
+                        '@type' => 'WebSite',
+                        '@id' => $siteUrl . '/#website',
+                        'url' => $siteUrl . '/es',
+                        'name' => 'Alianza Para el Progreso',
+                        'inLanguage' => ['es-PE', 'qu-PE'],
+                        'publisher' => ['@id' => $siteUrl . '/#organization'],
+                    ],
+                ],
+            ];
+            $pageLd = $page['props']['metaSEO']['jsonLd'] ?? null;
         @endphp
 
         <title inertia>{{ $metaTitle }}</title>
         <meta name="description" content="{{ $metaDesc }}" inertia>
+        <link rel="canonical" href="{{ $canonicalUrl }}">
+        @if ($localeRest !== null)
+            <link rel="alternate" hreflang="es" href="{{ $siteUrl }}/es{{ $localeRest }}{{ $querySuffix }}">
+            <link rel="alternate" hreflang="qu" href="{{ $siteUrl }}/qu{{ $localeRest }}{{ $querySuffix }}">
+            <link rel="alternate" hreflang="x-default" href="{{ $siteUrl }}/es{{ $localeRest }}{{ $querySuffix }}">
+        @endif
+        <link rel="ai-catalog" href="/ai-catalog.json">
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+        <script type="application/ld+json">{!! json_encode($organizationLd, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+        @if ($pageLd)
+            <script type="application/ld+json">{!! json_encode($pageLd, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+        @endif
 
         <!-- OpenGraph / Facebook -->
         <meta property="og:type" content="{{ $metaType }}">

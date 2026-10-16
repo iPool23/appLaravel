@@ -1,0 +1,61 @@
+# Alianza Para el Progreso (APP)
+
+> Sitio oficial de Alianza Para el Progreso (APP), partido político del Perú fundado por César Acuña Peralta el 8 de diciembre de 2001. Reúne la historia del partido, sus ejes de gobierno, la bancada parlamentaria, voceros, noticias y comunicados oficiales, documentos públicos descargables, afiliación y datos de contacto.
+
+APP trabaja por un Perú con oportunidades, justicia social y progreso real para cada región. Su fundador y líder es César Acuña Peralta. El contenido está en español (es-PE) y quechua (qu-PE); las rutas llevan el prefijo de idioma `/es` o `/qu`. Sede: Av. de la Policía 643, Jesús María, Lima. Teléfono: (01) 202 4600.
+
+## Partido
+
+- [Inicio](https://www.app.pe/es): portal oficial con noticias, documentos públicos, ejes de gobierno y participación ciudadana.
+- [Historia](https://www.app.pe/es/historia): orígenes y trayectoria de APP desde su fundación en 2001.
+- [Fundador](https://www.app.pe/es/fundador): trayectoria y visión de César Acuña Peralta.
+- [Bancada](https://www.app.pe/es/bancada): representantes de APP en el Congreso de la República.
+- [Voceros](https://www.app.pe/es/voceros): voceros y portavoces oficiales.
+- [Afiliación](https://www.app.pe/es/afiliacion): requisitos y preguntas frecuentes para afiliarse (gratuito, mayores de 18 años, DNI vigente, verificación en el ROP del JNE).
+
+## Ejes de gobierno
+
+- [Ejes de gobierno](https://www.app.pe/es/ejes): los seis ejes de APP.
+- [Erradicar la pobreza](https://www.app.pe/es/ejes/erradicar-la-pobreza)
+- [Reforma de la seguridad ciudadana](https://www.app.pe/es/ejes/reforma-seguridad-ciudadana)
+- [Educación de calidad](https://www.app.pe/es/ejes/educacion-calidad)
+- [Salud pública y EsSalud para todos](https://www.app.pe/es/ejes/salud-publica-essalud-todos)
+- [Más empleo formal](https://www.app.pe/es/ejes/mas-empleo-formal)
+- [Lucha contra la corrupción](https://www.app.pe/es/ejes/lucha-contra-corrupcion)
+
+## Prensa y comunicados
+
+- [Sala de prensa](https://www.app.pe/es/prensa): notas de prensa y noticias de APP.
+- [Comunicados oficiales](https://www.app.pe/es/prensa?type=Comunicado): comunicados del partido (disponible también en quechua en `/qu/prensa`).
+
+## Documentos públicos y transparencia
+
+- [Documentos públicos](https://www.app.pe/es/documentos-publicos): estatutos, reglamentos, planes de gobierno y comunicados electorales en PDF.
+- Cada documento tiene su ficha en `https://www.app.pe/es/descarga/{slug}` con título, fecha de publicación y enlace de descarga directa.
+
+## Juventudes y organización
+
+- [Juventudes](https://www.app.pe/es/juventudes)
+- [EFOP](https://www.app.pe/es/efop): Escuela de Formación Política.
+- [Secretaría de la Mujer](https://www.app.pe/es/secretaria-de-la-mujer)
+- [Galería](https://www.app.pe/es/galeria) y [Eventos](https://www.app.pe/es/eventos)
+
+## Contacto
+
+- [Contacto](https://www.app.pe/es/contacto): formulario, teléfono (01) 202 4600 y sede en Lima.
+- [Boletín](https://www.app.pe/es/boletin): suscripción a las novedades del partido.
+- Redes oficiales: [Facebook](https://www.facebook.com/valientesdeapp), [X](https://twitter.com/APP_Peru), [Instagram](https://www.instagram.com/alianzaparaelprogreso_peru/).
+- [César Acuña Peralta](https://www.cesaracuna.pe): sitio oficial de su fundador.
+
+## Datos para agentes
+
+- [Sitemap](https://www.app.pe/sitemap.xml): índice de sitemaps por tipo (páginas, ejes, miembros, prensa, comunicados y documentos) con alternativas hreflang es/qu.
+- [Catálogo de agentes](https://www.app.pe/ai-catalog.json): catálogo Agent Registry Discovery (ARD) con las capacidades del sitio.
+- [Skill para agentes](https://www.app.pe/agent-skills/app/SKILL.md): cómo consultar el sitio y citar sus fuentes.
+- [robots.txt](https://www.app.pe/robots.txt): acceso permitido a los agentes de IA.
+
+## Optional
+
+- [Política de privacidad](https://www.app.pe/es/privacidad): tratamiento de datos personales.
+- [Términos y condiciones](https://www.app.pe/es/terminos): condiciones de uso del sitio.
+- [Política de seguridad](https://www.app.pe/es/security-policy)

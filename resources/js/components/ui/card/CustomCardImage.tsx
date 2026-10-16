@@ -66,7 +66,7 @@ export default function CustomCardImage({
           <div className="relative overflow-hidden h-56 md:h-64">
             <img
               src={src}
-              alt={centerText}
+              alt={centerText} title={centerText}
               loading="lazy"
               className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
             />

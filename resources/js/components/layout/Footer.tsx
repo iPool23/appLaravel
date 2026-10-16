@@ -35,7 +35,7 @@ export default function Footer() {
 function FooterCard({ href, text, image }: { href: string; text: string; image: string }) {
     return (
         <Link href={href} className="group relative block h-48 overflow-hidden rounded-3xl border border-white/10 lg:h-64">
-            <img src={image} alt={text} className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
+            <img src={image} alt={text} title={text} className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/45 transition group-hover:bg-black/25" />
             <span className="absolute inset-0 flex items-center justify-center text-3xl font-black uppercase tracking-tight text-white">
                 {text}

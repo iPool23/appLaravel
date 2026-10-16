@@ -59,7 +59,7 @@ export default function AppLayout({
                 {description ? <meta name="description" content={description} /> : null}
                 <meta name="keywords" content={finalKeywords} />
                 <meta name="robots" content={robots} />
-                <link rel="canonical" href={absoluteUrl} />
+                {/* canonical y hreflang se emiten en el servidor (app.blade.php) */}
                 <meta property="og:site_name" content={siteName} />
                 <meta property="og:locale" content={ogLocale} />
                 <meta property="og:type" content={type} />

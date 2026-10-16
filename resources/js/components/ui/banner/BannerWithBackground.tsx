@@ -39,7 +39,7 @@ export default function BannerWithBackground({
                 <div className="absolute inset-0">
                     <img
                         src={backgroundImage}
-                        alt="Fondo del banner"
+                        alt="Fondo del banner" title="Fondo del banner"
                         fetchPriority="high"
                         className="w-full h-full object-cover object-top"
                     />
@@ -51,6 +51,7 @@ export default function BannerWithBackground({
                     <div className="relative z-10 flex items-center justify-center text-center">
                         <Title
                             title={title}
+                            as="h1"
                             fontSize={titleFontSize}
                             className="tracking-tight font-bold max-w-4xl"
                             color={titleColor}

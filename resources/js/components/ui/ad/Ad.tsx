@@ -129,7 +129,7 @@ const Ad = ({
                             >
                                 <img
                                     src={src}
-                                    alt={title}
+                                    alt={title} title={title}
                                     width={600}
                                     height={200}
                                     className="w-full h-[120px] sm:h-[140px] md:h-[180px] lg:h-[200px] object-cover rounded-lg sm:rounded-xl shadow-lg border-t-2 border-cb-default"

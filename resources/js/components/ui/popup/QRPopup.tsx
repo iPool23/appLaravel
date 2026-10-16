@@ -69,7 +69,7 @@ export default function QRPopup({ documents }: QRPopupProps) {
                             <div className="flex items-center gap-2 sm:gap-3">
                                 <img
                                     src="/imgs/logo/logo-white.webp"
-                                    alt="Alianza Para El Progreso"
+                                    alt="Alianza Para El Progreso" title="Alianza Para El Progreso"
                                     width={100}
                                     height={32}
                                     className="opacity-90 sm:w-[120px] sm:h-[40px]"

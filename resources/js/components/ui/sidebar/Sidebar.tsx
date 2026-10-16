@@ -80,7 +80,7 @@ export const Sidebar = () => {
             <Link href={`/${currentLanguage}`} onClick={closeMenu} className="flex items-center">
               <img
                 src={mounted && currentTheme === "dark" ? "/imgs/logo/logo-white.webp" : "/imgs/logo/logo.webp"}
-                alt="Logo APP"
+                alt="Logo APP" title="Logo APP"
                 width={120}
                 height={40}
                 // @ts-ignore

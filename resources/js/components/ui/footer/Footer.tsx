@@ -29,7 +29,7 @@ export const Footer = () => {
                 src={"/imgs/footer/bannerSobreMi.webp"}
                 width={1000}
                 height={1000}
-                alt={"FUNDADOR"}
+                alt={"FUNDADOR"} title={"FUNDADOR"}
                 loading="lazy"
                 className="object-cover w-full h-full"
               />
@@ -72,7 +72,7 @@ const FooterContent = ({
         src={image}
         width={1000}
         height={1000}
-        alt={text}
+        alt={text} title={text}
         loading="lazy"
         className="object-cover w-full h-full"
       />

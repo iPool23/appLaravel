@@ -52,7 +52,7 @@ export default function SectionVideo({
                                 <div className="absolute inset-0 bg-linear-to-br from-cb-600 to-cb-800">
                                     <img
                                         src={`./imgs/webalianza.webp`}
-                                        alt={displayTitle}
+                                        alt={displayTitle} title={displayTitle}
                                         className="w-full h-full object-cover object-center"
                                     />
                                 </div>
@@ -115,7 +115,7 @@ export default function SectionVideo({
                             <GridItem colSpan={2}>
                                 <div className="flex items-center justify-center">
                                     <div className="relative w-24 h-24 rounded-full overflow-hidden">
-                                        <img src="/imgs/directive/cesar-acuna.webp" alt={displayAuthor} width={96} height={96} className="object-cover bg-cb-200" />
+                                        <img src="/imgs/directive/cesar-acuna.webp" alt={displayAuthor} title={displayAuthor} width={96} height={96} className="object-cover bg-cb-200" />
                                     </div>
                                 </div>
                             </GridItem>

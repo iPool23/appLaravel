@@ -36,7 +36,7 @@ export default React.memo(function RoundedImageCard({
             <div className="rounded-t-none rounded-b-full w-[220px] h-[220px]">
               <img
                 src={src}
-                alt={centerText || 'Profile image'}
+                alt={centerText || 'Profile image'} title={centerText || 'Profile image'}
                 loading={loading}
                 className="rounded-t-none rounded-b-full w-[220px] h-[220px] object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
               />

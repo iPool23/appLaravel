@@ -14,9 +14,16 @@ use App\Http\Controllers\MilitanteController;
 use App\Http\Controllers\ConsultaController;
 
 use App\Http\Controllers\ImageProxyController;
+use App\Http\Controllers\SitemapController;
 
 // Home / maps to default es
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Sitemaps: índice + uno pequeño por tipo de contenido
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('/sitemap-{type}.xml', [SitemapController::class, 'show'])
+	->where('type', '[a-z]+')
+	->name('sitemap.show');
 
 // Image proxy for og:image (publicly accessible, no locale prefix)
 Route::get('/meta-img', [ImageProxyController::class, 'show'])->name('meta-img');

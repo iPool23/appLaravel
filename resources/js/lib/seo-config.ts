@@ -5,7 +5,7 @@
 
 export const SEO_CONFIG = {
     siteName: 'Alianza Para el Progreso',
-    siteUrl:  'https://app.pe', // Update to actual production URL
+    siteUrl:  'https://www.app.pe',
     defaultLocale: 'es_PE',
     twitterHandle: '@APP_Peru', 
     organization: {

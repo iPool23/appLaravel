@@ -58,7 +58,7 @@ export default function ComunicadoCard({
                         <div className="w-24 h-24 rounded-2xl overflow-hidden relative shadow-md">
                             <img
                                 src={src}
-                                alt="Comunicado Image"
+                                alt="Comunicado Image" title="Comunicado Image"
                                 className="w-full h-full object-cover"
                             />
                         </div>

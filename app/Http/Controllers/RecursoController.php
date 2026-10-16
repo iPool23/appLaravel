@@ -131,10 +131,12 @@ class RecursoController extends Controller
 
         $docTitle       = null;
         $docDescription = null;
+        $publishedAt    = null;
 
         if ($file) {
             // ResourceFile found — take its name as title
-            $docTitle = $file->name ?? $file->originalName ?? null;
+            $docTitle    = $file->name ?? $file->originalName ?? null;
+            $publishedAt = $file->createdAt;
         }
 
         if (!$file) {
@@ -146,6 +148,7 @@ class RecursoController extends Controller
 
             $docTitle       = $doc->title;
             $docDescription = $doc->description;
+            $publishedAt    = $doc->publishedAt ?? $doc->createdAt;
 
             $file = (object) [
                 'id'               => $doc->id,
@@ -165,12 +168,32 @@ class RecursoController extends Controller
             ? strip_tags($docDescription)
             : 'Descarga el documento oficial de Alianza Para el Progreso. Consulta nuestros comunicados, estatutos y materiales de transparencia institucional.';
 
+        $publishedDate = $publishedAt ? $publishedAt->format('Y-m-d') : null;
+        $isPublic      = (bool) ($file->isPublicDocument ?? false);
+        $pageUrl       = rtrim(config('app.site_url'), '/') . '/' . $locale . '/descarga/' . $slug;
+
+        $jsonLd = $isPublic ? array_filter([
+            '@context'      => 'https://schema.org',
+            '@type'         => 'DigitalDocument',
+            'name'          => strip_tags((string) $docTitle),
+            'description'   => strip_tags((string) $metaDesc),
+            'url'           => $pageUrl,
+            'inLanguage'    => 'es-PE',
+            'datePublished' => $publishedDate,
+            'encodingFormat' => 'application/pdf',
+            'contentUrl'    => $file->filePath ?? null,
+            'publisher'     => ['@type' => 'PoliticalParty', 'name' => 'Alianza Para el Progreso'],
+        ]) : null;
+
         return Inertia::render('descarga', [
-            'file'    => $file,
-            'metaSEO' => [
+            'file'        => $file,
+            'publishedAt' => $publishedDate,
+            'metaSEO'     => [
                 'title'       => $metaTitle,
                 'description' => $metaDesc,
                 'image'       => asset('imgs/prensa/comunicadoDefault.jpg'),
+                'type'        => 'article',
+                'jsonLd'      => $jsonLd,
             ],
         ]);
     }

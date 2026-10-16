@@ -17,9 +17,9 @@ export default function TerminosPage() {
                 <ContainerTodo>
                     <div className="mx-auto max-w-4xl py-10">
                         <header className="mb-8">
-                            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                                 Términos de Uso
-                            </h1>
+                            </h2>
                             <p className="text-gray-600 dark:text-gray-400">
                                 Última actualización: {lastUpdated}
                             </p>

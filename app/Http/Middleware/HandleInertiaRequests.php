@@ -23,7 +23,7 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'name' => config('app.name'),
-            'appUrl' => config('app.url'),
+            'appUrl' => rtrim(config('app.site_url'), '/'),
             'locale' => $locale,
             'translations' => $translations,
             'flash' => [

@@ -153,7 +153,7 @@ export default function AdsList({ initialAds = [] }: AdsListProps) {
                                     {ad.imageUrl ? (
                                         <img
                                             src={ad.imageUrl}
-                                            alt={ad.title}
+                                            alt={ad.title} title={ad.title}
                                             width={400}
                                             height={128}
                                             className="w-full h-full object-cover aspect-video"

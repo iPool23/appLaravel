@@ -16,6 +16,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import '../css/app.css';
+import { SEO_CONFIG } from '@/lib/seo-config';
 
 class GlobalErrorBoundary extends React.Component<{children: React.ReactNode}, {hasError: boolean, error: Error | null}> {
   constructor(props: {children: React.ReactNode}) {
@@ -37,10 +38,14 @@ class GlobalErrorBoundary extends React.Component<{children: React.ReactNode}, {
   }
 }
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = SEO_CONFIG.siteName;
 
 createInertiaApp({
-    title: (title) => (title ? `${title} - ${appName}` : appName),
+    title: (title) => {
+        if (!title) return appName;
+        // Evita "… - Alianza Para el Progreso - Alianza Para el Progreso"
+        return title.toLowerCase().includes(appName.toLowerCase()) ? title : `${title} | ${appName}`;
+    },
     resolve: (name) =>
         resolvePageComponent(
             `./pages/${name}.tsx`,

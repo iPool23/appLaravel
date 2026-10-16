@@ -40,7 +40,7 @@ export default function ConsultaShow({ candidate }: Props) {
                                 <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-8 border-white dark:border-cb-full shadow-2xl overflow-hidden bg-white">
                                     <img
                                         src={candidate.foto_url || '/imgs/consulta/logoA.webp'}
-                                        alt={candidate.nombre_completo}
+                                        alt={candidate.nombre_completo} title={candidate.nombre_completo}
                                         className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
                                     />
                                 </div>
@@ -151,7 +151,7 @@ export default function ConsultaShow({ candidate }: Props) {
                                                 <div className="mb-8 -mx-8 -mt-8 overflow-hidden aspect-video">
                                                     <img
                                                         src={propuesta.imagen_referencia_url}
-                                                        alt={propuesta.titulo}
+                                                        alt={propuesta.titulo} title={propuesta.titulo}
                                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                                     />
                                                 </div>

@@ -54,6 +54,9 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    // URL pública canónica (canonical, hreflang, sitemaps, llms.txt). Independiente de APP_URL.
+    'site_url' => env('SITE_URL', 'https://www.app.pe'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

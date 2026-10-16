@@ -114,7 +114,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
                 ) : qrDataUrl ? (
                     <img 
                         src={qrDataUrl} 
-                        alt={`QR Code - ${getDisplayTitle()}`}
+                        alt={`QR Code - ${getDisplayTitle()}`} title={`QR Code - ${getDisplayTitle()}`}
                         width={size === 'sm' ? 128 : size === 'md' ? 192 : 256}
                         height={size === 'sm' ? 128 : size === 'md' ? 192 : 256}
                         className="w-full h-full object-contain rounded"

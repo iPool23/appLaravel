@@ -29,7 +29,7 @@ export default function ContentSection({
         <GridItem colSpan={6} className={`flex ${alignmentClasses[imgAreaPosition]} motion-translate-y-in-25 motion-duration-[2s] motion-ease-spring-smooth`}>
             <img
                 src={imageSrc}
-                alt={imageAlt}
+                alt={imageAlt} title={imageAlt}
                 width={760}
                 height={579}
                 className="rounded-2xl object-cover w-full h-auto max-w-[760px]"

@@ -60,7 +60,7 @@ export default function HeroSection() {
                 >
                     <img
                         src={slide.image}
-                        alt={slide.title}
+                        alt={slide.title} title={slide.title}
                         className="w-full h-full object-cover"
                         // @ts-ignore - Improved LCP by setting fetch priority
                         fetchpriority={index === 0 ? "high" : "low"}
@@ -75,9 +75,10 @@ export default function HeroSection() {
                     <span className="px-4 py-2 bg-cb-default rounded-full font-bold mb-2 text-sm md:text-base">
                         {slides[currentSlide].badge}
                     </span>
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-sans mb-4 leading-tight px-4 py-2 backdrop-blur-sm rounded-lg border border-gray-400/30">
+                    <h1 className="sr-only">Alianza Para el Progreso (APP): portal oficial del partido político del Perú</h1>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-sans mb-4 leading-tight px-4 py-2 backdrop-blur-sm rounded-lg border border-gray-400/30">
                         {slides[currentSlide].title}
-                    </h1>
+                    </h2>
                     <p className="text-base md:text-lg lg:text-xl text-white font-semibold max-w-2xl md:max-w-3xl lg:max-w-5xl px-4 py-3 backdrop-blur-sm rounded-lg border border-gray-400/30">
                         {slides[currentSlide].description}
                     </p>

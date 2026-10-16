@@ -132,7 +132,7 @@ export default function AdDisplay({ showOnHomepage = true, showOnAllPages = fals
                         {currentAd.imageUrl && (
                             <img
                                 src={currentAd.imageUrl}
-                                alt={currentAd.title}
+                                alt={currentAd.title} title={currentAd.title}
                                 width={600}
                                 height={200}
                                 className="w-[600px] h-[200px] object-cover border-t-2 border-cb-default rounded-b-xl shadow-lg mb-8"

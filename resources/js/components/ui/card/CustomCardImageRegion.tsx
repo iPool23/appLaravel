@@ -40,7 +40,7 @@ export default function CustomCardImageRegion({
                     <div className="w-6 h-6 sm:w-8 sm:h-8 text-white">
                       <img
                         src={image}
-                        alt="Icon"
+                        alt="Icon" title="Icon"
                         width={32}
                         height={32}
                         className="object-cover filter brightness-0 invert w-full h-full"
@@ -53,7 +53,7 @@ export default function CustomCardImageRegion({
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden">
                 <img
                   src={srcImage}
-                  alt={region}
+                  alt={region} title={region}
                   fill
                   sizes="(max-width: 640px) 128px, 160px"
                   className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
@@ -77,9 +77,9 @@ export default function CustomCardImageRegion({
                 </div>
               </div>
 
-              <h2 className="text-base sm:text-lg font-bold text-cb-default group-hover:text-cr-600 mb-2 leading-tight transition-colors duration-300">
+              <h3 className="text-base sm:text-lg font-bold text-cb-default group-hover:text-cr-600 mb-2 leading-tight transition-colors duration-300">
                 {region}
-              </h2>
+              </h3>
 
               <p className="text-xs sm:text-sm text-gray-600 mb-3 overflow-hidden" style={{
                 display: '-webkit-box',

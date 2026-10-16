@@ -73,6 +73,7 @@ export default function ContactoPage() {
             <ContainerSingle className="bg-white dark:bg-cb-full pt-12 pb-16 mt-8 md:mt-24">
                 <ContainerTodo>
                     <AnimatedSectionTitle
+                        as="h1"
                         smallTitle={t('title')}
                         mainTitleSegments={[{ text: t('title'), breakAfter: false }]}
                     />
