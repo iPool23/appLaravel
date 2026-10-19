@@ -45,10 +45,12 @@ export function DocumentCard({ doc, locale }: { doc: Document; locale: string })
         if (!d) return "";
         const date = typeof d === "string" ? new Date(d) : d;
         if (!date || isNaN(date.getTime())) return "";
+        // publishedAt se guarda a medianoche UTC: mostrarlo en UTC evita que salga un día antes en Perú
         return date.toLocaleDateString("es-PE", {
             day: "numeric",
             month: "long",
             year: "numeric",
+            timeZone: "UTC",
         });
     };
 

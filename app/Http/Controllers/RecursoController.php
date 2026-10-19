@@ -132,6 +132,7 @@ class RecursoController extends Controller
         $docTitle       = null;
         $docDescription = null;
         $publishedAt    = null;
+        $doc            = null;
 
         if ($file) {
             // ResourceFile found — take its name as title
@@ -168,8 +169,14 @@ class RecursoController extends Controller
             ? strip_tags($docDescription)
             : 'Descarga el documento oficial de Alianza Para el Progreso. Consulta nuestros comunicados, estatutos y materiales de transparencia institucional.';
 
-        // Fecha en hora de Lima, igual que el panel de administración
-        $publishedDate = $publishedAt ? $publishedAt->copy()->setTimezone('America/Lima')->format('Y-m-d') : null;
+        // publishedAt es una fecha de calendario guardada a medianoche UTC: se formatea tal cual.
+        // createdAt sí es un instante real en UTC: se convierte a hora de Lima.
+        $publishedDate = null;
+        if ($doc?->publishedAt) {
+            $publishedDate = $doc->publishedAt->format('Y-m-d');
+        } elseif ($publishedAt) {
+            $publishedDate = $publishedAt->copy()->setTimezone('America/Lima')->format('Y-m-d');
+        }
         $isPublic      = (bool) ($file->isPublicDocument ?? false);
         $pageUrl       = rtrim(config('app.site_url'), '/') . '/' . $locale . '/descarga/' . $slug;
 
